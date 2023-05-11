@@ -1,0 +1,21 @@
+@import '/styles/variables';
+
+.nav {
+   display: flex;
+   gap: 30px;
+   .link {
+      font-family: $font-1-medium;
+      text-decoration: none;
+      color: #000000;
+      transition: color 0.1s;
+      &:hover {
+         color: $color-third;
+      }
+   }
+   .active {
+      color: $color-third;
+   }
+   .fogging {
+      color: #eaeaea;
+   }
+}

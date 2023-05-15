@@ -24,7 +24,7 @@ const ZoomImage: FC<{ image: string }> = ({ image }) => {
       <div className={css.portal}>
          {isLoading ? (
             <div onClick={close} className={css.loader}>
-               <Loader />
+               <Loader className={css.wrapper} />
             </div>
          ) : (
             <div onClick={close} style={{ backgroundImage: `url(${src})` }} className={css.image} />

@@ -3,7 +3,7 @@ import Seo from './seo'
 import st from './Main.layout.module.scss'
 import Header from './Header/Header'
 import Footer from './Footer/Footer'
-import { useAppSelector } from '../hooks/redux'
+import { useAppSelector } from '@/hooks/redux'
 
 const MainLayout: FC<{ children: ReactNode }> = ({ children }) => {
    const isLaptop = useAppSelector((state) => state.content.mediaQuery.isLaptop)

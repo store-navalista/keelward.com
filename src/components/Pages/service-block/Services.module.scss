@@ -4,6 +4,9 @@
    position: relative;
    width: 100%;
    padding-top: 200px;
+   @media (max-width: $medium) {
+      padding-top: 155px;
+   }
    & > h2 {
       position: absolute;
       left: 50%;
@@ -20,5 +23,11 @@
    section {
       max-width: 1440px;
       margin: 0 auto;
+      @media (max-width: $medium) {
+         max-width: 837px;
+      }
+      @media (max-width: 915px) {
+         max-width: 400px;
+      }
    }
 }

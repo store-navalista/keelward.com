@@ -1,16 +1,17 @@
 import React, { useEffect } from 'react'
 import { AppProps } from 'next/app'
 import '../styles/main.scss'
-import MainLayout from '../src/components/Main.layout'
-import { I18nProvider } from '../src/i18n'
+import MainLayout from '@/components/Main.layout'
+import { I18nProvider } from '@/i18n'
 import { Provider } from 'react-redux'
-import store from '../src/store/store'
+import store from '@/store/store'
 import { CookiesProvider } from 'react-cookie'
-import { useAppDispatch, useAppSelector } from '../src/hooks/redux'
+import { useAppDispatch, useAppSelector } from '@/hooks/redux'
 import { Cookies } from 'react-cookie'
-import { ContentActions } from '../src/store/reducers/contentReducer'
+import { ContentActions } from '@/store/reducers/contentReducer'
 import { useMediaQuery } from 'react-responsive'
 import { useRouter } from 'next/router'
+import { _loader as Loader } from './loader'
 
 type IAppWrapperProps = Pick<AppProps, 'Component' | 'pageProps'>
 
@@ -59,7 +60,7 @@ function AppWrapper({ Component, pageProps }: IAppWrapperProps) {
       }
    }, [isModalShow])
 
-   if (isLoading) return
+   if (isLoading) return <Loader />
 
    return (
       <MainLayout>

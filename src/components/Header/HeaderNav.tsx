@@ -14,8 +14,6 @@ const HeaderNav = () => {
       <nav className={css.nav}>
          {links.map((link, i) => {
             const { id, href, defaultMessage } = link
-            console.log(currentPage, id)
-
             return (
                <Link key={i} href={href}>
                   <a className={css.link + ` ${currentPage === id ? css.active : ''}`}>

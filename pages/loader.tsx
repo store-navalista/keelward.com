@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const _loader = () => {
+const _loader = () => {
    return (
       <div style={{ width: '100vw', height: '100vh', position: 'relative' }}>
          <div
@@ -132,3 +132,5 @@ export const _loader = () => {
       </div>
    )
 }
+
+export default _loader

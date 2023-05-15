@@ -11,7 +11,6 @@ import { Cookies } from 'react-cookie'
 import { ContentActions } from '@/store/reducers/contentReducer'
 import { useMediaQuery } from 'react-responsive'
 import { useRouter } from 'next/router'
-import { _loader as Loader } from './loader'
 
 type IAppWrapperProps = Pick<AppProps, 'Component' | 'pageProps'>
 
@@ -59,8 +58,6 @@ function AppWrapper({ Component, pageProps }: IAppWrapperProps) {
          document.body.style.overflow = 'auto'
       }
    }, [isModalShow])
-
-   if (isLoading) return <Loader />
 
    return (
       <MainLayout>

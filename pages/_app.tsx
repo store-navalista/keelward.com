@@ -11,6 +11,7 @@ import { Cookies } from 'react-cookie'
 import { ContentActions } from '@/store/reducers/contentReducer'
 import { useMediaQuery } from 'react-responsive'
 import { useRouter } from 'next/router'
+import './styles/index.css'
 
 type IAppWrapperProps = Pick<AppProps, 'Component' | 'pageProps'>
 

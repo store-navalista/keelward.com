@@ -39,6 +39,10 @@
                margin-left: 0;
                padding: 0 40px;
             }
+            @media (max-width: 660px) {
+               margin-left: 0;
+               padding: 0 10px;
+            }
          }
          p {
             line-height: 1.4rem;

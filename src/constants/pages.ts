@@ -1,4 +1,4 @@
-export type PageNames =
+export type TServices =
    | 'SD'
    | 'BWTS'
    | 'TOWAGE'
@@ -18,6 +18,8 @@ export type PageNames =
    | 'SHIPREG'
    | 'SCANSURVCIV'
 
+type TPages = 'HOME' | 'ABOUT' | 'CONTACTS' | 'CERTS' | 'BROCH' | 'CAREERS' | 'INSTRUCTIONS' | 'WORKS'
+
 interface Submenu {
    brochure?: string
    works?: string
@@ -25,150 +27,194 @@ interface Submenu {
 
 interface Page {
    path: string
-   image: string
+   image?: string
    submenu?: Submenu
-   disabled: boolean
+   icon?: string
 }
 
-export type IPAGES = {
-   [key in PageNames]?: Page
+type TChapters = { [key: string]: TServices[] | TPages[] }[]
+
+export const CHAPTERS: TChapters = [
+   { chapter_1: ['SD', 'BWTS', 'TOWAGE', 'BOOKLETS', 'TONNAGE', 'CARGO', 'MACHINERY', 'SCANSURV', 'ERS'] },
+   { chapter_2: ['REPAIR', 'UTM'] },
+   { chapter_3: ['IHM', 'CONDSURV', 'EEXI'] },
+   { chapter_4: ['TECHADV', 'LEGALADV', 'SHIPREG'] },
+   { chapter_5: ['SCANSURVCIV'] }
+]
+
+export const MENU = [
+   {
+      chapter_main: ['HOME', 'ABOUT', 'CONTACTS', 'CERTS', 'BROCH', 'CAREERS', 'INSTRUCTIONS', 'WORKS']
+   },
+   ...CHAPTERS
+]
+
+type IServices = {
+   [key in TServices]?: Page
 }
 
-export const PAGES: IPAGES[] = [
+type IPages = {
+   [key in TPages]?: Page
+}
+
+export const SERVICES: IServices[] = [
    {
       SD: {
          path: 'ship-design',
          image: 'ship-design.jpg',
+         icon: 'main-block-sd',
          submenu: {
             brochure: '/',
             works: '/'
-         },
-         disabled: false
+         }
       }
    },
    {
       BWTS: {
          path: 'ballast-water-treatment-system-design-and-installation',
          image: 'bwts.jpg',
-         submenu: {
-            brochure: '/'
-         },
-         disabled: true
+         icon: 'main-block-bwts'
       }
    },
    {
       TOWAGE: {
          path: 'towage-and-passage',
-         image: 'towage.jpg',
-         submenu: {
-            works: '/'
-         },
-         disabled: true
+         image: 'towage.jpg'
       }
    },
    {
       BOOKLETS: {
          path: 'ship-technical-booklets',
-         image: 'booklets.jpg',
-         disabled: true
+         image: 'booklets.jpg'
       }
    },
    {
       TONNAGE: {
          path: 'tonnage-calculation',
-         image: 'tonnage.jpg',
-         disabled: true
+         image: 'tonnage.jpg'
       }
    },
    {
       CARGO: {
          path: 'heavy-lift-oversized-cargo',
-         image: 'heavy-lift.jpg',
-         disabled: true
+         image: 'heavy-lift.jpg'
       }
    },
    {
       MACHINERY: {
          path: 'system-and-machinery',
-         image: 'machinery.jpg',
-         disabled: true
+         image: 'machinery.jpg'
       }
    },
    {
       SCANSURV: {
          path: 'scanning-survey',
          image: 'scanning-survey.jpg',
-         disabled: true
+         icon: 'main-block-scan'
       }
    },
    {
       ERS: {
          path: 'emergency-response-service',
-         image: 'ers.jpg',
-         disabled: true
+         image: 'ers.jpg'
       }
    },
    {
       REPAIR: {
          path: 'shipbuilding-and-ship-repair',
-         image: 'repair.jpg',
-         disabled: true
+         image: 'repair.jpg'
       }
    },
    {
       UTM: {
          path: 'ultrasonic-thickness-measurements',
-         image: 'utm.jpg',
-         disabled: true
+         image: 'utm.jpg'
       }
    },
    {
       IHM: {
          path: 'inventory-of-hazardous-materials',
          image: 'ihm.jpg',
-         disabled: true
+         icon: 'main-block-ihm'
       }
    },
    {
       CONDSURV: {
          path: 'ships-condition-related-surveys',
-         image: 'condsurv.jpg',
-         disabled: true
+         image: 'condsurv.jpg'
       }
    },
    {
       EEXI: {
          path: 'energy-efficiency-existing-ship-index',
-         image: 'eexi.jpg',
-         disabled: true
+         image: 'eexi.jpg'
       }
    },
    {
       TECHADV: {
          path: 'technical-advisory-and-consultancy',
-         image: 'techadv.jpg',
-         disabled: true
+         image: 'techadv.jpg'
       }
    },
    {
       LEGALADV: {
          path: 'legal-advisory-and-consultancy',
-         image: 'legaladv.jpg',
-         disabled: true
+         image: 'legaladv.jpg'
       }
    },
    {
       SHIPREG: {
          path: 'ship-registration',
-         image: 'shipreg.jpg',
-         disabled: true
+         image: 'shipreg.jpg'
       }
    },
    {
       SCANSURVCIV: {
          path: 'scanning-civil-engineering',
-         image: 'scansurvciv.jpg',
-         disabled: true
+         image: 'scansurvciv.jpg'
+      }
+   }
+]
+
+export const PAGES: IPages[] = [
+   {
+      HOME: {
+         path: '/'
+      }
+   },
+   {
+      ABOUT: {
+         path: 'about-us'
+      }
+   },
+   {
+      CONTACTS: {
+         path: 'our-contacts'
+      }
+   },
+   {
+      CERTS: {
+         path: 'certificates'
+      }
+   },
+   {
+      BROCH: {
+         path: 'brochures'
+      }
+   },
+   {
+      CAREERS: {
+         path: 'careers'
+      }
+   },
+   {
+      INSTRUCTIONS: {
+         path: 'instructions'
+      }
+   },
+   {
+      WORKS: {
+         path: 'our-works'
       }
    }
 ]

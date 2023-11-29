@@ -52,8 +52,8 @@
          p {
             text-align: center;
             background-color: #fff;
-            transform: scaleY(0);
-            transition: transform 0.3s;
+            opacity: 0;
+            transition: opacity 0.3s;
          }
          h2 {
             text-transform: uppercase;
@@ -73,8 +73,8 @@
             margin: 0 auto;
             background-image: url(/assets/images/svg/eye-solid.svg);
             background-repeat: no-repeat;
-            transition: transform 0.2s;
-            transform: scaleY(0);
+            opacity: 0;
+            transition: opacity 0.3s;
          }
          p {
             box-sizing: border-box;
@@ -133,7 +133,7 @@
          h2,
          p,
          span {
-            transform: scaleY(1);
+            opacity: 1;
          }
       }
    }

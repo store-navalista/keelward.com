@@ -1,29 +1,30 @@
 import React, { FC } from 'react'
-import st from './Header.module.scss'
-import Link from 'next/link'
-import HeaderNav from './HeaderNav'
-import HeaderLang from './HeaderLang'
-import HeaderMobileMenu from './HeaderMobileMenu'
+import css from './Header.module.scss'
 import { ILayoutComponentProps } from '@/types/layout'
 import { useAppSelector } from '@/hooks/redux'
+import MenuMobile from './components/MenuMobile/MenuMobile'
+import Logo from './components/Logo/Logo'
+import Cabinet from './components/Cabinet/Cabinet'
+import Clock from './components/Clock/Clock'
+import ProgressBar from './components/ProgressBar/ProgressBar'
+import QuickPanel from './components/QuickPanel/QuickPanel'
 
 const Header: FC<ILayoutComponentProps> = ({ scrollStep }) => {
    const isMobile = useAppSelector((state) => state.content.mediaQuery.isMobile)
    return (
-      <header className={st.wrapper + ` ${scrollStep > 0 ? st.scrolled : ''}`}>
-         <div className={st.field}>
-            <Link href='/'>
-               <a>
-                  <img
-                     className={st.logo}
-                     src={`/assets/images/svg/logo${scrollStep > 0 || isMobile ? '-mini' : ''}.svg`}
-                     alt='logo'
-                  />
-               </a>
-            </Link>
-            {isMobile ? <HeaderMobileMenu scrollStep={scrollStep} /> : <HeaderNav />}
-            <HeaderLang scrollStep={scrollStep} />
+      <header className={css.wrapper}>
+         <div className={css.leftBlock}>
+            <MenuMobile />
+            <Logo type='decor' />
+            <Clock />
+            <Cabinet />
          </div>
+         <Logo />
+         <div className={css.rightBlock}>
+            <ProgressBar />
+            <QuickPanel />
+         </div>
+         <span className={css.blur} />
       </header>
    )
 }

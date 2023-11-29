@@ -1,43 +1,34 @@
+import { TServicesObjectProps } from '@/constants/types'
+import { useAppSelector } from '@/hooks/redux'
+import Image from 'next/image'
 import React, { FC, useRef } from 'react'
-import { useAppSelector } from '../../../hooks/redux'
-import useHover from '../../../hooks/useHover'
+import { useIntl } from 'react-intl'
 import HeadingMain from '../heading-main/HeadingMain'
+import css from './MainBlock.module.scss'
 import MainBlockService from './MainBlockService'
-import st from './MainBlock.module.scss'
-import { IMainProps } from '../../../types/pages/main'
 
-import bg_1 from '../../../../public/assets/images/pages/main-bg.jpg'
-import bg_2 from '../../../../public/assets/images/pages/main-half-grey.jpg'
-
-const MainBlock: FC<IMainProps> = ({ content }) => {
+const MainBlock: FC<{ content: TServicesObjectProps }> = ({ content }) => {
    const isLaptop = useAppSelector((state) => state.content.mediaQuery.isLaptop)
    const ref = useRef()
-   const isHovering = useHover(ref)
-   const { title, mainBlocks } = content
+   const staticTranslate = (id: string) => useIntl().formatMessage({ id: id, defaultMessage: id })
+   const blocks = ['SD', 'BWTS', 'IHM', 'SCANSURV'].map((s) => ({ [s]: content[s] })) as TServicesObjectProps[]
 
    return (
-      <div className={st.wrapper}>
-         {!isLaptop && (
-            <div className={st.heading}>
-               <HeadingMain title={title} />
-               <span>&#129045; HOVER</span>
-            </div>
-         )}
-         <div className={st.background}>
-            {/* <div
-                    style={{
-                        backgroundImage: `url(${bg_1.src})`
-                    }}
-                /> */}
-            <div
-               style={{
-                  backgroundImage: `url(${bg_1.src})`,
-                  opacity: 0.9
-               }}
-            />
+      <div className={css.wrapper}>
+         <Image
+            style={{ borderRadius: '14px' }}
+            src='/assets/images/pages/main-bg.jpg'
+            alt='Background Image'
+            layout='fill'
+            objectFit='cover'
+            loading='lazy'
+         />
+         <div className={css.heading}>
+            <HeadingMain title={staticTranslate('title.company')} />
+            <span>&#129045; HOVER</span>
          </div>
-         <div ref={ref} className={st.box}>
-            <MainBlockService blocks={mainBlocks} />
+         <div ref={ref} className={css.services}>
+            <MainBlockService blocks={blocks} />
          </div>
       </div>
    )

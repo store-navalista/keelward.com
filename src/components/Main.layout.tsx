@@ -1,9 +1,11 @@
-import React, { FC, ReactNode, useEffect, useState } from 'react'
-import Seo from './seo'
-import st from './Main.layout.module.scss'
-import Header from './Header/Header'
-import Footer from './Footer/Footer'
 import { useAppSelector } from '@/hooks/redux'
+import React, { FC, ReactNode, useEffect, useState } from 'react'
+import { ErrorBoundary } from 'react-error-boundary'
+import { ErrorBoundaryComponent } from './Error/Error'
+import Footer from './Footer/Footer'
+import Header from './Header/Header'
+import st from './Main.layout.module.scss'
+import Seo from './seo'
 
 const MainLayout: FC<{ children: ReactNode }> = ({ children }) => {
    const isLaptop = useAppSelector((state) => state.content.mediaQuery.isLaptop)
@@ -21,7 +23,7 @@ const MainLayout: FC<{ children: ReactNode }> = ({ children }) => {
          <Seo />
          <main className={st.wrapper}>
             <Header scrollStep={scrollStep} />
-            {children}
+            <ErrorBoundary fallbackRender={ErrorBoundaryComponent}>{children}</ErrorBoundary>
             <Footer scrollStep={scrollStep} isLaptop={isLaptop} />
          </main>
       </>

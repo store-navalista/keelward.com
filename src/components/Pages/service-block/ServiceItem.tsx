@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import React, { FC, useRef } from 'react'
-import { IMainService } from '@/types/pages/main'
 import css from './ServiceItem.module.scss'
 import { useAppSelector } from '@/hooks/redux'
 import Link from 'next/link'
@@ -9,9 +8,8 @@ import ConditionalLink from '@/components/UI/conditional-link/ConditionalLink'
 import { CSSTransition } from 'react-transition-group'
 import { useIntl } from 'react-intl'
 
-const ServiceItem: FC<{ service: IMainService }> = ({ service }) => {
+const ServiceItem: FC<{ service: { [key: string]: any } }> = ({ service }) => {
    const isMobile = useAppSelector((state) => state.content.mediaQuery.isMobile)
-
    const intl = useIntl()
    const ref = useRef(null)
    const isHover = useHover(ref)
@@ -20,7 +18,7 @@ const ServiceItem: FC<{ service: IMainService }> = ({ service }) => {
    return (
       <>
          <div ref={ref} className={`${css.wrapper}${isHover ? ` ${css.hover}` : ''}`}>
-            <ConditionalLink href={`/${path}`} className={css.block} disabled={disabled}>
+            <ConditionalLink href={`/${path}`} className={css.block} disabled={disabled as boolean}>
                <div className={css.membrane} />
                <div className={css.frame} />
                <Image

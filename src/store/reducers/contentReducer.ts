@@ -22,6 +22,7 @@ interface ContentState {
    loading: boolean
    isModalShow: boolean
    modalProps: any
+   progress: number
 }
 
 const initialState: ContentState = {
@@ -34,7 +35,8 @@ const initialState: ContentState = {
    },
    loading: true,
    isModalShow: false,
-   modalProps: null
+   modalProps: null,
+   progress: 0
 }
 
 export const ContentSlice = createSlice({
@@ -59,6 +61,9 @@ export const ContentSlice = createSlice({
       },
       setCurrentPage(state, action: PayloadAction<string>) {
          state.currentPage = action.payload
+      },
+      setProgress(state, action: PayloadAction<number>) {
+         state.progress = action.payload
       }
    }
    // extraReducers: (builder) => {

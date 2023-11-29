@@ -1,0 +1,12 @@
+@layer global;
+
+@layer global {
+   body {
+      background-color: var(--backgroundPage);
+   }
+
+   #portal {
+      position: relative;
+      z-index: 9999;
+   }
+}

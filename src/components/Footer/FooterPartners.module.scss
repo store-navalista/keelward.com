@@ -63,6 +63,12 @@
          display: flex;
          gap: 25px;
          bottom: 6px;
+         // & ~ .powered {
+         //    bottom: 150px;
+         // }
+         & ~ .certified {
+            bottom: 50px;
+         }
          & > a {
             display: block;
             width: 60px;
@@ -73,6 +79,9 @@
             cursor: pointer;
             &[title='Rina'] {
                width: 70px;
+               // @media (max-width: 800px) {
+               //    width: 30px;
+               // }
             }
             &[title='Mediterranean Shipping Register'] {
                width: 120px;

@@ -58,21 +58,22 @@ $shadow-hover-skew: calc(($hover-skew / 2) * -1);
       }
    }
    @media (min-width: 20em) {
-      font-size: 2em;
+      // font-size: 2em;
+      font-size: 8em;
       span::before,
       span::after {
          display: block;
       }
    }
-   @media (min-width: 30em) {
-      font-size: 3em;
-   }
-   @media (min-width: 40em) {
-      font-size: 5em;
-   }
-   @media (min-width: 60em) {
-      font-size: 8em;
-   }
+   // @media (min-width: 30em) {
+   //    font-size: 3em;
+   // }
+   // @media (min-width: 40em) {
+   //    font-size: 5em;
+   // }
+   // @media (min-width: 60em) {
+   //    font-size: 8em;
+   // }
 }
 .disable {
    color: rgb(128, 128, 128);

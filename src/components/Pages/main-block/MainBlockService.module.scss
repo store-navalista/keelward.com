@@ -7,62 +7,33 @@
    box-sizing: border-box;
    font-family: $font-1-semi-bold;
    padding: 20px 14px 14px 14px;
-   background-color: rgba(255, 255, 255, 0.3);
+   background-color: rgba(255, 255, 255, 0.7);
    border-radius: 10px;
    transition: background-color 0.5s;
    box-shadow: 0px 0px 12px 0px rgba(107, 107, 107, 0.4);
-   margin: 20px;
-   max-width: 500px;
-   max-height: 221px;
+   max-width: 450px;
    border: 2px solid $color-second;
-   animation: slide-in-blurred-left 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
-   @media (max-width: $mobile) {
-      background-color: rgba(255, 255, 255, 0.7);
+   outline: 2px solid #ffffff00;
+   &:hover {
+      outline-color: #ffffff;
    }
-   &:nth-child(1) {
-      margin: 0;
-   }
-   &:nth-child(2) {
-      animation-delay: 0.2s;
-      margin: 34px 179px 1px 1px;
-   }
-   &:nth-child(3) {
-      animation-delay: 0.4s;
-      margin: 136px 1px 1px 91px;
-   }
-   &:nth-child(4) {
-      animation-delay: 0.6s;
-      margin: 111px 0 1px 0px;
-   }
+   outline-offset: 2px;
+
    &:hover {
       background-color: rgba(255, 255, 255, 0.6);
       .border {
          opacity: 1;
       }
    }
-   .border {
-      position: absolute;
-      left: 0;
-      top: 0;
-      background-image: url(/assets/images/svg/card-left-border.svg);
-      background-repeat: no-repeat;
-      height: 100%;
-      width: 10px;
-      opacity: 0;
-      transition: opacity 0.5s;
-   }
    & > div {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 14px;
+      display: grid;
+      grid-template-columns: auto 24px;
       & > span {
          display: block;
          background-repeat: no-repeat;
-         width: 30px;
-         height: 30px;
-         margin-left: 20px;
+         background-image: var(--background-image);
+         width: 24px;
+         height: 24px;
       }
    }
    h2 {
@@ -78,7 +49,7 @@
       color: #000;
       max-width: 600px;
       line-height: 1.3em;
-      margin-bottom: 40px;
+      margin-bottom: 20px;
       text-align: left;
       text-indent: 1.5em;
       @media (max-width: $mobile) {
@@ -88,29 +59,29 @@
    }
 }
 
-@media (max-width: $medium) {
-   .block {
-      &:nth-child(2) {
-         margin: -25px 125px 1px 1px;
-      }
-      &:nth-child(3) {
-         margin: 59px 1px 1px 91px;
-      }
-      &:nth-child(4) {
-         margin: 28px 0 1px 0px;
-      }
-   }
-}
-@media (max-width: $laptop) {
-   .block {
-      &:nth-child(1),
-      &:nth-child(2),
-      &:nth-child(3),
-      &:nth-child(4) {
-         margin: 0 0 20px;
-      }
-   }
-}
+// @media (max-width: $medium) {
+//    .block {
+//       &:nth-child(2) {
+//          margin: -25px 125px 1px 1px;
+//       }
+//       &:nth-child(3) {
+//          margin: 59px 1px 1px 91px;
+//       }
+//       &:nth-child(4) {
+//          margin: 28px 0 1px 0px;
+//       }
+//    }
+// }
+// @media (max-width: $laptop) {
+//    .block {
+//       &:nth-child(1),
+//       &:nth-child(2),
+//       &:nth-child(3),
+//       &:nth-child(4) {
+//          margin: 0 0 20px;
+//       }
+//    }
+// }
 
 @keyframes slide-in-blurred-left {
    0% {

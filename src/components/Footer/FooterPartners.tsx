@@ -35,7 +35,7 @@ const FooterPartners: FC<IFooterPartners> = ({ setisFooterMenu }) => {
                {translate(`footer-partners.certified`, DM['footer-partners.certified'].defaultMessage)}
             </button>
             {isCertifiedOpen && (
-               <div className={css.menu}>
+               <div className={`${css.menu} ${css.certified}`}>
                   {certified.map((item, i) => {
                      const { title, url, icon } = item
                      return (

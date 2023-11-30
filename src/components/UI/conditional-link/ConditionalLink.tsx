@@ -1,7 +1,10 @@
+import { useAppDispatch } from '@/hooks/redux'
+import { ContentActions } from '@/store/reducers/contentReducer'
 import Link from 'next/link'
 import React, { FC, ReactNode } from 'react'
 
 interface IConditionalLinkProps {
+   id: string
    href: string
    as?: string
    children: ReactNode
@@ -9,13 +12,11 @@ interface IConditionalLinkProps {
    className?: string
 }
 
-const ConditionalLink: FC<IConditionalLinkProps> = ({ href, as, children, disabled = false, className }) => {
-   if (disabled) {
-      return <div className={className}>{children}</div>
-   }
+const ConditionalLink: FC<IConditionalLinkProps> = ({ href, as, children, className, id }) => {
+   const dispatch = useAppDispatch()
 
    return (
-      <Link href={href} as={as} passHref>
+      <Link href={href} as={as} onClick={() => dispatch(ContentActions.setID(id))} passHref legacyBehavior>
          <a className={className}>{children}</a>
       </Link>
    )

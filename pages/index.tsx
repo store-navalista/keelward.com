@@ -14,7 +14,6 @@ const Home: NextPage = ({ content }: any) => {
    const [isLoading, setLoading] = useState(true)
    const { services, pages } = content[lang]
    const chapters = CHAPTERS.map((c) => Object.keys(c)[0])
-
    const certs = Object.values(CERTIFICATES).flatMap((c) => Object.values(c).flatMap((c) => c))
 
    useEffect(() => {

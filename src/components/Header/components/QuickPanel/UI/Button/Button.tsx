@@ -26,7 +26,7 @@ const Button: FC<TButton> = ({ type = 'link', href, isOpen = false, onClick, ico
          )
       case 'link':
          return (
-            <Link href={href}>
+            <Link href={href} legacyBehavior>
                <a style={{ '--icon': icon } as CSSProperties} className={css.button}>
                   {children}
                </a>

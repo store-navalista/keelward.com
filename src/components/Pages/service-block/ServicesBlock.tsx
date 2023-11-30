@@ -23,7 +23,7 @@ const ServicesBlock: FC<{ chapters: string[]; services: TServicesObjectProps }> 
                         const constants = SERVICES.find((s) => key in s)[key]
                         const srv = { ...value, ...constants }
 
-                        return <ServiceItem key={i} service={srv} />
+                        return <ServiceItem key={i} service={srv} id={key} />
                      })}
                   </div>
                </div>

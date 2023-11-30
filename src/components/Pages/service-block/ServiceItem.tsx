@@ -8,8 +8,8 @@ import ConditionalLink from '@/components/UI/conditional-link/ConditionalLink'
 import { CSSTransition } from 'react-transition-group'
 import { useIntl } from 'react-intl'
 
-const ServiceItem: FC<{ service: { [key: string]: any } }> = ({ service }) => {
-   const isMobile = useAppSelector((state) => state.content.mediaQuery.isMobile)
+const ServiceItem: FC<{ service: { [key: string]: any }; id: string }> = ({ service, id }) => {
+   const isLaptop = useAppSelector((state) => state.content.mediaQuery.isLaptop)
    const intl = useIntl()
    const ref = useRef(null)
    const isHover = useHover(ref)
@@ -17,8 +17,8 @@ const ServiceItem: FC<{ service: { [key: string]: any } }> = ({ service }) => {
 
    return (
       <>
-         <div ref={ref} className={`${css.wrapper}${isHover ? ` ${css.hover}` : ''}`}>
-            <ConditionalLink href={`/${path}`} className={css.block} disabled={disabled as boolean}>
+         <div ref={ref} className={`${css.wrapper}${isHover || isLaptop ? ` ${css.hover}` : ''}`}>
+            <ConditionalLink href={`/${path}`} className={css.block} id={id} disabled={disabled as boolean}>
                <div className={css.membrane} />
                <div className={css.frame} />
                <Image
@@ -47,7 +47,7 @@ const ServiceItem: FC<{ service: { [key: string]: any } }> = ({ service }) => {
             >
                <div className={css.submenu}>
                   {submenu?.works && (
-                     <Link href={submenu.works}>
+                     <Link href={submenu.works} legacyBehavior>
                         <a
                            title={intl.formatMessage({ id: `main.service-work`, defaultMessage: 'Our works' })}
                            className={css.works}
@@ -55,7 +55,7 @@ const ServiceItem: FC<{ service: { [key: string]: any } }> = ({ service }) => {
                      </Link>
                   )}
                   {submenu?.brochure && (
-                     <Link href={submenu.brochure}>
+                     <Link href={submenu.brochure} legacyBehavior>
                         <a
                            title={intl.formatMessage({ id: `main.service-brochure`, defaultMessage: 'See brochure' })}
                            className={css.brochure}

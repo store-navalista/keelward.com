@@ -8,13 +8,16 @@
       box-sizing: border-box;
       overflow: hidden;
       width: 400px;
-      height: 400px;
+      aspect-ratio: 1;
       border-radius: 10px;
       background-color: #fcfcfc;
       box-shadow: 5px 5px 12px #d1d1d17c, -5px -5px 12px #ffffff;
       margin-bottom: 40px;
       transition: box-shadow 0.3s;
       color: #000;
+      @media (max-width: 420px) {
+         width: 320px;
+      }
       &:hover {
          box-shadow: 7px 7px 15px #d1d1d1, -7px -7px 15px #ffffff;
       }
@@ -124,16 +127,32 @@
 .hover {
    .block {
       .membrane {
-         backdrop-filter: blur(4px) grayscale(0.8);
+         @media (min-width: var(--media-laptop)) {
+            backdrop-filter: blur(4px) grayscale(0.8);
+         }
       }
       .frame {
          border-color: #ffffff;
       }
       .textbox {
          h2,
-         p,
-         span {
+         p {
             opacity: 1;
+         }
+         @media (min-width: var(--media-laptop)) {
+            span {
+               opacity: 1;
+            }
+         }
+      }
+      @media (max-width: 420px) {
+         .textbox {
+            h2 {
+               font-size: 16px;
+            }
+            p {
+               font-size: 12px;
+            }
          }
       }
    }

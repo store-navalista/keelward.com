@@ -6,9 +6,12 @@ import Footer from './Footer/Footer'
 import Header from './Header/Header'
 import st from './Main.layout.module.scss'
 import Seo from './seo'
+import { PagesData as SEO } from '@/i18n/pages/locales'
 
 const MainLayout: FC<{ children: ReactNode }> = ({ children }) => {
    const isLaptop = useAppSelector((state) => state.content.mediaQuery.isLaptop)
+   const i18n = useAppSelector((state) => state.content.i18n)
+   const id = useAppSelector((state) => state.content._id)
    const [scrollStep, setcrollStep] = useState(0)
    const scroll = () => {
       setcrollStep(window.pageYOffset)
@@ -18,9 +21,17 @@ const MainLayout: FC<{ children: ReactNode }> = ({ children }) => {
       window.addEventListener('scroll', scroll)
    })
 
+   let pages = {}
+
+   for (const key in SEO[i18n]) {
+      if (typeof SEO[i18n][key] === 'object') {
+         pages = { ...pages, ...SEO[i18n][key] }
+      }
+   }
+
    return (
       <>
-         <Seo />
+         <Seo {...pages[id].seo} />
          <main className={st.wrapper}>
             <Header scrollStep={scrollStep} />
             <ErrorBoundary fallbackRender={ErrorBoundaryComponent}>{children}</ErrorBoundary>

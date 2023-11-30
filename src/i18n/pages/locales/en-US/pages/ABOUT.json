@@ -1,5 +1,10 @@
 {
    "mobile_title": "About us",
    "title": "About us",
-   "description": ""
+   "description": "",
+
+   "seo": {
+      "description": "Find out more about our company.",
+      "pageTitle": "About us"
+   }
 }

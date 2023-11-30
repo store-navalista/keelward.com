@@ -1,7 +1,7 @@
 import Portal from '@/HOC/Portal'
 import { SOCIAL } from '@/constants/data'
 import { MENU, PAGES, SERVICES } from '@/constants/pages'
-import { useAppSelector } from '@/hooks/redux'
+import { useAppDispatch, useAppSelector } from '@/hooks/redux'
 import { PagesData } from '@/i18n/pages/locales'
 import translate from '@/i18n/translate'
 import { AnimatePresence, motion } from 'framer-motion'
@@ -9,6 +9,7 @@ import Link from 'next/link'
 import React, { CSSProperties, FC, useEffect, useRef, useState } from 'react'
 import LanguageSwitcher from '../../QuickPanel/LanguageSwitcher/LanguageSwitcher'
 import css from '../MenuMobile.module.scss'
+import { ContentActions } from '@/store/reducers/contentReducer'
 
 type Props = {
    activeTab: number
@@ -61,20 +62,20 @@ const Body: FC<Props> = ({ activeTab, lang }) => {
    const pagesConstants = [...PAGES, ...SERVICES]
    const pagesContents = { ...PagesData[lang].pages, ...PagesData[lang].services }
    const currentPage = useAppSelector((state) => state.content.currentPage)
+   const dispatch = useAppDispatch()
 
    return (
       <div className={css.links}>
          {pages.map((n, i) => {
             const [page] = Object.values(pagesConstants.find((p) => n in p))
             const { mobile_title } = pagesContents[n]
-
             const active = page.path === currentPage
 
             return (
                <div key={i} data-active={active}>
                   <span />
-                  <Link href={page.path}>
-                     <a className={css.link}>{mobile_title}</a>
+                  <Link href={page.path} className={css.link} onClick={() => dispatch(ContentActions.setID(n))}>
+                     {mobile_title}
                   </Link>
                </div>
             )

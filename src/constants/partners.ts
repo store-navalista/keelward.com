@@ -34,11 +34,11 @@ export const PARTNERS: IPartners = {
          url: 'https://www.msregister.com/',
          title: 'Mediterranean Shipping Register',
          icon: 'mediterranean-shipping-register.png'
-      },
-      {
-         url: 'http://www.shipregister.ua/',
-         title: 'The Shipping Register of Ukraine',
-         icon: 'the-shipping-register-of-ukraine.png'
       }
+      // {
+      //    url: 'http://www.shipregister.ua/',
+      //    title: 'The Shipping Register of Ukraine',
+      //    icon: 'the-shipping-register-of-ukraine.png'
+      // }
    ]
 }

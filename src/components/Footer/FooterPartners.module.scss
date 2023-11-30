@@ -77,14 +77,20 @@
             background-repeat: no-repeat;
             background-size: 90%;
             cursor: pointer;
+            @media (max-width: 650px) {
+               width: 40px;
+            }
             &[title='Rina'] {
                width: 70px;
-               // @media (max-width: 800px) {
-               //    width: 30px;
-               // }
+               @media (max-width: 650px) {
+                  width: 50px;
+               }
             }
             &[title='Mediterranean Shipping Register'] {
                width: 120px;
+               @media (max-width: 650px) {
+                  width: 80px;
+               }
             }
          }
       }
@@ -92,11 +98,20 @@
          bottom: 85px;
          & > a {
             width: 45px;
+            @media (max-width: 650px) {
+               width: 30px;
+            }
             &[title='NDAR'] {
                width: 40px;
+               @media (max-width: 650px) {
+                  width: 30px;
+               }
             }
             &[title='Ship Constructor'] {
                width: 180px;
+               @media (max-width: 650px) {
+                  width: 140px;
+               }
             }
          }
       }

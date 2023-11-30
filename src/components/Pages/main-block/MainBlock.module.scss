@@ -2,6 +2,7 @@
 
 .wrapper {
    position: relative;
+   box-sizing: border-box;
    width: 97vw;
    height: calc(100vh - 140px);
    margin: 0 auto;
@@ -9,6 +10,7 @@
    background-color: #fff;
    box-shadow: 4px 4px 6px 0 #d6d6d6;
    margin-top: 10px;
+   min-height: 870px;
    .heading {
       position: absolute;
       top: calc(-165.1px + 225.1 * (100vw / 2560));
@@ -22,6 +24,9 @@
          right: 6px;
          bottom: -30px;
          font-size: 24px;
+         @media (max-width: 980px) {
+            display: none;
+         }
       }
    }
    .services {
@@ -29,8 +34,12 @@
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-gap: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 940px;
+      @media (max-width: 980px) {
+         width: 100%;
+      }
    }
 }

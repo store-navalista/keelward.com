@@ -15,6 +15,7 @@ interface IMediaQuery {
    isMobile: boolean | undefined
 }
 interface ContentState {
+   _id: string
    currentPage: string
    currentLang: string
    i18n: string
@@ -26,6 +27,7 @@ interface ContentState {
 }
 
 const initialState: ContentState = {
+   _id: 'HOME',
    currentPage: '/',
    currentLang: 'ENGLISH',
    i18n: 'en',
@@ -43,6 +45,9 @@ export const ContentSlice = createSlice({
    name: 'content',
    initialState,
    reducers: {
+      setID(state, action: PayloadAction<string>) {
+         state._id = action.payload
+      },
       setLanguage(state, action: PayloadAction<string>) {
          state.currentLang = action.payload
          state.i18n = action.payload.toLocaleLowerCase().substring(0, 2)

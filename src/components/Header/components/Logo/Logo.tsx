@@ -1,13 +1,15 @@
 import React, { FC } from 'react'
 import css from './Logo.module.scss'
 import Image from 'next/image'
-import { useAppSelector } from '@/hooks/redux'
+import { useAppDispatch, useAppSelector } from '@/hooks/redux'
 import Link from 'next/link'
+import { ContentActions } from '@/store/reducers/contentReducer'
 
 type LType = 'decor' | 'main'
 
 const Logo: FC<{ type?: LType }> = ({ type }) => {
    const isMobile = useAppSelector((state) => state.content.mediaQuery.isMobile)
+   const dispatch = useAppDispatch()
 
    const TypeLogo = (props) => {
       switch (props.type) {
@@ -19,9 +21,7 @@ const Logo: FC<{ type?: LType }> = ({ type }) => {
             ) : null
          default:
             return !isMobile ? (
-               <Link href='/'>
-                  <a className={css.main} />
-               </Link>
+               <Link className={css.main} href='/' onClick={() => dispatch(ContentActions.setID('HOME'))} />
             ) : null
       }
    }

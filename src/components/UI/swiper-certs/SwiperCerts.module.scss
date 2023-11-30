@@ -10,7 +10,10 @@
    overflow: hidden;
    background-image: url(/assets/images/pages/bg-honeycombs.jpg);
    background-size: cover;
-   margin-bottom: 100px;
+   margin-bottom: 85px;
+   @media (max-width: 650px) {
+      margin-bottom: 85px;
+   }
    .block {
       margin: 0 auto;
       max-width: 1000px;

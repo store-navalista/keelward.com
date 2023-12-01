@@ -127,7 +127,7 @@
 .hover {
    .block {
       .membrane {
-         @media (min-width: var(--media-laptop)) {
+         @media (min-width: 1366px) {
             backdrop-filter: blur(4px) grayscale(0.8);
          }
       }
@@ -139,8 +139,8 @@
          p {
             opacity: 1;
          }
-         @media (min-width: var(--media-laptop)) {
-            span {
+         span {
+            @media (min-width: 1366px) {
                opacity: 1;
             }
          }

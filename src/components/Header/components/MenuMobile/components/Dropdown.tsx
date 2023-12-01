@@ -4,12 +4,12 @@ import { MENU, PAGES, SERVICES } from '@/constants/pages'
 import { useAppDispatch, useAppSelector } from '@/hooks/redux'
 import { PagesData } from '@/i18n/pages/locales'
 import translate from '@/i18n/translate'
+import { ContentActions } from '@/store/reducers/contentReducer'
 import { AnimatePresence, motion } from 'framer-motion'
 import Link from 'next/link'
 import React, { CSSProperties, FC, useEffect, useRef, useState } from 'react'
 import LanguageSwitcher from '../../QuickPanel/LanguageSwitcher/LanguageSwitcher'
 import css from '../MenuMobile.module.scss'
-import { ContentActions } from '@/store/reducers/contentReducer'
 
 type Props = {
    activeTab: number
@@ -118,6 +118,11 @@ const Dropdown: FC<any> = ({ isOpen, toggle }) => {
       top: `${position.y}px`
    }
 
+   const staticStyle = {
+      left: '50%',
+      top: '50%'
+   }
+
    useEffect(() => {
       return () => {
          setActiveTab(0)
@@ -134,12 +139,13 @@ const Dropdown: FC<any> = ({ isOpen, toggle }) => {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.3 }}
+                  className={css.wrapper}
                >
                   <div
-                     style={draggableStyle}
+                     style={!isMobile ? draggableStyle : staticStyle}
                      onDragStart={onDragStart}
                      onDrag={onDrag}
-                     draggable={true}
+                     draggable={!isMobile}
                      className={css.dropdown}
                   >
                      <div className={css.header}>

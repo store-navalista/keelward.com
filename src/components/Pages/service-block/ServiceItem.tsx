@@ -1,19 +1,22 @@
-import Image from 'next/image'
-import React, { FC, useRef } from 'react'
-import css from './ServiceItem.module.scss'
-import { useAppSelector } from '@/hooks/redux'
-import Link from 'next/link'
-import useHover from '@/hooks/useHover'
 import ConditionalLink from '@/components/UI/conditional-link/ConditionalLink'
-import { CSSTransition } from 'react-transition-group'
+import { useAppSelector } from '@/hooks/redux'
+import useHover from '@/hooks/useHover'
+import Image from 'next/image'
+import Link from 'next/link'
+import React, { FC, useRef } from 'react'
 import { useIntl } from 'react-intl'
+import { useMediaQuery } from 'react-responsive'
+import { CSSTransition } from 'react-transition-group'
+import css from './ServiceItem.module.scss'
 
 const ServiceItem: FC<{ service: { [key: string]: any }; id: string }> = ({ service, id }) => {
    const isLaptop = useAppSelector((state) => state.content.mediaQuery.isLaptop)
+   const isSmallScreen = useMediaQuery({ query: '(max-width: 420px)' })
    const intl = useIntl()
    const ref = useRef(null)
    const isHover = useHover(ref)
    const { title, description, disabled, path, image, submenu } = service
+   const [width, height] = isSmallScreen ? [320, 320] : [400, 400]
 
    return (
       <>
@@ -24,8 +27,8 @@ const ServiceItem: FC<{ service: { [key: string]: any }; id: string }> = ({ serv
                <Image
                   src={`/assets/images/pages/main/${image}`}
                   alt={'service'}
-                  width={400}
-                  height={400}
+                  width={width}
+                  height={height}
                   className={css.image}
                />
                <div className={css.textbox}>

@@ -6,7 +6,15 @@
    }
 
    #portal {
-      position: relative;
+      --decimal: 90px;
+      position: fixed;
+      top: var(--decimal);
+      left: 0;
+      width: 100vw;
+      height: calc(100vh - var(--decimal));
       z-index: 9999;
+      @media (max-width: 870px) {
+         --decimal: 80px;
+      }
    }
 }

@@ -50,10 +50,14 @@ button.button {
    }
 }
 .wrapper {
-   position: relative;
-   width: 100%;
-   height: 100%;
+   --decimal: 90px;
+   position: fixed;
+   top: var(--decimal);
+   left: 0;
+   width: 100vw;
+   height: calc(100vh - var(--decimal));
    @media (max-width: 870px) {
+      --decimal: 80px;
       backdrop-filter: blur(8px);
       background-color: rgba(0, 0, 0, 0.7);
    }

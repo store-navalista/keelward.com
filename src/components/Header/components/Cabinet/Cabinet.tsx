@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import useOutsideClick from '@/hooks/useOutsideClick'
 import Tooltip from '@/components/UI/tooltip/Tooltip'
 import useHover from '@/hooks/useHover'
+import useOverflow from '@/hooks/useOverflow'
 
 const Cabinet: FC = () => {
    const [isOpen, setisOpen] = useState(false)
@@ -20,19 +21,7 @@ const Cabinet: FC = () => {
       setisOpen(false)
    }
 
-   useEffect(() => {
-      const htmlElement = document.documentElement
-
-      if (isOpen) {
-         htmlElement.style.overflow = 'hidden'
-      } else {
-         htmlElement.style.overflow = ''
-      }
-
-      return () => {
-         htmlElement.style.overflow = ''
-      }
-   }, [isOpen])
+   useOverflow(isOpen)
 
    return (
       <>

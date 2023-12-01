@@ -10,6 +10,7 @@ import Link from 'next/link'
 import React, { CSSProperties, FC, useEffect, useRef, useState } from 'react'
 import LanguageSwitcher from '../../QuickPanel/LanguageSwitcher/LanguageSwitcher'
 import css from '../MenuMobile.module.scss'
+import useOverflow from '@/hooks/useOverflow'
 
 type Props = {
    activeTab: number
@@ -130,7 +131,9 @@ const Dropdown: FC<any> = ({ isOpen, toggle }) => {
       }
    }, [isOpen])
 
-   return (
+   useOverflow(isOpen && isMobile)
+
+   return isOpen ? (
       <Portal selector='#portal'>
          <AnimatePresence mode='wait'>
             {isOpen && (
@@ -163,7 +166,7 @@ const Dropdown: FC<any> = ({ isOpen, toggle }) => {
          </AnimatePresence>
          <div ref={dragImageRef} style={{ display: 'none' }}></div>
       </Portal>
-   )
+   ) : null
 }
 
 export default Dropdown

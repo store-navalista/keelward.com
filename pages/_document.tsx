@@ -14,7 +14,7 @@ class MyDocument extends Document {
             </Head>
             <body>
                <Main />
-               <div style={{ zIndex: 9999 }} id='portal' />
+               <div id='portal' />
                <NextScript />
             </body>
          </Html>

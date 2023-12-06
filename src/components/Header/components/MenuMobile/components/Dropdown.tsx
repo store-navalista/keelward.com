@@ -96,7 +96,7 @@ const Dropdown: FC<any> = ({ isOpen, toggle }) => {
    const lang = useAppSelector((state) => state.content.i18n)
    const [activeTab, setActiveTab] = useState(0)
    const [title] = Object.entries(MENU[activeTab])[0]
-   const startCoord = { x: 16, y: 96 }
+   const startCoord = { x: 24, y: 90 }
    const [position, setPosition] = useState(startCoord)
    const [offset, setOffset] = useState({ x: 0, y: 0 })
 
@@ -127,7 +127,8 @@ const Dropdown: FC<any> = ({ isOpen, toggle }) => {
 
    const staticStyle = {
       left: '50%',
-      top: '50%'
+      top: '50%',
+      backgroundColor: '#fff'
    }
 
    useEffect(() => {
@@ -140,7 +141,7 @@ const Dropdown: FC<any> = ({ isOpen, toggle }) => {
    useOverflow(isOpen && isMobile)
 
    return isOpen ? (
-      <Portal selector='#portal'>
+      <>
          <AnimatePresence mode='wait'>
             {isOpen && (
                <motion.div
@@ -171,7 +172,7 @@ const Dropdown: FC<any> = ({ isOpen, toggle }) => {
             )}
          </AnimatePresence>
          <div ref={dragImageRef} style={{ display: 'none' }}></div>
-      </Portal>
+      </>
    ) : null
 }
 

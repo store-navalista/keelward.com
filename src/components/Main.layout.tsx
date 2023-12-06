@@ -7,6 +7,7 @@ import Header from './Header/Header'
 import st from './Main.layout.module.scss'
 import Seo from './seo'
 import { PagesData as SEO } from '@/i18n/pages/locales'
+import { Map } from './Pages/map/Map'
 
 const MainLayout: FC<{ children: ReactNode }> = ({ children }) => {
    const isLaptop = useAppSelector((state) => state.content.mediaQuery.isLaptop)
@@ -35,6 +36,7 @@ const MainLayout: FC<{ children: ReactNode }> = ({ children }) => {
          <main className={st.wrapper}>
             <Header scrollStep={scrollStep} />
             <ErrorBoundary fallbackRender={ErrorBoundaryComponent}>{children}</ErrorBoundary>
+            <Map />
             <Footer scrollStep={scrollStep} isLaptop={isLaptop} />
          </main>
       </>

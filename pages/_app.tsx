@@ -18,7 +18,6 @@ type IAppWrapperProps = Pick<AppProps, 'Component' | 'pageProps'>
 function AppWrapper({ Component, pageProps }: IAppWrapperProps) {
    const dispatch = useAppDispatch()
    const currentMQ = useAppSelector((state) => state.content.mediaQuery)
-   const isModalShow = useAppSelector((state) => state.content.isModalShow)
    const isLoading = useAppSelector((state) => state.content.loading)
    const cookies = new Cookies().get('language')
    const isMobile = useMediaQuery({ query: '(max-width: 870px)' })
@@ -51,14 +50,6 @@ function AppWrapper({ Component, pageProps }: IAppWrapperProps) {
    useEffect(() => {
       dispatch(ContentActions.setMediaQuery({ ...currentMQ, isLaptop: isLaptop }))
    }, [isLaptop])
-
-   useEffect(() => {
-      document.body.style.overflow = isModalShow ? 'hidden' : 'auto'
-
-      return () => {
-         document.body.style.overflow = 'auto'
-      }
-   }, [isModalShow])
 
    return (
       <MainLayout>

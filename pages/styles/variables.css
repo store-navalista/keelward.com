@@ -9,5 +9,6 @@
 
       --shadow-out: 0px 1px 4px rgba(174, 174, 192, 0.25), 2px 2px 3px rgba(174, 174, 192, 0.25);
       --shadow-in: inset -1px -1px 1px rgba(255, 255, 255, 0.7), inset 1.5px 1.5px 1px rgba(174, 174, 192, 0.2);
+      --shadow-aside: 4px 4px 6px 0 #d6d6d6;
    }
 }

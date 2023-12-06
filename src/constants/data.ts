@@ -6,3 +6,11 @@ export const CONTACTS = {
    phone: 'tel:+995-555-61-00-90',
    address: 'https://maps.app.goo.gl/tPB5V9UxpwSYSofN8'
 }
+
+export const MAPProps = {
+   center: {
+      lat: 41.72025956832785,
+      lng: 44.7656917206477
+   },
+   zoom: 12
+}

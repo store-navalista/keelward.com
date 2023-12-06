@@ -63,9 +63,9 @@
          display: flex;
          gap: 25px;
          bottom: 6px;
-         // & ~ .powered {
-         //    bottom: 150px;
-         // }
+         @media (max-width: 500px) {
+            gap: 20px;
+         }
          & ~ .certified {
             bottom: 50px;
          }

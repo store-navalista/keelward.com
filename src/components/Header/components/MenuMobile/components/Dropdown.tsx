@@ -1,5 +1,5 @@
 import Portal from '@/HOC/Portal'
-import { SOCIAL } from '@/constants/data'
+import { CONTACTS } from '@/constants/data'
 import { MENU, PAGES, SERVICES } from '@/constants/pages'
 import { useAppDispatch, useAppSelector } from '@/hooks/redux'
 import { PagesData } from '@/i18n/pages/locales'
@@ -20,14 +20,12 @@ type Props = {
 }
 
 const Social: FC = () => {
-   const social = Object.keys(SOCIAL)
-
    return (
       <div className={css.social}>
-         {social.map((s, i) => {
+         {['telegram', 'instagram', 'facebook', 'mail'].map((s, i) => {
             return (
                <a
-                  href={SOCIAL[s]}
+                  href={CONTACTS[s]}
                   key={i}
                   style={{ '--social-icon': `url(/assets/images/svg/mobile-${s}.svg)` } as CSSProperties}
                   target='_blank'
@@ -58,7 +56,8 @@ const Tabs: FC<Props> = ({ activeTab, setActiveTab, toggle }) => {
    )
 }
 
-const Body: FC<Props> = ({ activeTab, lang }) => {
+const Body: FC<Props> = ({ activeTab, lang, toggle }) => {
+   const isMobile = useAppSelector((state) => state.content.mediaQuery.isMobile)
    const [title, pages] = Object.entries(MENU[activeTab])[0]
    const pagesConstants = [...PAGES, ...SERVICES]
    const pagesContents = { ...PagesData[lang].pages, ...PagesData[lang].services }
@@ -75,7 +74,14 @@ const Body: FC<Props> = ({ activeTab, lang }) => {
             return (
                <div key={i} data-active={active}>
                   <span />
-                  <Link href={page.path} className={css.link} onClick={() => dispatch(ContentActions.setID(n))}>
+                  <Link
+                     href={page.path}
+                     className={css.link}
+                     onClick={() => {
+                        dispatch(ContentActions.setID(n))
+                        if (isMobile) toggle()
+                     }}
+                  >
                      {mobile_title}
                   </Link>
                </div>
@@ -156,7 +162,7 @@ const Dropdown: FC<any> = ({ isOpen, toggle }) => {
                         <h4>{translate(`menu.title-${title}`)}</h4>
                         <button onClick={() => toggle()} className={css.close} />
                      </div>
-                     <Body lang={lang} activeTab={activeTab} />
+                     <Body lang={lang} activeTab={activeTab} toggle={toggle} />
                      <LanguageSwitcher type='mobile' />
                      <Tabs toggle={toggle} activeTab={activeTab} setActiveTab={setActiveTab} />
                      <Social />

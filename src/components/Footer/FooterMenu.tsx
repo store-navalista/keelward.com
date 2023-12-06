@@ -1,20 +1,17 @@
-import React, { FC, useEffect, useRef, useState } from 'react'
-import st from './FooterMenu.module.scss'
-import footer from '@/i18n/components/footer.json'
-import FooterDescription from './FooterDescription'
+import React, { CSSProperties, FC, useEffect, useRef, useState } from 'react'
+import css from './FooterMenu.module.scss'
 import { ILayoutComponentProps } from '@/types/layout'
 import { CSSTransition } from 'react-transition-group'
 import { useIntl } from 'react-intl'
-import { IFooter } from '@/types/footer'
 import translate from '@/i18n/translate'
+import { default as DM } from '@/i18n/messages/defaultMessages'
+import { CONTACTS } from '@/constants/data'
 
 const FooterMenu: FC<ILayoutComponentProps> = ({ scrollStep, isFooterMenuOpen }) => {
    const [isDescription, setisDescription] = useState(false)
-   const [descContent, setdescContent] = useState({})
    const [isScroll, setisScroll] = useState(false)
    const [isBlocks, setisBlocks] = useState(false)
-   const { blocks, copyright }: IFooter = footer
-   const refs = useRef<HTMLDivElement[]>([])
+   const refs = useRef<HTMLAnchorElement[]>([])
    const intl = useIntl()
 
    useEffect(() => {
@@ -27,15 +24,13 @@ const FooterMenu: FC<ILayoutComponentProps> = ({ scrollStep, isFooterMenuOpen })
    })
 
    return (
-      <div className={st.wrapper}>
-         <div className={st.section}>
+      <div className={css.wrapper}>
+         <div className={css.section}>
             <div
                style={{ display: isFooterMenuOpen ? 'flex' : 'none' }}
-               className={st.blocks + `${isDescription ? ' ' + st.active : ''}`}
+               className={css.blocks + `${isDescription ? ' ' + css.active : ''}`}
             >
-               {blocks.map((block, i) => {
-                  const { id, icon } = block
-                  const tip = intl.formatMessage({ id: `footer-${id}.title` })
+               {['address', 'phone', 'mail'].map((item, i) => {
                   return (
                      <CSSTransition
                         key={i}
@@ -44,39 +39,31 @@ const FooterMenu: FC<ILayoutComponentProps> = ({ scrollStep, isFooterMenuOpen })
                         mountOnEnter
                         unmountOnExit
                         classNames={{
-                           enter: st.enter,
-                           enterDone: st.enterDone
+                           enter: css.enter,
+                           enterDone: css.enterDone
                         }}
                      >
-                        <div
-                           className={st.block}
-                           data-type={id}
+                        <a
+                           href={CONTACTS[item]}
+                           className={css.block}
+                           data-type={item}
                            ref={(e) => (refs.current[i] = e)}
-                           data-tip={tip}
-                           onClick={() => {
-                              setdescContent({ ...block, isDescription: isDescription })
-                              setisDescription(true)
-                           }}
-                        >
-                           <span
-                              style={{
-                                 backgroundImage: `url(/assets/images/svg/footer-${icon})`
-                              }}
-                           />
-                        </div>
+                           target='_blank'
+                           rel='noreferrer'
+                           style={
+                              {
+                                 '--backgroundImage': `url(/assets/images/svg/footer-menu.${item}.svg)`
+                              } as CSSProperties
+                           }
+                        />
                      </CSSTransition>
                   )
                })}
             </div>
-            <div className={st.copyright}>
-               <p>&#169; {translate(`footer-block.${copyright.id}`, copyright.defaultMessage)}</p>
+            <div className={css.copyright}>
+               <p>&#169; {translate(`footer-block.copyright`, DM['footer-block.copyright'].defaultMessage)}</p>
             </div>
          </div>
-         <FooterDescription
-            isDescription={isDescription}
-            setisDescription={setisDescription}
-            descContent={descContent}
-         />
       </div>
    )
 }

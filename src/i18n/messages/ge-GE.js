@@ -3,13 +3,6 @@ import { LOCALES } from '../locales'
 export default {
    [LOCALES.GEORGIAN]: {
       'title.company': 'Keelward',
-      'footer-block.address': 'საქართველო, თბილისი, ბახტრიონის ქ.22, აპ.75',
-      'footer-block.phone': '+995-555-61-00-90',
-      'footer-block.info': 'ჩვენ ვქმნით კომპანია Keelward-ს',
-      'footer-block.copyright': 'Keelward. Ყველა უფლება დაცულია',
-      'footer-address.title': 'ჩვენ რუკაზე',
-      'footer-phone.title': 'დაგვირეკეთ',
-      'footer-info.title': 'ინფორმაცია',
       'footer-partners.powered': 'უზრუნველყოფილია',
       'footer-partners.certified': 'დამოწმებული',
       'btn-explore': 'Გამოკვლევა',

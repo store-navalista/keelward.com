@@ -3,13 +3,9 @@ import { LOCALES } from '../locales'
 export default {
    [LOCALES.RUSSIAN]: {
       'title.company': 'Килвард',
-      'footer-block.address': 'Грузия, Тбилиси, ул. Бахтриони 22, кв.75',
-      'footer-block.phone': '+995-555-61-00-90',
-      'footer-block.info': 'Мы большая компания Доннефтетранс',
+      'footer-partners.powered': 'Powered by',
+      'footer-partners.certified': 'Certified by',
       'footer-block.copyright': 'Килвард. Все права защищены',
-      'footer-address.title': 'Мы на карте',
-      'footer-phone.title': 'Свяжитеcь с нами',
-      'footer-info.title': 'Информация',
       'btn-explore': 'Посмотреть',
       'main-title': 'Килвард',
       'main-services': 'Услуги',

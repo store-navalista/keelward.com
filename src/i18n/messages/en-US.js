@@ -3,15 +3,10 @@ import { LOCALES } from '../locales'
 export default {
    [LOCALES.ENGLISH]: {
       'title.company': 'Keelward',
-      'footer-block.address': 'Georgia, Tbilisi, 22 Bakhtrioni str., ap.75',
-      'footer-block.phone': '+995-555-61-00-90',
-      'footer-block.info': 'We greate company Keelward',
       'footer-block.copyright': 'Keelward. All rights reserved',
-      'footer-address.title': 'We on map',
-      'footer-phone.title': 'Call us',
-      'footer-info.title': 'Information',
       'footer-partners.powered': 'Powered by',
       'footer-partners.certified': 'Certified by',
+      'footer-menu.address': 'Georgia, Tbilisi, 22 Bakhtrioni str., ap.75',
       'btn-explore': 'Explore',
       'main-title': 'Keelward',
       'main-services': 'Services',

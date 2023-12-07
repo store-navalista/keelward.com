@@ -128,7 +128,7 @@ const Dropdown: FC<any> = ({ isOpen, toggle }) => {
    const staticStyle = {
       left: '50%',
       top: '50%',
-      backgroundColor: '#fff'
+      transform: 'translate(-50%, -50%)'
    }
 
    useEffect(() => {

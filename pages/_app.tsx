@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useLayoutEffect } from 'react'
 import { AppProps } from 'next/app'
 import '../styles/main.scss'
 import MainLayout from '@/components/Main.layout'
@@ -12,6 +12,7 @@ import { ContentActions } from '@/store/reducers/contentReducer'
 import { useMediaQuery } from 'react-responsive'
 import { useRouter } from 'next/router'
 import './styles/index.css'
+import { PAGES, SERVICES } from '@/constants/pages'
 
 type IAppWrapperProps = Pick<AppProps, 'Component' | 'pageProps'>
 
@@ -23,6 +24,11 @@ function AppWrapper({ Component, pageProps }: IAppWrapperProps) {
    const isMobile = useMediaQuery({ query: '(max-width: 870px)' })
    const isLaptop = useMediaQuery({ query: '(max-width: 1366px)' })
    const router = useRouter()
+   const path = useAppSelector((state) => state.content.currentPage)
+   const [serv] = [...PAGES, ...SERVICES].filter((p) => Object.values(p)[0].path === path)
+   const id = Object.keys(serv)[0]
+
+   dispatch(ContentActions.setID(id))
 
    useEffect(() => {
       dispatch(ContentActions.setCurrentPage(router.pathname.length !== 1 ? router.pathname.slice(1) : '/'))

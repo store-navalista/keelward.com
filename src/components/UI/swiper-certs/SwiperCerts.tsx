@@ -1,7 +1,7 @@
 import { ICert } from '@/constants/certificates'
 import { useAppDispatch, useAppSelector } from '@/hooks/redux'
+import useMD from '@/hooks/useMD'
 import { default as DM } from '@/i18n/messages/defaultMessages'
-import * as content from '@/i18n/pages/locales'
 import translate from '@/i18n/translate'
 import { ContentActions } from '@/store/reducers/contentReducer'
 import Image from 'next/image'
@@ -16,9 +16,7 @@ import css from './SwiperCerts.module.scss'
 const SwiperCerts: FC<{ certs: ICert[] }> = ({ certs }) => {
    const modalProps = useAppSelector((state) => state.content.modalProps)
    const dispatch = useAppDispatch()
-   const iso = useAppSelector((state) => state.content.i18n)
-
-   const Content = content.MD[iso].Content
+   const Content = useMD()
 
    const zoom = (e: MouseEvent<HTMLButtonElement>, src: string) => {
       dispatch(ContentActions.setModalProps(src))

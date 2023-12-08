@@ -18,18 +18,19 @@ export type TServices =
    | 'SHIPREG'
    | 'SCANSURVCIV'
 
-type TPages = 'HOME' | 'ABOUT' | 'CONTACTS' | 'CERTS' | 'BROCH' | 'CAREERS' | 'INSTRUCTIONS' | 'WORKS'
+export type TPages = 'HOME' | 'ABOUT' | 'CONTACTS' | 'CERTS' | 'BROCH' | 'CAREERS' | 'INSTRUCTIONS' | 'WORKS'
 
 interface Submenu {
    brochure?: string
    works?: string
 }
 
-interface Page {
+export interface Page {
    path: string
    image?: string
    submenu?: Submenu
    icon?: string
+   MD?: any
 }
 
 type TChapters = { [key: string]: TServices[] | TPages[] }[]
@@ -184,7 +185,11 @@ export const PAGES: IPages[] = [
    },
    {
       ABOUT: {
-         path: 'about-us'
+         path: 'about-us',
+         MD: {
+            text: ['block_1'],
+            image: '/about-us/title.jpg'
+         }
       }
    },
    {

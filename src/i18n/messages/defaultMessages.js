@@ -18,7 +18,7 @@ export default {
    'tooltip.header-menu': { defaultMessage: 'Menu' },
    'tooltip.header-cabinet': { defaultMessage: 'Cabinet' },
    'tooltip.header-timemen': { defaultMessage: 'Time Management' },
-   'tooltip.header-career': { defaultMessage: 'Careers' },
+   'tooltip.header-careers': { defaultMessage: 'Careers' },
    'tooltip.header-certificates': { defaultMessage: 'Certificates' },
    'tooltip.header-about-us': { defaultMessage: 'About Us' },
    'tooltip.header-language': { defaultMessage: 'Language' },

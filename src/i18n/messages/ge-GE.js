@@ -25,7 +25,7 @@ export default {
       'tooltip.header-menu': 'მენიუ',
       'tooltip.header-cabinet': 'კაბინეტი',
       'tooltip.header-timemen': 'Დროის მენეჯმენტი',
-      'tooltip.header-career': 'კარიერა',
+      'tooltip.header-careers': 'კარიერა',
       'tooltip.header-certificates': 'სერთიფიკატები',
       'tooltip.header-about-us': 'Ჩვენს შესახებ',
       'tooltip.header-language': 'Ენა',

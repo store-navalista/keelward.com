@@ -27,7 +27,11 @@ const Button: FC<TButton> = ({ type = 'link', href, isOpen = false, onClick, ico
       case 'link':
          return (
             <Link href={href} legacyBehavior>
-               <a style={{ '--icon': icon } as CSSProperties} className={css.button}>
+               <a
+                  onClick={onClick as unknown as React.MouseEventHandler<HTMLAnchorElement>}
+                  style={{ '--icon': icon } as CSSProperties}
+                  className={css.button}
+               >
                   {children}
                </a>
             </Link>

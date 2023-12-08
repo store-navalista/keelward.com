@@ -27,7 +27,7 @@ export default {
       'tooltip.header-menu': 'Menu',
       'tooltip.header-cabinet': 'Cabinet',
       'tooltip.header-timemen': 'Time Management',
-      'tooltip.header-career': 'Careers',
+      'tooltip.header-careers': 'Careers',
       'tooltip.header-certificates': 'Certificates',
       'tooltip.header-about-us': 'About Us',
       'tooltip.header-language': 'Language',

@@ -26,7 +26,7 @@ export default {
       'tooltip.header-menu': 'Меню',
       'tooltip.header-cabinet': 'Кабинет',
       'tooltip.header-timemen': 'Тайм менеджмент',
-      'tooltip.header-career': 'Карьера',
+      'tooltip.header-careers': 'Карьера',
       'tooltip.header-certificates': 'Сертификаты',
       'tooltip.header-about-us': 'О нас',
       'tooltip.header-language': 'Язык',

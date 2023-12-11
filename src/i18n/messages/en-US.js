@@ -32,6 +32,7 @@ export default {
       'tooltip.header-timer': 'Timer',
       '404': 'Sorry. This part of our application is still under development. It will appear in the near future.',
       '404.button': 'To main page',
-      'page-ABOUT.title': 'About us'
+      'page-ABOUT.title': 'About us',
+      'page-TOWAGE.title': 'Towage & Passage'
    }
 }

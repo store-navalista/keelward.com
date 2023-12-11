@@ -1,27 +1,9 @@
 import * as HOME from './main'
 import * as ABOUT from './about-us'
+import * as TOWAGE from './towage-and-passage'
 
 export const MD = {
    HOME,
-   ABOUT
+   ABOUT,
+   TOWAGE
 }
-
-// | 'SD'
-// | 'BWTS'
-// | 'TOWAGE'
-// | 'BOOKLETS'
-// | 'TONNAGE'
-// | 'CARGO'
-// | 'MACHINERY'
-// | 'SCANSURV'
-// | 'ERS'
-// | 'REPAIR'
-// | 'UTM'
-// | 'IHM'
-// | 'CONDSURV'
-// | 'EEXI'
-// | 'TECHADV'
-// | 'LEGALADV'
-// | 'SHIPREG'
-// | 'SCANSURVCIV'
-// '' | 'ABOUT' | 'CONTACTS' | 'CERTS' | 'BROCH' | 'CAREERS' | 'INSTRUCTIONS' | 'WORKS'

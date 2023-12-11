@@ -80,7 +80,11 @@ export const SERVICES: IServices[] = [
    {
       TOWAGE: {
          path: 'towage-and-passage',
-         image: 'towage.jpg'
+         image: 'towage.jpg',
+         MD: {
+            text: ['block_1'],
+            image: '/towage-and-passage/title.jpg'
+         }
       }
    },
    {

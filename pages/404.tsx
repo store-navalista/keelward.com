@@ -1,4 +1,3 @@
-import { default as DM } from '@/i18n/messages/defaultMessages'
 import translate from '@/i18n/translate'
 import Link from 'next/link'
 import React from 'react'
@@ -11,10 +10,10 @@ export default function Custom404() {
 
    return (
       <div className={css.not_page}>
-         <h1>{translate('404', DM['404'].defaultMessage)}</h1>
+         <h1>{translate('404')}</h1>
          <span />
          <Link href='/' onClick={() => dispatch(ContentActions.setID('HOME'))}>
-            {translate('404.button', DM['404.button'].defaultMessage)}
+            {translate('404.button')}
          </Link>
       </div>
    )

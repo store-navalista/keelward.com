@@ -6,9 +6,7 @@ export default {
       'footer-block.copyright': 'Keelward. All rights reserved',
       'footer-partners.powered': 'Powered by',
       'footer-partners.certified': 'Certified by',
-      'footer-menu.address': 'Georgia, Tbilisi, 22 Bakhtrioni str., ap.75',
       'btn-explore': 'Explore',
-      'main-title': 'Keelward',
       'main-services': 'Services',
       'main.service-work': 'Our works',
       'main.service-brochure': 'See brochure',
@@ -33,6 +31,7 @@ export default {
       'tooltip.header-language': 'Language',
       'tooltip.header-timer': 'Timer',
       '404': 'Sorry. This part of our application is still under development. It will appear in the near future.',
-      '404.button': 'To main page'
+      '404.button': 'To main page',
+      'page-ABOUT.title': 'About us'
    }
 }

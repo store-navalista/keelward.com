@@ -7,7 +7,6 @@ export default {
       'footer-partners.certified': 'Certified by',
       'footer-block.copyright': 'Килвард. Все права защищены',
       'btn-explore': 'Посмотреть',
-      'main-title': 'Килвард',
       'main-services': 'Услуги',
       'main.service-work': 'Наши работы',
       'main.service-brochure': 'Брошюра',
@@ -32,7 +31,8 @@ export default {
       'tooltip.header-language': 'Язык',
       'tooltip.header-timer': 'Таймер',
       '404': 'Извините. Эта часть нашего приложения еще в разработке. В ближайшем будущем она появится.',
-      '404.button': 'На главную'
+      '404.button': 'На главную',
+      'page-ABOUT.title': 'О нас'
    }
 }
 

@@ -3,10 +3,10 @@ import { LOCALES } from '../locales'
 export default {
    [LOCALES.GEORGIAN]: {
       'title.company': 'Keelward',
+      'footer-block.copyright': 'Keelward. Ყველა უფლება დაცულია',
       'footer-partners.powered': 'უზრუნველყოფილია',
       'footer-partners.certified': 'დამოწმებული',
       'btn-explore': 'Გამოკვლევა',
-      'main-title': 'Keelward',
       'main-services': 'სერვისები',
       'main.service-work': 'ჩვენი ნამუშევრები',
       'main.service-brochure': 'იხილეთ ბროშურა',
@@ -31,6 +31,7 @@ export default {
       'tooltip.header-language': 'Ენა',
       'tooltip.header-timer': 'ტაიმერი',
       '404': 'Ბოდიში. ჩვენი აპლიკაციის ეს ნაწილი ჯერ კიდევ დამუშავების პროცესშია. უახლოეს მომავალში გამოჩნდება.',
-      '404.button': 'მთავარ გვერდზე'
+      '404.button': 'მთავარ გვერდზე',
+      'page-ABOUT.title': 'Ჩვენს შესახებ'
    }
 }

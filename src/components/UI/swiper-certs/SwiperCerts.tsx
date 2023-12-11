@@ -1,7 +1,6 @@
 import { ICert } from '@/constants/certificates'
 import { useAppDispatch, useAppSelector } from '@/hooks/redux'
 import useMD from '@/hooks/useMD'
-import { default as DM } from '@/i18n/messages/defaultMessages'
 import translate from '@/i18n/translate'
 import { ContentActions } from '@/store/reducers/contentReducer'
 import Image from 'next/image'
@@ -27,7 +26,7 @@ const SwiperCerts: FC<{ certs: ICert[] }> = ({ certs }) => {
    return (
       <div className={css.wrapper}>
          <div className={css.block}>
-            <h2>{translate('main.certificate-heading', DM['main.certificate-heading'].defaultMessage)}</h2>
+            <h2>{translate('main.certificate-heading')}</h2>
             <div>
                <Swiper effect={'cards'} grabCursor={true} modules={[EffectCards]} className={css.swiper}>
                   {certs.map((item, i: number) => {

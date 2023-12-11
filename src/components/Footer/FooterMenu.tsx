@@ -1,5 +1,4 @@
 import { CONTACTS } from '@/constants/data'
-import { default as DM } from '@/i18n/messages/defaultMessages'
 import translate from '@/i18n/translate'
 import { ILayoutComponentProps } from '@/types/layout'
 import React, { CSSProperties, FC, useEffect, useRef, useState } from 'react'
@@ -59,7 +58,7 @@ const FooterMenu: FC<ILayoutComponentProps> = ({ scrollStep, isFooterMenuOpen })
                })}
             </div>
             <div className={css.copyright}>
-               <p>&#169; {translate(`footer-block.copyright`, DM['footer-block.copyright'].defaultMessage)}</p>
+               <p>&#169; {translate(`footer-block.copyright`)}</p>
             </div>
          </div>
       </div>

@@ -1,7 +1,6 @@
 import React, { Dispatch, FC, SetStateAction, useEffect, useState } from 'react'
 import css from './FooterPartners.module.scss'
 import translate from '@/i18n/translate'
-import { default as DM } from '@/i18n/messages/defaultMessages'
 import { PARTNERS } from '@/constants/partners'
 import { useAppSelector } from '@/hooks/redux'
 
@@ -27,7 +26,7 @@ const FooterPartners: FC<IFooterPartners> = ({ setisFooterMenu }) => {
                   onClick={() => setisPoweredOpen(!isPoweredOpen)}
                   className={css.powered + ` ${isPoweredOpen && css.active}`}
                >
-                  {translate(`footer-partners.powered`, DM['footer-partners.powered'].defaultMessage)}
+                  {translate(`footer-partners.powered`)}
                   <span />
                </button>
             ) : null}
@@ -37,7 +36,7 @@ const FooterPartners: FC<IFooterPartners> = ({ setisFooterMenu }) => {
                   className={css.certified + ` ${isCertifiedOpen && css.active}`}
                >
                   <span />
-                  {translate(`footer-partners.certified`, DM['footer-partners.certified'].defaultMessage)}
+                  {translate(`footer-partners.certified`)}
                </button>
             ) : null}
             {(isCertifiedOpen || isLaptop) && (

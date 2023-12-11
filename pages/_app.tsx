@@ -31,17 +31,14 @@ function AppWrapper({ Component, pageProps }: IAppWrapperProps) {
       if (serv) {
          const id = Object.keys(serv)[0]
          dispatch(ContentActions.setID(id))
+         if (cookies) dispatch(ContentActions.setLanguage(cookies))
+         dispatch(ContentActions.setLoading(false))
       }
    })
 
    useEffect(() => {
       dispatch(ContentActions.setCurrentPage(router.pathname.length !== 1 ? router.pathname.slice(1) : '/'))
    }, [router.pathname])
-
-   useEffect(() => {
-      if (cookies) dispatch(ContentActions.setLanguage(cookies))
-      dispatch(ContentActions.setLoading(false))
-   })
 
    useEffect(() => {
       dispatch(

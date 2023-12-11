@@ -15,9 +15,8 @@ type Content = {
 }
 
 export const InfoPage: FC<{ content: Content; options: Options }> = ({ content, options }) => {
-   const Content = useMD()
-
    if (!content) return <Loader />
+   const Content = useMD()
 
    const { width, height } = options
    const w = width ? width : 1200

@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect } from 'react'
+import React, { useEffect } from 'react'
 import { AppProps } from 'next/app'
 import '../styles/main.scss'
 import MainLayout from '@/components/Main.layout'
@@ -26,9 +26,13 @@ function AppWrapper({ Component, pageProps }: IAppWrapperProps) {
    const router = useRouter()
    const path = useAppSelector((state) => state.content.currentPage)
    const [serv] = [...PAGES, ...SERVICES].filter((p) => Object.values(p)[0].path === path)
-   const id = Object.keys(serv)[0]
 
-   dispatch(ContentActions.setID(id))
+   useEffect(() => {
+      if (serv) {
+         const id = Object.keys(serv)[0]
+         dispatch(ContentActions.setID(id))
+      }
+   })
 
    useEffect(() => {
       dispatch(ContentActions.setCurrentPage(router.pathname.length !== 1 ? router.pathname.slice(1) : '/'))

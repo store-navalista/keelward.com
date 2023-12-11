@@ -16,6 +16,7 @@ import css from './SwiperCerts.module.scss'
 const SwiperCerts: FC<{ certs: ICert[] }> = ({ certs }) => {
    const modalProps = useAppSelector((state) => state.content.modalProps)
    const dispatch = useAppDispatch()
+
    const Content = useMD()
 
    const zoom = (e: MouseEvent<HTMLButtonElement>, src: string) => {

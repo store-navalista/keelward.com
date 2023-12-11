@@ -16,8 +16,10 @@ const ConditionalLink: FC<IConditionalLinkProps> = ({ href, as, children, classN
    const dispatch = useAppDispatch()
 
    return (
-      <Link href={href} as={as} onClick={() => dispatch(ContentActions.setID(id))} passHref legacyBehavior>
-         <a className={className}>{children}</a>
+      <Link href={href} as={as} passHref legacyBehavior>
+         <a onClick={() => dispatch(ContentActions.setID(id))} className={className}>
+            {children}
+         </a>
       </Link>
    )
 }

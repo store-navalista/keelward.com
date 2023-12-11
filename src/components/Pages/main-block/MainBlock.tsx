@@ -16,12 +16,11 @@ const MainBlock: FC<{ content: TServicesObjectProps }> = ({ content }) => {
    return (
       <div className={css.wrapper}>
          <Image
-            style={{ borderRadius: '14px' }}
+            style={{ borderRadius: '14px', objectFit: 'cover' }}
             src='/assets/images/pages/main-bg.jpg'
             alt='Background Image'
-            layout='fill'
-            objectFit='cover'
-            loading='lazy'
+            fill
+            priority={true}
          />
          <div className={css.heading}>
             <HeadingMain title={staticTranslate('title.company')} />

@@ -6,6 +6,7 @@ import useOutsideClick from '@/hooks/useOutsideClick'
 import Tooltip from '@/components/UI/tooltip/Tooltip'
 import useHover from '@/hooks/useHover'
 import useOverflow from '@/hooks/useOverflow'
+import translate from '@/i18n/translate'
 
 const Cabinet: FC = () => {
    const [isOpen, setisOpen] = useState(false)
@@ -40,9 +41,9 @@ const Cabinet: FC = () => {
                   >
                      <div className={css.wrapper}>
                         <div ref={wrapperRef} className={css.block}>
-                           <h3>AUTH</h3>
+                           <h3>{translate('auth-title')}</h3>
                            <div className={css.username}>
-                              <h4>Username</h4>
+                              <h4>{translate('auth-username')}</h4>
                               <div>
                                  <input
                                     type='text'
@@ -53,7 +54,7 @@ const Cabinet: FC = () => {
                               </div>
                            </div>
                            <div className={css.password}>
-                              <h4>Password</h4>
+                              <h4>{translate('auth-password')}</h4>
                               <div>
                                  <input
                                     type='password'
@@ -64,7 +65,7 @@ const Cabinet: FC = () => {
                               </div>
                            </div>
                            <button className={css.login} onClick={logIn}>
-                              Log In
+                              {translate('auth-login')}
                            </button>
                            <button className={css.close} onClick={() => setisOpen(false)}>
                               &#215;

@@ -32,6 +32,10 @@ export default {
       'tooltip.header-timer': 'Таймер',
       '404': 'Извините. Эта часть нашего приложения еще в разработке. В ближайшем будущем она появится.',
       '404.button': 'На главную',
+      'auth-title': 'Авторизация',
+      'auth-login': 'Авторизироваться',
+      'auth-username': 'Логин',
+      'auth-password': 'Пароль',
       'page-ABOUT.title': 'О нас',
       'page-TOWAGE.title': 'Буксировка судов и объектов'
    }

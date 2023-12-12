@@ -31,6 +31,7 @@ export interface Page {
    submenu?: Submenu
    icon?: string
    MD?: any
+   release?: boolean
 }
 
 type TChapters = { [key: string]: TServices[] | TPages[] }[]
@@ -84,7 +85,8 @@ export const SERVICES: IServices[] = [
          MD: {
             text: ['block_1'],
             image: '/towage-and-passage/title.jpg'
-         }
+         },
+         release: true
       }
    },
    {
@@ -193,7 +195,8 @@ export const PAGES: IPages[] = [
          MD: {
             text: ['block_1'],
             image: '/about-us/title.jpg'
-         }
+         },
+         release: true
       }
    },
    {

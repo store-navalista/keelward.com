@@ -1,4 +1,3 @@
-import Portal from '@/HOC/Portal'
 import { CONTACTS } from '@/constants/data'
 import { MENU, PAGES, SERVICES } from '@/constants/pages'
 import { useAppDispatch, useAppSelector } from '@/hooks/redux'
@@ -69,6 +68,8 @@ const Body: FC<Props> = ({ activeTab, lang, toggle }) => {
          {pages.map((n, i) => {
             const [page] = Object.values(pagesConstants.find((p) => n in p))
             const { mobile_title } = pagesContents[n]
+            const { release } = page
+
             const active = page.path === currentPage
 
             return (
@@ -84,6 +85,7 @@ const Body: FC<Props> = ({ activeTab, lang, toggle }) => {
                   >
                      {mobile_title}
                   </Link>
+                  {release && !isMobile ? <div className={css.release} /> : null}
                </div>
             )
          })}
@@ -96,7 +98,7 @@ const Dropdown: FC<any> = ({ isOpen, toggle }) => {
    const lang = useAppSelector((state) => state.content.i18n)
    const [activeTab, setActiveTab] = useState(0)
    const [title] = Object.entries(MENU[activeTab])[0]
-   const startCoord = { x: 24, y: 90 }
+   const startCoord = { x: 32, y: 90 }
    const [position, setPosition] = useState(startCoord)
    const [offset, setOffset] = useState({ x: 0, y: 0 })
 

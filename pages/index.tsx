@@ -26,7 +26,7 @@ const Home: NextPage = ({ content }: any) => {
       <>
          <MainBlock content={services} />
          <Services chapters={chapters} services={services} />
-         <SwiperCerts certs={certs} />
+         {/* <SwiperCerts certs={certs} /> */}
       </>
    )
 }

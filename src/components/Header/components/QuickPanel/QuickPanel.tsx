@@ -18,7 +18,7 @@ const QuickPanel = () => {
 
    return (
       <div className={css.wrapper}>
-         <Timer />
+         {/* <Timer /> */}
          {buttons.map((b: TServices | TPages, i) => {
             const isHovering = useHover(isHoveringRefs[i])
             const { path } = useFind(b)

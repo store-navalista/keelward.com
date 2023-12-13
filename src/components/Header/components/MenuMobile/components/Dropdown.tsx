@@ -98,7 +98,7 @@ const Dropdown: FC<any> = ({ isOpen, toggle }) => {
    const lang = useAppSelector((state) => state.content.i18n)
    const [activeTab, setActiveTab] = useState(0)
    const [title] = Object.entries(MENU[activeTab])[0]
-   const startCoord = { x: 32, y: 90 }
+   const startCoord = { x: 36, y: 90 }
    const [position, setPosition] = useState(startCoord)
    const [offset, setOffset] = useState({ x: 0, y: 0 })
 

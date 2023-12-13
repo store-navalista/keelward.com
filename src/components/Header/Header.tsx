@@ -13,7 +13,7 @@ const Header: FC<ILayoutComponentProps> = () => {
       <header className={css.wrapper}>
          <div className={css.leftBlock}>
             <MenuMobile />
-            <Logo type='decor' />
+            {/* <Logo type='decor' /> */}
             <Clock />
             <Cabinet />
          </div>

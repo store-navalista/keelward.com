@@ -1,7 +1,5 @@
 KEELWARD is a professional Consortium of international independent companies with different business directions - united to serve the Global Maritime Industry.
 
-Born in the heart of the maritime business of Ukraine - the seaport of Odessa, KEELWARD continues to develop: opening new offices, finding new partners, clients, friends... all over the world.
-
 KEELWARD’s main business activities include but are not limited to:
 
 -  Technical, Design & Engineering Services for Water Transport;

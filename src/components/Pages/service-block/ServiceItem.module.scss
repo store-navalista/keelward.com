@@ -61,13 +61,14 @@
          h2 {
             text-transform: uppercase;
             line-height: 1.2em;
-            font-size: 1.2rem;
+            font-size: 1rem;
             color: #fff;
-            font-family: $font-1-semi-bold;
+            font-family: $font-1-bold;
             backdrop-filter: blur(14px);
             color: $color-first;
             box-shadow: 0 0 7px #d1d1d1;
             padding: 10px 20px;
+            opacity: 1;
          }
          span {
             display: block;

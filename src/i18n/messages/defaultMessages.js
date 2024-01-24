@@ -34,6 +34,33 @@ export default {
    'auth-username': { defaultMessage: 'Username' },
    'auth-password': { defaultMessage: 'Password' },
    'page-ABOUT.title': { defaultMessage: 'About us' },
-   'page-TOWAGE.title': { defaultMessage: 'Towage & Passage' }
-}
+   'page-TOWAGE.title': { defaultMessage: 'Towage & Passage' },
 
+   'dashboard.nav-info': { defaultMessage: 'Account Info' },
+   'dashboard.nav-title': { defaultMessage: 'Menu' },
+   'dashboard.nav-time': { defaultMessage: 'Time Reports' },
+   'dashboard.nav-qr': { defaultMessage: 'Generate QR Code' },
+   'dashboard.nav-radio': { defaultMessage: 'Radio' },
+   'dashboard.nav-author': { defaultMessage: 'Made by Sergey Otinov' },
+
+   'dashboard.account-describe_name': { defaultMessage: 'Name:' },
+   'dashboard.account-describe_date': { defaultMessage: 'Date of Birth:' },
+   'dashboard.account-describe_specialization': { defaultMessage: 'Specialization:' },
+   'dashboard.account-describe_position': { defaultMessage: 'Position:' },
+   'dashboard.account-describe_role': { defaultMessage: 'Role:' },
+   'dashboard.timereport-title': { defaultMessage: 'Time Report' },
+   'dashboard.timereport-job-desc': { defaultMessage: 'Job description' },
+   'dashboard.timereport-job-remove': { defaultMessage: 'Remove job' },
+   'dashboard.timereport-job-add': { defaultMessage: 'Add job' },
+   'dashboard.timereport-job-save': { defaultMessage: 'Save report locally' },
+   'dashboard.timereport-job-download': { defaultMessage: 'Download the report file' },
+   'dashboard.timereport-job-upload': { defaultMessage: 'Save report to file' },
+   'dashboard.timereport-job-reset': { defaultMessage: 'Reset monthly data' },
+   'dashboard.timereport-job-clean': { defaultMessage: 'Reset all time data' },
+   'dashboard.timereport-task-send': { defaultMessage: 'Notify about current work' },
+   'dashboard.timereport-send': { defaultMessage: 'Send report' },
+   'dashboard.timereport-job-placeholders-input': { defaultMessage: 'Ship name or job' },
+   'dashboard.timereport-job-placeholders-current': { defaultMessage: 'Current task' },
+   'dashboard.timereport-job-errors-empty': { defaultMessage: 'This field must not be empty' },
+   'dashboard.timereport-job-current-task': { defaultMessage: 'Sends the current task. You can send an unlimited number of times.' }
+}

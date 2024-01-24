@@ -4,12 +4,17 @@ import useLoading from '@/hooks/useLoading'
 import useProperty from '@/hooks/useProperty'
 import React, { FC } from 'react'
 
-const About: FC = () => {
+const ABOUT: FC = () => {
    const MD = useProperty('MD')
    const isLoading = useLoading()
 
    if (isLoading) return <Loader />
 
-   return <Templates.InfoPage content={MD} options={{ height: 517 }} />
+   return (
+      <>
+         <Templates.InfoPage content={MD} options={{ height: 517 }} />
+      </>
+   )
 }
-export default About
+
+export default ABOUT

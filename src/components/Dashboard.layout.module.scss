@@ -1,0 +1,10 @@
+@import '/styles/variables';
+
+.wrapper {
+   position: relative;
+   box-sizing: border-box;
+   width: 100vw;
+   height: 100vh;
+   font-family: $font-1-regular;
+   padding: 40px;
+}

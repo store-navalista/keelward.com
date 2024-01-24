@@ -1,0 +1,27 @@
+.wrapper {
+   display: flex;
+   align-items: center;
+   padding: 20px 0 0 40px;
+   margin-top: 20px;
+   border-top: 1px solid #dedede;
+   nav.nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+   }
+   .task {
+      margin-left: 12px;
+   }
+   .warning {
+      margin-left: 50px;
+      span {
+         top: 27px;
+         &:nth-of-type(1) {
+            text-align: center;
+            line-height: 1.2;
+            width: 200px;
+            white-space: normal;
+         }
+      }
+   }
+}

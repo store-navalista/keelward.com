@@ -31,15 +31,15 @@ const MainLayout: FC<{ children: ReactNode }> = ({ children }) => {
    }
 
    return (
-      <>
+      <ErrorBoundary fallbackRender={ErrorBoundaryComponent}>
          <Seo {...pages[id].seo} />
          <main className={st.wrapper}>
             <Header scrollStep={scrollStep} />
-            <ErrorBoundary fallbackRender={ErrorBoundaryComponent}>{children}</ErrorBoundary>
+            {children}
             <Map />
             <Footer scrollStep={scrollStep} isLaptop={isLaptop} />
          </main>
-      </>
+      </ErrorBoundary>
    )
 }
 

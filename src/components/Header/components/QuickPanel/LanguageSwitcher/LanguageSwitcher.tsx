@@ -1,15 +1,17 @@
+import Tooltip from '@/components/UI/tooltip/Tooltip'
 import { useAppDispatch, useAppSelector } from '@/hooks/redux'
+import useHover from '@/hooks/useHover'
 import useOutsideClick from '@/hooks/useOutsideClick'
 import { LOCALES } from '@/i18n'
 import { ContentActions } from '@/store/reducers/contentReducer'
-import React, { FC, useRef, useState } from 'react'
+import React, { FC, HTMLAttributes, useRef, useState } from 'react'
 import { useCookies } from 'react-cookie'
 import Button from '../UI/Button/Button'
 import css from './LanguageSwitcher.module.scss'
-import Tooltip from '@/components/UI/tooltip/Tooltip'
-import useHover from '@/hooks/useHover'
 
-const LanguageSwitcher: FC<{ type: 'desktop' | 'mobile' }> = ({ type = 'desktop' }) => {
+type TLanguageSwitcher = { type: 'desktop' | 'mobile'; filter?: string[] } & React.HTMLAttributes<HTMLDivElement>
+
+const LanguageSwitcher: FC<TLanguageSwitcher> = ({ type = 'desktop', filter, ...rest }) => {
    const [isOpen, setisOpen] = useState(false)
    const dispatch = useAppDispatch()
    const currentLanguage = useAppSelector((state) => state.content.currentLang)
@@ -34,8 +36,10 @@ const LanguageSwitcher: FC<{ type: 'desktop' | 'mobile' }> = ({ type = 'desktop'
    switch (type) {
       case 'mobile':
          return (
-            <div className={css.mobile}>
+            <div style={rest.style} className={`${css.mobile} ${rest.className}`}>
                {Object.keys(LOCALES).map((lang, i) => {
+                  if (filter && !filter.includes(lang.slice(0, 2))) return
+
                   return (
                      <Button
                         key={i}

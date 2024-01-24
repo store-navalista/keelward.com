@@ -37,7 +37,35 @@ export default {
       'auth-username': 'Логин',
       'auth-password': 'Пароль',
       'page-ABOUT.title': 'О нас',
-      'page-TOWAGE.title': 'Буксировка судов и объектов'
+      'page-TOWAGE.title': 'Буксировка судов и объектов',
+
+      'dashboard.nav-info': 'Информация',
+      'dashboard.nav-title': 'Меню',
+      'dashboard.nav-time': 'Отчеты времени',
+      'dashboard.nav-qr': 'Сегенрировать QRC',
+      'dashboard.nav-radio': 'Радио',
+      'dashboard.nav-author': 'Автор: Сергей Отинов',
+
+      'dashboard.account-describe_name': 'Имя:',
+      'dashboard.account-describe_date': 'Год рождения:',
+      'dashboard.account-describe_specialization': 'Специализация:',
+      'dashboard.account-describe_position': 'Должность:',
+      'dashboard.account-describe_role': 'Роль:',
+      'dashboard.timereport-title': 'Отчеты времени',
+      'dashboard.timereport-job-desc': 'Описание работы',
+      'dashboard.timereport-job-remove': 'Удалить работу',
+      'dashboard.timereport-job-add': 'Добавить работу',
+      'dashboard.timereport-job-save': 'Сохранить отчет локально',
+      'dashboard.timereport-job-download': 'Загрузить отчет',
+      'dashboard.timereport-job-upload': 'Сохранить отчет в файл',
+      'dashboard.timereport-job-reset': 'Сбросить данные за месяц',
+      'dashboard.timereport-job-clean': 'Сбросить данные за все время',
+      'dashboard.timereport-task-send': 'Сообщить о текущей работе',
+      'dashboard.timereport-send': 'Отправить отчет',
+      'dashboard.timereport-job-placeholders-input': 'Название судна или работы',
+      'dashboard.timereport-job-placeholders-current': 'Текущая задача',
+      'dashboard.timereport-job-errors-empty': 'Это поле не должно быть пустым',
+      'dashboard.timereport-job-current-task': 'Отправляет текущую задачу. Можно отправлять не ограниченное количсетво раз.'
    }
 }
 

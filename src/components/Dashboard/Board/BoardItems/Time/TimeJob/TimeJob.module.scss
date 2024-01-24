@@ -1,0 +1,144 @@
+.job {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   margin-top: 20px;
+   .desc {
+      display: flex;
+      align-items: center;
+      button.remove {
+         position: relative;
+         visibility: hidden;
+         box-sizing: border-box;
+         width: 20px;
+         height: 20px;
+         padding: 0;
+         background-color: transparent;
+         box-shadow: var(--shadow-out);
+         border: none;
+         border-radius: 50%;
+         margin-right: 12px;
+         background-image: url(/assets/images/svg/timereport-job-remove.svg);
+         background-repeat: no-repeat;
+         background-position: center;
+         background-size: 50%;
+         span {
+            position: absolute;
+            top: 50%;
+            left: 50px;
+            transform: translateY(-50%);
+            color: var(--main-red);
+            white-space: nowrap;
+            font-size: 12px;
+            display: none;
+         }
+      }
+      &:hover {
+         button.remove {
+            visibility: visible;
+            &:hover span {
+               display: block;
+            }
+         }
+      }
+      .job_name::placeholder {
+         color: var(--placeholder);
+      }
+   }
+   ul {
+      display: flex;
+      justify-content: flex-end;
+      box-sizing: border-box;
+      width: var(--width-days);
+      gap: var(--gap);
+      li {
+         position: relative;
+         box-sizing: border-box;
+         width: var(--day-icon-size);
+         aspect-ratio: 1;
+         position: relative;
+         display: flex;
+         justify-content: center;
+         user-select: none;
+         text-align: center;
+         border-radius: 50%;
+         box-shadow: var(--shadow-out);
+         border: 2px solid #ffffff00;
+         border-color: var(--day-of);
+         &:hover {
+            border: 2px solid #dfdfdf;
+         }
+         button {
+            padding: 0;
+            background-color: transparent;
+            border: none;
+            font-size: 12px;
+            width: 100%;
+            height: 100%;
+         }
+         .worked_time {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 140px;
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: translate(-50%, -50%);
+            display: flex;
+            background-color: #ffffff70;
+            backdrop-filter: blur(8px);
+            border: 2px solid var(--second-blue);
+            padding: 4px;
+            border-radius: 50%;
+            gap: 4px;
+            z-index: 5;
+            & > div {
+               position: relative;
+               button {
+                  transform: translate(-50%, -50%);
+                  position: absolute;
+                  box-sizing: border-box;
+                  border: 1px solid var(--second-blue);
+                  width: 20px;
+                  height: 20px;
+                  border-radius: 50%;
+                  &:hover {
+                     color: #fff;
+                     background-color: var(--second-blue);
+                  }
+               }
+               .info {
+                  transform: translate(-50%, -50%);
+                  position: absolute;
+                  font-size: 12px;
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  gap: 6px;
+                  span:nth-child(1) {
+                     line-height: 1.2;
+                     text-transform: capitalize;
+                  }
+                  span:nth-child(2) {
+                     display: block;
+                     padding: 2px 6px;
+                     border-radius: 4px;
+                     width: fit-content;
+                     border: 2px solid var(--main-red);
+                  }
+               }
+            }
+         }
+      }
+   }
+}
+
+.preloader {
+   display: flex;
+   justify-content: center;
+   height: 32px;
+   width: 100%;
+   margin-top: 20px;
+}

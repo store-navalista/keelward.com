@@ -6,8 +6,6 @@ import React, { FC } from 'react'
 
 const TOWAGE: FC = () => {
    const MD = useProperty('MD')
-   // console.log(MD)
-
    const isLoading = useLoading()
 
    if (isLoading) return <Loader />

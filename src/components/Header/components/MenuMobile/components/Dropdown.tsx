@@ -85,7 +85,7 @@ const Body: FC<Props> = ({ activeTab, lang, toggle }) => {
                   >
                      {mobile_title}
                   </Link>
-                  {release && !isMobile ? <div className={css.release} /> : null}
+                  {release ? <div className={css.release} /> : null}
                </div>
             )
          })}

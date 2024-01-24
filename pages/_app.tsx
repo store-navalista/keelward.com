@@ -13,6 +13,7 @@ import { useMediaQuery } from 'react-responsive'
 import { useRouter } from 'next/router'
 import './styles/index.css'
 import { PAGES, SERVICES } from '@/constants/pages'
+import DashboardLayout from '@/components/Dashboard.layout'
 
 type IAppWrapperProps = Pick<AppProps, 'Component' | 'pageProps'>
 
@@ -65,12 +66,27 @@ function AppWrapper({ Component, pageProps }: IAppWrapperProps) {
    )
 }
 
+function DashboardWrapper({ Component, pageProps }: IAppWrapperProps) {
+   return (
+      <DashboardLayout>
+         <Component {...pageProps} />
+      </DashboardLayout>
+   )
+}
+
 const MyApp = ({ Component, pageProps }: IAppWrapperProps) => {
+   const router = useRouter()
+   const isDashboard = router.pathname === '/dashboard'
+
    return (
       <Provider store={store}>
          <CookiesProvider>
             <I18nProvider>
-               <AppWrapper Component={Component} pageProps={pageProps} />
+               {isDashboard ? (
+                  <DashboardWrapper Component={Component} pageProps={pageProps} />
+               ) : (
+                  <AppWrapper Component={Component} pageProps={pageProps} />
+               )}
             </I18nProvider>
          </CookiesProvider>
       </Provider>

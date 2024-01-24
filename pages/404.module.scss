@@ -4,7 +4,7 @@
    align-items: center;
    justify-content: center;
    width: 100%;
-   height: calc(100vh - 180px);
+   height: calc(100svh - 180px);
    background-color: #fff;
    & > h1 {
       font-size: 18px;
@@ -32,7 +32,7 @@
       background-color: var(--main-red);
       border: 2px solid #ffffff00;
       border-radius: 4px;
-      padding: 8px 16px;
+      padding: 9px 16px 7px;
       transition: color 0.3s, border-color 0.3s, background-color 0.3s;
       &:hover {
          background-color: #fff;

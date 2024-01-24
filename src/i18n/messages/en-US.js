@@ -37,6 +37,34 @@ export default {
       'auth-username': 'Username',
       'auth-password': 'Password',
       'page-ABOUT.title': 'About us',
-      'page-TOWAGE.title': 'Towage & Passage'
+      'page-TOWAGE.title': 'Towage & Passage',
+
+      'dashboard.nav-info': 'Account Info',
+      'dashboard.nav-title': 'Menu',
+      'dashboard.nav-time': 'Time Reports',
+      'dashboard.nav-qr': 'Generate QR Code',
+      'dashboard.nav-radio': 'Radio',
+      'dashboard.nav-author': 'Made by Sergey Otinov',
+
+      'dashboard.account-describe_name': 'Name:',
+      'dashboard.account-describe_date': 'Date of Birth:',
+      'dashboard.account-describe_specialization': 'Specialization:',
+      'dashboard.account-describe_position': 'Position:',
+      'dashboard.account-describe_role': 'Role:',
+      'dashboard.timereport-title': 'Time Report',
+      'dashboard.timereport-job-desc': 'Job description',
+      'dashboard.timereport-job-remove': 'Remove job',
+      'dashboard.timereport-job-add': 'Add job',
+      'dashboard.timereport-job-save': 'Save report locally',
+      'dashboard.timereport-job-download': 'Download the report file',
+      'dashboard.timereport-job-upload': 'Save report to file',
+      'dashboard.timereport-job-reset': 'Reset monthly data',
+      'dashboard.timereport-job-clean': 'Reset all time data',
+      'dashboard.timereport-task-send': 'Notify about current work',
+      'dashboard.timereport-send': 'Send report',
+      'dashboard.timereport-job-placeholders-input': 'Ship name or job',
+      'dashboard.timereport-job-placeholders-current': 'Current task',
+      'dashboard.timereport-job-errors-empty': 'This field must not be empty',
+      'dashboard.timereport-job-current-task': 'Sends the current task. You can send an unlimited number of times.'
    }
 }

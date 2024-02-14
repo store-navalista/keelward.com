@@ -26,6 +26,7 @@
       "react-markdown": "^8.0.7",
       "react-redux": "^8.0.4",
       "react-responsive": "^9.0.0",
+      "react-router-dom": "^6.21.3",
       "react-transition-group": "^4.4.5",
       "reactjs-localstorage": "^1.0.1",
       "redux": "^4.2.0",

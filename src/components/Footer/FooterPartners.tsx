@@ -9,7 +9,7 @@ interface IFooterPartners {
 }
 
 const FooterPartners: FC<IFooterPartners> = ({ setisFooterMenu }) => {
-   const isLaptop = useAppSelector((state) => state.content.mediaQuery.isLaptop)
+   const isLaptop = useAppSelector((state) => state.reducer.content.mediaQuery.isLaptop)
    const [isPoweredOpen, setisPoweredOpen] = useState(false)
    const [isCertifiedOpen, setisCertifiedOpen] = useState(false)
    const { certified, powered } = PARTNERS

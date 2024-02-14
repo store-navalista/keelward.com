@@ -6,7 +6,7 @@ import useHover from '@/hooks/useHover'
 import Tooltip from '@/components/UI/tooltip/Tooltip'
 
 const Timer = () => {
-   const isMobile = useAppSelector((state) => state.content.mediaQuery.isMobile)
+   const isMobile = useAppSelector((state) => state.reducer.content.mediaQuery.isMobile)
    const ref = useRef(null)
    const isHovering = useHover(ref)
 

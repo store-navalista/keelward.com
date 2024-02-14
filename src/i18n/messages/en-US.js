@@ -44,6 +44,8 @@ export default {
       'dashboard.nav-time': 'Time Reports',
       'dashboard.nav-qr': 'Generate QR Code',
       'dashboard.nav-radio': 'Radio',
+      'dashboard.nav-employees': 'Employees',
+      'dashboard.nav-users': 'Users',
       'dashboard.nav-author': 'Made by Sergey Otinov',
 
       'dashboard.account-describe_name': 'Name:',
@@ -52,8 +54,6 @@ export default {
       'dashboard.account-describe_position': 'Position:',
       'dashboard.account-describe_role': 'Role:',
       'dashboard.timereport-title': 'Time Report',
-      'dashboard.timereport-job-desc': 'Job description',
-      'dashboard.timereport-job-remove': 'Remove job',
       'dashboard.timereport-job-add': 'Add job',
       'dashboard.timereport-job-save': 'Save report locally',
       'dashboard.timereport-job-download': 'Download the report file',
@@ -62,9 +62,15 @@ export default {
       'dashboard.timereport-job-clean': 'Reset all time data',
       'dashboard.timereport-task-send': 'Notify about current work',
       'dashboard.timereport-send': 'Send report',
-      'dashboard.timereport-job-placeholders-input': 'Ship name or job',
       'dashboard.timereport-job-placeholders-current': 'Current task',
       'dashboard.timereport-job-errors-empty': 'This field must not be empty',
-      'dashboard.timereport-job-current-task': 'Sends the current task. You can send an unlimited number of times.'
+      'dashboard.timereport-job-current-task': 'Sends the current task. You can send an unlimited number of times.',
+
+      'dashboard.timereport-job-project_number': 'P. Number',
+      'dashboard.timereport-job-ship_name': 'Ship Name',
+      'dashboard.timereport-job-job_description': 'Job Description',
+      'dashboard.timereport-workedtime-tooltip-dayof': 'Day of',
+      'dashboard.timereport-workedtime-tooltip-sick': 'Sick leave',
+      'dashboard.timereport-workedtime-tooltip-vacation': 'Vacation'
    }
 }

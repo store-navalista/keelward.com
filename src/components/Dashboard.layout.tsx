@@ -6,9 +6,9 @@ import css from './Dashboard.layout.module.scss'
 import Seo from './seo'
 
 const DashboardLayout: FC<{ children: ReactNode }> = ({ children }) => {
-   const isLaptop = useAppSelector((state) => state.content.mediaQuery.isLaptop)
-   const i18n = useAppSelector((state) => state.content.i18n)
-   const id = useAppSelector((state) => state.content._id)
+   const isLaptop = useAppSelector((state) => state.reducer.content.mediaQuery.isLaptop)
+   const i18n = useAppSelector((state) => state.reducer.content.i18n)
+   const id = useAppSelector((state) => state.reducer.content._id)
    const [scrollStep, setcrollStep] = useState(0)
 
    return (

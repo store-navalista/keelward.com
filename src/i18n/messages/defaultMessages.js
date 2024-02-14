@@ -41,6 +41,8 @@ export default {
    'dashboard.nav-time': { defaultMessage: 'Time Reports' },
    'dashboard.nav-qr': { defaultMessage: 'Generate QR Code' },
    'dashboard.nav-radio': { defaultMessage: 'Radio' },
+   'dashboard.nav-employees': { defaultMessage: 'Employees' },
+   'dashboard.nav-users': { defaultMessage: 'Users' },
    'dashboard.nav-author': { defaultMessage: 'Made by Sergey Otinov' },
 
    'dashboard.account-describe_name': { defaultMessage: 'Name:' },
@@ -49,8 +51,6 @@ export default {
    'dashboard.account-describe_position': { defaultMessage: 'Position:' },
    'dashboard.account-describe_role': { defaultMessage: 'Role:' },
    'dashboard.timereport-title': { defaultMessage: 'Time Report' },
-   'dashboard.timereport-job-desc': { defaultMessage: 'Job description' },
-   'dashboard.timereport-job-remove': { defaultMessage: 'Remove job' },
    'dashboard.timereport-job-add': { defaultMessage: 'Add job' },
    'dashboard.timereport-job-save': { defaultMessage: 'Save report locally' },
    'dashboard.timereport-job-download': { defaultMessage: 'Download the report file' },
@@ -59,8 +59,14 @@ export default {
    'dashboard.timereport-job-clean': { defaultMessage: 'Reset all time data' },
    'dashboard.timereport-task-send': { defaultMessage: 'Notify about current work' },
    'dashboard.timereport-send': { defaultMessage: 'Send report' },
-   'dashboard.timereport-job-placeholders-input': { defaultMessage: 'Ship name or job' },
    'dashboard.timereport-job-placeholders-current': { defaultMessage: 'Current task' },
    'dashboard.timereport-job-errors-empty': { defaultMessage: 'This field must not be empty' },
-   'dashboard.timereport-job-current-task': { defaultMessage: 'Sends the current task. You can send an unlimited number of times.' }
+   'dashboard.timereport-job-current-task': { defaultMessage: 'Sends the current task. You can send an unlimited number of times.' },
+
+   'dashboard.timereport-job-project_number': { defaultMessage: 'P. Number' },
+   'dashboard.timereport-job-ship_name': { defaultMessage: 'Ship Name' },
+   'dashboard.timereport-job-job_description': { defaultMessage: 'Job Description' },
+   'dashboard.timereport-workedtime-tooltip-dayof': { defaultMessage: 'Day of' },
+   'dashboard.timereport-workedtime-tooltip-sick': { defaultMessage: 'Sick leave' },
+   'dashboard.timereport-workedtime-tooltip-vacation': { defaultMessage: 'Vacation' }
 }

@@ -56,11 +56,11 @@ const Tabs: FC<Props> = ({ activeTab, setActiveTab, toggle }) => {
 }
 
 const Body: FC<Props> = ({ activeTab, lang, toggle }) => {
-   const isMobile = useAppSelector((state) => state.content.mediaQuery.isMobile)
+   const isMobile = useAppSelector((state) => state.reducer.content.mediaQuery.isMobile)
    const [title, pages] = Object.entries(MENU[activeTab])[0]
    const pagesConstants = [...PAGES, ...SERVICES]
    const pagesContents = { ...PagesData[lang].pages, ...PagesData[lang].services }
-   const currentPage = useAppSelector((state) => state.content.currentPage)
+   const currentPage = useAppSelector((state) => state.reducer.content.currentPage)
    const dispatch = useAppDispatch()
 
    return (
@@ -94,8 +94,8 @@ const Body: FC<Props> = ({ activeTab, lang, toggle }) => {
 }
 
 const Dropdown: FC<any> = ({ isOpen, toggle }) => {
-   const isMobile = useAppSelector((state) => state.content.mediaQuery.isMobile)
-   const lang = useAppSelector((state) => state.content.i18n)
+   const isMobile = useAppSelector((state) => state.reducer.content.mediaQuery.isMobile)
+   const lang = useAppSelector((state) => state.reducer.content.i18n)
    const [activeTab, setActiveTab] = useState(0)
    const [title] = Object.entries(MENU[activeTab])[0]
    const startCoord = { x: 36, y: 90 }

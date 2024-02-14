@@ -14,7 +14,7 @@ type TLanguageSwitcher = { type: 'desktop' | 'mobile'; filter?: string[] } & Rea
 const LanguageSwitcher: FC<TLanguageSwitcher> = ({ type = 'desktop', filter, ...rest }) => {
    const [isOpen, setisOpen] = useState(false)
    const dispatch = useAppDispatch()
-   const currentLanguage = useAppSelector((state) => state.content.currentLang)
+   const currentLanguage = useAppSelector((state) => state.reducer.content.currentLang)
    const [cookies, setCookie] = useCookies(['language'])
    const wrapperRef = useRef(null)
    const hoverRef = useRef(null)

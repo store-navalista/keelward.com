@@ -20,7 +20,7 @@ type Content = {
 export const InfoPage: FC<{ content: Content; options: Options }> = ({ content, options }) => {
    if (!content) return <Loader />
    const Content = useMD()
-   const pageID = useAppSelector((state) => state.content._id)
+   const pageID = useAppSelector((state) => state.reducer.content._id)
    const [isLoaded, setisLoaded] = useState(false)
 
    const { width, height } = options

@@ -1,6 +1,15 @@
 interface IJS {
-   WT: number[]
    NAV: { name: string; type: 'icon-btn' | 'file-btn' }[]
+}
+
+export interface IJob {
+   _id: string
+   job: {
+      project_number: string
+      ship_name: string
+      job_description: string
+   }
+   hours_worked: number[]
 }
 
 export interface IReport {
@@ -11,16 +20,11 @@ export interface IReport {
    }
    reports: {
       period: string
-      jobs: {
-         _id: string
-         job_name: string
-         hours_worked: number[]
-      }[]
+      jobs: IJob[]
    }[]
 }
 
 export const JC: IJS = {
-   WT: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], //count work hours per day
    NAV: [
       { name: 'add', type: 'icon-btn' },
       { name: 'save', type: 'icon-btn' },

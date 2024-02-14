@@ -40,7 +40,6 @@ const TimeHeader: FC<ITimeHeader> = ({ timeService, currentDate, setCurrentDate,
 
    return (
       <div className={css.wrapper}>
-         <h3>{translate('dashboard.timereport-job-desc')}</h3>
          <div className={css.date}>
             <button onClick={previousMonth} aria-label='Previous Month'>
                &#9664;

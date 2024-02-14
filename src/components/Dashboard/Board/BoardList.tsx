@@ -5,9 +5,10 @@ import Account from './BoardItems/Account'
 import QR from './BoardItems/QR'
 import Radio from './BoardItems/Radio'
 import Time from './BoardItems/Time/Time'
+import { Director } from './BoardItems/Director'
 
 const BoardList: FC = () => {
-   const type = useAppSelector((state) => state.dashboard.dashboardItems)
+   const type = useAppSelector((state) => state.reducer.dashboard.dashboardItems)
 
    return (
       <div className={css.wrapper}>
@@ -15,6 +16,7 @@ const BoardList: FC = () => {
          {type.time ? <Time /> : null}
          {type.qr ? <QR /> : null}
          {type.radio ? <Radio /> : null}
+         <Director.Employees />
       </div>
    )
 }

@@ -1,6 +1,7 @@
 import { IReport } from '@/constants/jobs'
 import { useAppDispatch, useAppSelector } from '@/hooks/redux'
 import translate from '@/i18n/translate'
+import { JobsActions } from '@/store/reducers/jobsReducer'
 import React, { FC, Fragment, useEffect, useState } from 'react'
 import { reactLocalStorage } from 'reactjs-localstorage'
 import css from '../Boards.module.scss'
@@ -8,15 +9,14 @@ import TimeHeader from './TimeHeader/TimeHeader'
 import TimeJob from './TimeJob/TimeJob'
 import TimeNavigate from './TimeNavigate/TimeNavigate'
 import TimeService from './services'
-import { JobsActions } from '@/store/reducers/jobsReducer'
 
 const Time: FC = () => {
    const [currentDate, setCurrentDate] = useState(new Date())
    const dispatch = useAppDispatch()
-   const i18n = useAppSelector((state) => state.content.i18n)
+   const i18n = useAppSelector((state) => state.reducer.content.i18n)
    const timeService = new TimeService(i18n)
    const savedJobs = reactLocalStorage.getObject('jobsLocal') as IReport
-   const jobs = useAppSelector((state) => state.jobs)
+   const jobs = useAppSelector((state) => state.reducer.jobs)
 
    useEffect(() => {
       if (Object.keys(savedJobs).length) {
@@ -35,12 +35,12 @@ const Time: FC = () => {
          <h2>{translate('dashboard.timereport-title')}</h2>
          <div className={css.body}>
             <TimeHeader {...timeServiceProps} />
-            {jobs.map((j, i) => {
+            {jobs.map((j, index) => {
                const jobProps = { j, days }
 
                return (
-                  <Fragment key={i}>
-                     <TimeJob {...jobProps} />
+                  <Fragment key={index}>
+                     <TimeJob {...jobProps} index={index} />
                   </Fragment>
                )
             })}

@@ -10,7 +10,9 @@ const initialState: DashboardState = {
       account: false,
       time: true,
       qr: false,
-      radio: false
+      radio: false,
+      employees: false,
+      users: false
    }
 }
 

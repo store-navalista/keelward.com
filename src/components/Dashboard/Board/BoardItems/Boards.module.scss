@@ -4,7 +4,7 @@
 .radio {
    display: flex;
    justify-content: space-between;
-   padding: 40px;
+   padding: 20px;
    box-sizing: border-box;
 }
 .account {
@@ -63,8 +63,8 @@
       font-family: var(--font-nunito-semibold);
    }
    .body {
-      --day-icon-size: 25px;
-      --gap: 16px;
+      --day-icon-size: 30px;
+      --gap: 10px;
       --grid: 200px 200px 600px;
       --width-days: 1260px;
       position: relative;

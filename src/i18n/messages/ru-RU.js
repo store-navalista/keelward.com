@@ -44,6 +44,8 @@ export default {
       'dashboard.nav-time': 'Отчеты времени',
       'dashboard.nav-qr': 'Сегенрировать QRC',
       'dashboard.nav-radio': 'Радио',
+      'dashboard.nav-employees': 'Сотрудники',
+      'dashboard.nav-users': 'Пользователи',
       'dashboard.nav-author': 'Автор: Сергей Отинов',
 
       'dashboard.account-describe_name': 'Имя:',
@@ -52,8 +54,6 @@ export default {
       'dashboard.account-describe_position': 'Должность:',
       'dashboard.account-describe_role': 'Роль:',
       'dashboard.timereport-title': 'Отчеты времени',
-      'dashboard.timereport-job-desc': 'Описание работы',
-      'dashboard.timereport-job-remove': 'Удалить работу',
       'dashboard.timereport-job-add': 'Добавить работу',
       'dashboard.timereport-job-save': 'Сохранить отчет локально',
       'dashboard.timereport-job-download': 'Загрузить отчет',
@@ -62,10 +62,16 @@ export default {
       'dashboard.timereport-job-clean': 'Сбросить данные за все время',
       'dashboard.timereport-task-send': 'Сообщить о текущей работе',
       'dashboard.timereport-send': 'Отправить отчет',
-      'dashboard.timereport-job-placeholders-input': 'Название судна или работы',
       'dashboard.timereport-job-placeholders-current': 'Текущая задача',
       'dashboard.timereport-job-errors-empty': 'Это поле не должно быть пустым',
-      'dashboard.timereport-job-current-task': 'Отправляет текущую задачу. Можно отправлять не ограниченное количсетво раз.'
+      'dashboard.timereport-job-current-task': 'Отправляет текущую задачу. Можно отправлять не ограниченное количсетво раз.',
+
+      'dashboard.timereport-job-project_number': 'Номер',
+      'dashboard.timereport-job-ship_name': 'Наименование судна',
+      'dashboard.timereport-job-job_description': 'Описание работы',
+      'dashboard.timereport-workedtime-tooltip-dayof': 'Выходной',
+      'dashboard.timereport-workedtime-tooltip-sick': 'Больничный',
+      'dashboard.timereport-workedtime-tooltip-vacation': 'Отпуск'
    }
 }
 

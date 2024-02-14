@@ -4,7 +4,6 @@ import Image from 'next/image'
 import translate from '@/i18n/translate'
 
 const rows = ['name', 'date', 'specialization', 'position', 'role']
-type Roles = 'employee' | 'director' | 'admin'
 
 const user = {
    avatar: 'otinov_a_v.png',

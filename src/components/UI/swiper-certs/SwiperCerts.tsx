@@ -13,7 +13,7 @@ import Modal from '../modals/Modal'
 import css from './SwiperCerts.module.scss'
 
 const SwiperCerts: FC<{ certs: ICert[] }> = ({ certs }) => {
-   const modalProps = useAppSelector((state) => state.content.modalProps)
+   const modalProps = useAppSelector((state) => state.reducer.content.modalProps)
    const dispatch = useAppDispatch()
 
    const Content = useMD()

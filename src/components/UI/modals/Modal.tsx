@@ -5,7 +5,7 @@ import css from './Modal.module.scss'
 import ZoomImage from './zoom-image/ZoomImage'
 
 const Modal: FC<IZoomImage> = (props) => {
-   const isModalShow = useAppSelector((state) => state.content.isModalShow)
+   const isModalShow = useAppSelector((state) => state.reducer.content.isModalShow)
    const { type } = props
 
    switch (type) {

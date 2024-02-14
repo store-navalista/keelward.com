@@ -1,16 +1,19 @@
+import { IJob } from '@/constants/jobs'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { reactLocalStorage } from 'reactjs-localstorage'
 import { v4 as uuidv4 } from 'uuid'
 
-type JobsState = {
-   _id: string
-   job_name: string
-   hours_worked: number[] | []
+const empty_job: IJob = {
+   _id: uuidv4(),
+   job: {
+      project_number: '',
+      ship_name: '',
+      job_description: ''
+   },
+   hours_worked: []
 }
 
-const empty_job: JobsState = { _id: uuidv4(), job_name: '', hours_worked: [] }
-
-const initialState: JobsState[] = [empty_job]
+const initialState: IJob[] = [empty_job]
 
 export const JobsSlice = createSlice({
    name: 'jobs',
@@ -25,7 +28,7 @@ export const JobsSlice = createSlice({
          }
          return state
       },
-      updateJob(state, action: PayloadAction<JobsState>) {
+      updateJob(state, action: PayloadAction<IJob>) {
          const updatedJobIndex = state.findIndex((job) => job._id === action.payload._id)
 
          if (updatedJobIndex !== -1) {
@@ -34,7 +37,7 @@ export const JobsSlice = createSlice({
 
          return state
       },
-      updateJobs(state, action: PayloadAction<JobsState[]>) {
+      updateJobs(state, action: PayloadAction<IJob[]>) {
          state = [...action.payload]
          return state
       },

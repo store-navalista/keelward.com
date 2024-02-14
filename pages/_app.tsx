@@ -19,13 +19,13 @@ type IAppWrapperProps = Pick<AppProps, 'Component' | 'pageProps'>
 
 function AppWrapper({ Component, pageProps }: IAppWrapperProps) {
    const dispatch = useAppDispatch()
-   const currentMQ = useAppSelector((state) => state.content.mediaQuery)
-   const isLoading = useAppSelector((state) => state.content.loading)
+   const currentMQ = useAppSelector((state) => state.reducer.content.mediaQuery)
+   const isLoading = useAppSelector((state) => state.reducer.content.loading)
    const cookies = new Cookies().get('language')
    const isMobile = useMediaQuery({ query: '(max-width: 870px)' })
    const isLaptop = useMediaQuery({ query: '(max-width: 1366px)' })
    const router = useRouter()
-   const path = useAppSelector((state) => state.content.currentPage)
+   const path = useAppSelector((state) => state.reducer.content.currentPage)
    const [serv] = [...PAGES, ...SERVICES].filter((p) => Object.values(p)[0].path === path)
 
    useEffect(() => {

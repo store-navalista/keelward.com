@@ -6,11 +6,10 @@ import { useGetUsersQuery } from '@/store/reducers/apiReducer'
 
 const Employees: FC = () => {
    const { data, error, isLoading } = useGetUsersQuery()
-   console.log(data)
 
    // if (isLoading) {
-   //    return <div>Loading...</div>;
-   //  }
+   //    return <div>Loading...</div>
+   // }
 
    //  if (error) {
    //    return <div>Error: {error.message}</div>;

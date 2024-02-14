@@ -10,7 +10,7 @@ import { CSSTransition } from 'react-transition-group'
 import css from './ServiceItem.module.scss'
 
 const ServiceItem: FC<{ service: { [key: string]: any }; id: string }> = ({ service, id }) => {
-   const isLaptop = useAppSelector((state) => state.content.mediaQuery.isLaptop)
+   const isLaptop = useAppSelector((state) => state.reducer.content.mediaQuery.isLaptop)
    const isSmallScreen = useMediaQuery({ query: '(max-width: 420px)' })
    const intl = useIntl()
    const ref = useRef(null)

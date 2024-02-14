@@ -11,7 +11,7 @@ interface IProvider {
 }
 
 const Provider = ({ children, locale }: IProvider) => {
-   const language = useAppSelector((state) => state.content.currentLang)
+   const language = useAppSelector((state) => state.reducer.content.currentLang)
    const cookies = new Cookies().get('language')
    locale = LOCALES[language] || LOCALES.ENGLISH
    useEffect(() => {

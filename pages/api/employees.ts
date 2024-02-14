@@ -1,9 +1,8 @@
-// pages/api/employees.ts
-
 import { NextApiRequest, NextApiResponse } from 'next'
 
 const users = [
    {
+      _id: 'sad123sad',
       employee: 'Otinov_AV',
       avatar: 'otinov_a_v.png',
       currentTask: {
@@ -38,6 +37,7 @@ const users = [
       ]
    },
    {
+      _id: '456456sdfsdfsf',
       employee: 'Otinov_SV',
       avatar: 'otinov_a_v.png',
       currentTask: {

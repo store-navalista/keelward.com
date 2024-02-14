@@ -10,7 +10,7 @@ import { GetServerSideProps, NextPage } from 'next'
 import React, { useEffect, useState } from 'react'
 
 const Home: NextPage = ({ content }: any) => {
-   const lang = useAppSelector((state) => state.content.i18n)
+   const lang = useAppSelector((state) => state.reducer.content.i18n)
    const [isLoading, setLoading] = useState(true)
    const { services, pages } = content[lang]
    const chapters = CHAPTERS.map((c) => Object.keys(c)[0])

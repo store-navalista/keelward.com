@@ -4,7 +4,7 @@ import { useAppSelector } from '@/hooks/redux'
 
 const Clock: FC = () => {
    const [time, setTime] = useState(new Date())
-   const isMobile = useAppSelector((state) => state.content.mediaQuery.isMobile)
+   const isMobile = useAppSelector((state) => state.reducer.content.mediaQuery.isMobile)
 
    useEffect(() => {
       const interval = setInterval(() => {

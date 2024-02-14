@@ -10,7 +10,7 @@ type TooltipProps = {
 }
 
 const Tooltip: FC<TooltipProps> = ({ content, correctPosition = [0, 0], isShow = true }) => {
-   const isLaptop = useAppSelector((state) => state.content.mediaQuery.isLaptop)
+   const isLaptop = useAppSelector((state) => state.reducer.content.mediaQuery.isLaptop)
 
    return !isLaptop && isShow ? (
       <p

@@ -8,7 +8,7 @@ import { ContentActions } from '@/store/reducers/contentReducer'
 type LType = 'decor' | 'main'
 
 const Logo: FC<{ type?: LType }> = ({ type }) => {
-   const isMobile = useAppSelector((state) => state.content.mediaQuery.isMobile)
+   const isMobile = useAppSelector((state) => state.reducer.content.mediaQuery.isMobile)
    const dispatch = useAppDispatch()
 
    const TypeLogo = (props) => {

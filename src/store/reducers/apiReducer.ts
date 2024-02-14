@@ -7,12 +7,12 @@ export const api = createApi({
    baseQuery: fetchBaseQuery({ baseUrl: apiUrl }),
    endpoints: (builder) => ({
       getUsers: builder.query<User[], void>({
-         query: () => 'users'
+         query: () => 'employees'
       }),
-      getUser: builder.query<User, number>({
-         query: (userId) => `users/${userId}`
+      getUser: builder.query<User, void>({
+         query: () => 'user'
       })
    })
 })
 
-export const { useGetUsersQuery } = api
+export const { useGetUsersQuery, useGetUserQuery } = api

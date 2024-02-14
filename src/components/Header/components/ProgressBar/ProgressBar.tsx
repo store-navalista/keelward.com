@@ -3,7 +3,7 @@ import css from './ProgressBar.module.scss'
 import { useAppSelector } from '@/hooks/redux'
 
 const ProgressBar: FC = () => {
-   const progress = useAppSelector((state) => state.content.progress)
+   const progress = useAppSelector((state) => state.reducer.content.progress)
 
    return (
       <div

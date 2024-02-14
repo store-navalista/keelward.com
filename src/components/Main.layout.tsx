@@ -10,9 +10,9 @@ import { PagesData as SEO } from '@/i18n/pages/locales'
 import { Map } from './Pages/map/Map'
 
 const MainLayout: FC<{ children: ReactNode }> = ({ children }) => {
-   const isLaptop = useAppSelector((state) => state.content.mediaQuery.isLaptop)
-   const i18n = useAppSelector((state) => state.content.i18n)
-   const id = useAppSelector((state) => state.content._id)
+   const isLaptop = useAppSelector((state) => state.reducer.content.mediaQuery.isLaptop)
+   const i18n = useAppSelector((state) => state.reducer.content.i18n)
+   const id = useAppSelector((state) => state.reducer.content._id)
    const [scrollStep, setcrollStep] = useState(0)
    const scroll = () => {
       setcrollStep(window.pageYOffset)

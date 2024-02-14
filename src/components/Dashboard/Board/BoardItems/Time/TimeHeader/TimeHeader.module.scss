@@ -1,21 +1,17 @@
 .wrapper {
    display: flex;
    align-items: center;
+   justify-content: space-between;
    padding-bottom: 15px;
    border-bottom: 1px solid #dedede;
    user-select: none;
    gap: 20px;
-   h3 {
-      box-sizing: border-box;
-      margin-left: 30px;
-      width: 250px;
-      text-align: center;
-   }
    .date {
       display: flex;
       box-sizing: border-box;
       align-items: center;
       width: 160px;
+      margin-left: 200px;
       span {
          text-transform: capitalize;
          width: 108px;
@@ -56,6 +52,7 @@
          color: var(--text-color);
          background-color: var(--day-of);
          border: 2px solid #ffffff00;
+         padding-top: 1px;
          .tooltip {
             display: none;
             position: absolute;

@@ -13,7 +13,7 @@ import { IconTooltip } from '@/components/UI/icon-tooltip/IconTooltip'
 const TimeNavigate: FC<{ currentDate: Date }> = ({ currentDate }) => {
    const dispatch = useAppDispatch()
    const [currentTask, setCurrentTask] = useState({ value: '', time: '' })
-   const jobs = useAppSelector((state) => state.jobs)
+   const jobs = useAppSelector((state) => state.reducer.jobs)
    const staticTranslate = (id: string) => useIntl().formatMessage({ id: id, defaultMessage: id })
    const local = reactLocalStorage.getObject('jobsLocal') as IReport
    const period = currentDate.toLocaleString('en-US', { month: 'long', year: 'numeric' })
@@ -34,9 +34,15 @@ const TimeNavigate: FC<{ currentDate: Date }> = ({ currentDate }) => {
          case 'upload':
             return () => services.upload()
          case 'reset':
-            return () => dispatch(JobsActions.resetJobs())
+            return () => {
+               const result = confirm('Are you sure?')
+               if (result) dispatch(JobsActions.resetJobs())
+            }
          case 'clean':
-            return () => dispatch(JobsActions.cleanCache())
+            return () => {
+               const result = confirm('Are you sure?')
+               if (result) dispatch(JobsActions.cleanCache())
+            }
          case 'send_task':
             return () => services.send_task(currentTask.value, period)
          default:

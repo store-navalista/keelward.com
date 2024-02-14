@@ -8,7 +8,7 @@ import css from './MainBlock.module.scss'
 import MainBlockService from './MainBlockService'
 
 const MainBlock: FC<{ content: TServicesObjectProps }> = ({ content }) => {
-   const isLaptop = useAppSelector((state) => state.content.mediaQuery.isLaptop)
+   const isLaptop = useAppSelector((state) => state.reducer.content.mediaQuery.isLaptop)
    const ref = useRef()
    const staticTranslate = (id: string) => useIntl().formatMessage({ id: id, defaultMessage: id })
    const blocks = ['SD', 'BWTS', 'IHM', 'SCANSURV'].map((s) => ({ [s]: content[s] })) as TServicesObjectProps[]

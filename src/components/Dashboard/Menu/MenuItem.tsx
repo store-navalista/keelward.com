@@ -33,19 +33,23 @@ interface MenuItemProps {
 
 export const MenuItem: React.FC<MenuItemProps> = React.memo(({ i }) => {
    const dispatch = useAppDispatch()
-   const dashboarItems = useAppSelector((state) => state.dashboard.dashboardItems)
+   const dashboarItems = useAppSelector((state) => state.reducer.dashboard.dashboardItems)
    const { id, icon, title } = i
 
+   function setItem() {
+      const items = { ...dashboarItems }
+      for (const key in items) {
+         items[key] = false
+         if (key === id) items[key] = !dashboarItems[id]
+      }
+
+      dispatch(DashboardActions.setDahsboardItems(items))
+   }
+
    return (
-      <motion.li
-         onClick={() => dispatch(DashboardActions.setDahsboardItems({ ...dashboarItems, [id]: !dashboarItems[id] }))}
-         variants={variants}
-         whileHover={{ scale: 1.04 }}
-         whileTap={{ scale: 1 }}
-      >
+      <motion.li onClick={setItem} variants={variants} whileHover={{ scale: 1.04 }} whileTap={{ scale: 1 }}>
          <div style={{ '--image': `url(/assets/images/svg/${icon})` } as React.CSSProperties} className={css.icon} />
          <h3>{translate(title)}</h3>
-         <span className={css.checkbox}>{dashboarItems[id] ? <span></span> : null}</span>
       </motion.li>
    )
 })

@@ -1,7 +1,6 @@
 import React, { CSSProperties, FC, useEffect, useState } from 'react'
 import css from './Board.module.scss'
 import BoardList from './BoardList'
-import Employees from './BoardItems/Director/Employees/Employees'
 
 const BoardViewport: FC<{ isOpen: boolean }> = ({ isOpen }) => {
    const [widthStyle, setWidthStyle] = useState<CSSProperties>({})
@@ -21,7 +20,6 @@ const BoardViewport: FC<{ isOpen: boolean }> = ({ isOpen }) => {
    return (
       <div style={{ ...widthStyle } as CSSProperties} className={css.viewport}>
          <BoardList />
-         {/* <Employees /> */}
       </div>
    )
 }

@@ -8,9 +8,11 @@ const Dashboard: FC = () => {
    const isLoading = useLoading()
    const router = useRouter()
 
+   return <Loader />
+
    if (isLoading) return <Loader />
 
-   router.push('/')
+   // router.push('/')
 
    return (
       <>

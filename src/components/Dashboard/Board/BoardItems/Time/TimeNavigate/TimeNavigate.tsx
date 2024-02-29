@@ -1,6 +1,6 @@
 import { Buttons } from '@/components/UI/dashboard'
 import { Input } from '@/components/UI/input/Input'
-import { IReport, JC } from '@/constants/jobs'
+import { JC } from '@/constants/jobs'
 import { useAppDispatch, useAppSelector } from '@/hooks/redux'
 import { JobsActions } from '@/store/reducers/jobsReducer'
 import React, { ChangeEvent, FC, useEffect, useState } from 'react'
@@ -9,13 +9,14 @@ import { reactLocalStorage } from 'reactjs-localstorage'
 import css from './TimeNavigate.module.scss'
 import { Services } from './services'
 import { IconTooltip } from '@/components/UI/icon-tooltip/IconTooltip'
+import { IUser } from '@/constants/users'
 
 const TimeNavigate: FC<{ currentDate: Date }> = ({ currentDate }) => {
    const dispatch = useAppDispatch()
    const [currentTask, setCurrentTask] = useState({ value: '', time: '' })
    const jobs = useAppSelector((state) => state.reducer.jobs)
    const staticTranslate = (id: string) => useIntl().formatMessage({ id: id, defaultMessage: id })
-   const local = reactLocalStorage.getObject('jobsLocal') as IReport
+   const local = reactLocalStorage.getObject('jobsLocal') as IUser
    const period = currentDate.toLocaleString('en-US', { month: 'long', year: 'numeric' })
    const services = new Services()
 

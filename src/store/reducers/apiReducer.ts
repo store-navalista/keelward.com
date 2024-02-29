@@ -1,4 +1,4 @@
-import { User } from '@/constants/users'
+import { IUser } from '@/constants/users'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 const apiUrl = 'http://localhost:3000/api/'
@@ -6,10 +6,10 @@ const apiUrl = 'http://localhost:3000/api/'
 export const api = createApi({
    baseQuery: fetchBaseQuery({ baseUrl: apiUrl }),
    endpoints: (builder) => ({
-      getUsers: builder.query<User[], void>({
+      getUsers: builder.query<IUser[], void>({
          query: () => 'employees'
       }),
-      getUser: builder.query<User, void>({
+      getUser: builder.query<IUser, void>({
          query: () => 'user'
       })
    })

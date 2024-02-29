@@ -1,4 +1,5 @@
 export default {
+   'cancel': { defaultMessage: 'Cancel' },
    'title.company': { defaultMessage: 'Keelward' },
    'footer-block.copyright': { defaultMessage: 'Keelward. All rights reserved' },
    'footer-partners.powered': { defaultMessage: 'Powered by' },
@@ -68,5 +69,23 @@ export default {
    'dashboard.timereport-job-job_description': { defaultMessage: 'Job Description' },
    'dashboard.timereport-workedtime-tooltip-dayof': { defaultMessage: 'Day of' },
    'dashboard.timereport-workedtime-tooltip-sick': { defaultMessage: 'Sick leave' },
-   'dashboard.timereport-workedtime-tooltip-vacation': { defaultMessage: 'Vacation' }
+   'dashboard.timereport-workedtime-tooltip-vacation': { defaultMessage: 'Vacation' },
+
+   'dashboard.timereport-job-person': { defaultMessage: 'Person' },
+   'dashboard.timereport-job-total': { defaultMessage: 'Total' },
+   'dashboard.timereport-director-timing-title': { defaultMessage: 'Time table' },
+   'dashboard.timereport-director-timing-filterall': { defaultMessage: 'All' },
+
+   'dashboard.users-details': { defaultMessage: 'Details' },
+   'dashboard.users-describe_name': { defaultMessage: 'Name' },
+   'dashboard.users-describe_name-ph': { defaultMessage: 'Ivanov Ivan' },
+   'dashboard.users-describe_date': { defaultMessage: 'Date of Birth' },
+   'dashboard.users-describe_date-ph': { defaultMessage: '12.03.1988' },
+   'dashboard.users-describe_specialization': { defaultMessage: 'Specialization' },
+   'dashboard.users-describe_specialization-ph': { defaultMessage: 'Engineer' },
+   'dashboard.users-describe_position': { defaultMessage: 'Position' },
+   'dashboard.users-describe_position-ph': { defaultMessage: 'Chief Engineer' },
+   'dashboard.users-describe_role': { defaultMessage: 'Role' },
+
+   'dashboard.modal-attention': { defaultMessage: 'Are you sure you want to continue?' }
 }

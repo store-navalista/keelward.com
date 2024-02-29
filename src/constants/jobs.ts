@@ -13,15 +13,8 @@ export interface IJob {
 }
 
 export interface IReport {
-   employee: string
-   currentTask: {
-      value: string
-      time: string
-   }
-   reports: {
-      period: string
-      jobs: IJob[]
-   }[]
+   period: string
+   jobs: IJob[]
 }
 
 export const JC: IJS = {

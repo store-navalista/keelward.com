@@ -1,0 +1,45 @@
+.field {
+   display: flex;
+   gap: 8px;
+   .input {
+      display: flex;
+      box-shadow: var(--shadow-out);
+      border-radius: 16px;
+      align-items: center;
+      label {
+         display: flex;
+         font-size: 12px;
+         background-color: #393939;
+         color: #fff;
+         padding: 8px 4px 8px 8px;
+         width: 12px;
+         border-radius: 16px 0 0 16px;
+         &[data-label='labeled'] {
+            width: auto;
+         }
+         img {
+            filter: invert(1);
+         }
+      }
+      input {
+         box-sizing: border-box;
+         outline: none;
+         border: none;
+         width: 180px;
+         border-radius: 0 16px 16px 0;
+         padding-left: 6px;
+         font-family: var(--font-nunito-semibold);
+         &::placeholder {
+            font-size: 12px;
+            color: #c2c2c2;
+         }
+      }
+   }
+   [data-type='id'] {
+      padding-top: 1px;
+      input {
+         color: #919191;
+         width: 90px;
+      }
+   }
+}

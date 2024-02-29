@@ -1,4 +1,3 @@
-import { IReport } from '@/constants/jobs'
 import { useAppDispatch, useAppSelector } from '@/hooks/redux'
 import translate from '@/i18n/translate'
 import { JobsActions } from '@/store/reducers/jobsReducer'
@@ -9,18 +8,19 @@ import TimeHeader from './TimeHeader/TimeHeader'
 import TimeJob from './TimeJob/TimeJob'
 import TimeNavigate from './TimeNavigate/TimeNavigate'
 import TimeService from './services'
+import { IUser } from '@/constants/users'
 
 const Time: FC = () => {
    const [currentDate, setCurrentDate] = useState(new Date())
    const dispatch = useAppDispatch()
    const i18n = useAppSelector((state) => state.reducer.content.i18n)
    const timeService = new TimeService(i18n)
-   const savedJobs = reactLocalStorage.getObject('jobsLocal') as IReport
+   const localUser = reactLocalStorage.getObject('jobsLocal') as IUser
    const jobs = useAppSelector((state) => state.reducer.jobs)
 
    useEffect(() => {
-      if (Object.keys(savedJobs).length) {
-         const existJobs = savedJobs.reports.find(
+      if (Object.keys(localUser).length) {
+         const existJobs = localUser.reports.find(
             (j) => j.period === currentDate.toLocaleString('en-US', { month: 'long', year: 'numeric' })
          )?.jobs
          if (existJobs) dispatch(JobsActions.updateJobs(existJobs))

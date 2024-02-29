@@ -86,10 +86,7 @@ const TimeJob: FC<ITimeJob> = ({ j, days, index }) => {
    ]
 
    const sum = j.hours_worked.length
-      ? j.hours_worked.reduce((acc, current) => {
-           if (current > 0) return acc + current
-           return acc
-        })
+      ? j.hours_worked.reduce((acc, current) => (current > 0 ? acc + current : acc), 0)
       : 0
 
    return (

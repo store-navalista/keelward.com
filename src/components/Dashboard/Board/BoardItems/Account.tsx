@@ -1,4 +1,4 @@
-import React, { FC, useDeferredValue } from 'react'
+import React, { FC } from 'react'
 import css from './Boards.module.scss'
 import Image from 'next/image'
 import translate from '@/i18n/translate'

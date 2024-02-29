@@ -1,4 +1,3 @@
-import translate from '@/i18n/translate'
 import React, { CSSProperties, FC } from 'react'
 import TimeService from '../services'
 import css from './TimeHeader.module.scss'

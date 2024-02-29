@@ -13,10 +13,10 @@ const BoardList: FC = () => {
    return (
       <div className={css.wrapper}>
          {type.account ? <Account /> : null}
-         {type.time ? <Time /> : null}
+         {/* {type.time ? <Time /> : null} */}
          {type.qr ? <QR /> : null}
          {type.radio ? <Radio /> : null}
-         <Director.Employees />
+         {type.time ? <Director.Employees /> : null}
       </div>
    )
 }

@@ -8,13 +8,13 @@ type TIconTooltip = {
    DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
 
 export const DashboardButton: FC<TIconTooltip> = ({ btn_type, tooltip, ...rest }) => {
-   tooltip.position = ['35px', '50%']
+   if (tooltip) tooltip.position = ['35px', '50%']
    const fileInputRef = useRef<HTMLInputElement>(null)
 
    switch (btn_type) {
       case 'icon-btn':
          return (
-            <div className={css.wrapper}>
+            <div className={`${css.wrapper} ${rest.className}`}>
                <button style={rest.style} onClick={rest.onClick} className={css.icon_btn}>
                   {tooltip ? (
                      <span style={{ '--top': tooltip.position[0], '--left': tooltip.position[1] } as CSSProperties}>

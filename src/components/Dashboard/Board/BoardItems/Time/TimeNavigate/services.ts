@@ -1,4 +1,4 @@
-import { IReport } from '@/constants/jobs'
+import { IUser } from '@/constants/users'
 import { JobsActions } from '@/store/reducers/jobsReducer'
 import { saveAs } from 'file-saver'
 import { ChangeEvent } from 'react'
@@ -15,7 +15,7 @@ export class Services {
    }
 
    save(period: string, jobs: any[]) {
-      const local = reactLocalStorage.getObject('jobsLocal') as IReport
+      const local = reactLocalStorage.getObject('jobsLocal') as IUser
 
       if (!Object.keys(local).length) {
          const newLocal = { employee: 'Otinov_AV', currentTask: this.currentTask, reports: [{ period, jobs }] }
@@ -38,7 +38,7 @@ export class Services {
    }
 
    upload() {
-      const local = reactLocalStorage.getObject('jobsLocal') as IReport
+      const local = reactLocalStorage.getObject('jobsLocal') as IUser
 
       if (Object.keys(local).length) {
          const jsonData = JSON.stringify(local, null, 2)
@@ -68,7 +68,7 @@ export class Services {
                   const parsedData = JSON.parse(result as string)
                   reactLocalStorage.setObject('jobsLocal', parsedData)
 
-                  const local = reactLocalStorage.getObject('jobsLocal') as IReport
+                  const local = reactLocalStorage.getObject('jobsLocal') as IUser
 
                   const currentJobs = local?.reports?.find((r) => r.period === period)?.jobs
                   if (currentJobs) dispatch(JobsActions.updateJobs(currentJobs))

@@ -2,6 +2,7 @@ import { LOCALES } from '../locales'
 
 export default {
    [LOCALES.ENGLISH]: {
+      'cancel': 'Cancel',
       'title.company': 'Keelward',
       'footer-block.copyright': 'Keelward. All rights reserved',
       'footer-partners.powered': 'Powered by',
@@ -71,6 +72,24 @@ export default {
       'dashboard.timereport-job-job_description': 'Job Description',
       'dashboard.timereport-workedtime-tooltip-dayof': 'Day of',
       'dashboard.timereport-workedtime-tooltip-sick': 'Sick leave',
-      'dashboard.timereport-workedtime-tooltip-vacation': 'Vacation'
+      'dashboard.timereport-workedtime-tooltip-vacation': 'Vacation',
+
+      'dashboard.timereport-job-person': 'Person',
+      'dashboard.timereport-job-total': 'Total',
+      'dashboard.timereport-director-timing-title': 'Time table',
+      'dashboard.timereport-director-timing-filterall': 'All',
+
+      'dashboard.users-details': 'Details',
+      'dashboard.users-describe_name': 'Name',
+      'dashboard.users-describe_name-ph': 'Ivanov Ivan',
+      'dashboard.users-describe_date': 'Date of Birth',
+      'dashboard.users-describe_date-ph': '12.03.1988',
+      'dashboard.users-describe_specialization': 'Specialization',
+      'dashboard.users-describe_specialization-ph': 'Engineer',
+      'dashboard.users-describe_position': 'Position',
+      'dashboard.users-describe_position-ph': 'Chief Engineer',
+      'dashboard.users-describe_role': 'Role',
+
+      'dashboard.modal-attention': 'Are you sure you want to continue?'
    }
 }

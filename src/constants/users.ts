@@ -5,7 +5,7 @@ type TCurrentTask = {
    time: string
 }
 
-export interface User {
+export interface IUser {
    _id: string
    employee: string
    avatar: string

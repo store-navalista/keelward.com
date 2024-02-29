@@ -2,6 +2,7 @@ import { LOCALES } from '../locales'
 
 export default {
    [LOCALES.RUSSIAN]: {
+      'cancel': 'Отмена',
       'title.company': 'Килвард',
       'footer-partners.powered': 'Powered by',
       'footer-partners.certified': 'Certified by',
@@ -67,11 +68,29 @@ export default {
       'dashboard.timereport-job-current-task': 'Отправляет текущую задачу. Можно отправлять не ограниченное количсетво раз.',
 
       'dashboard.timereport-job-project_number': 'Номер',
-      'dashboard.timereport-job-ship_name': 'Наименование судна',
-      'dashboard.timereport-job-job_description': 'Описание работы',
+      'dashboard.timereport-job-ship_name': 'Судно',
+      'dashboard.timereport-job-job_description': 'Описание',
       'dashboard.timereport-workedtime-tooltip-dayof': 'Выходной',
       'dashboard.timereport-workedtime-tooltip-sick': 'Больничный',
-      'dashboard.timereport-workedtime-tooltip-vacation': 'Отпуск'
+      'dashboard.timereport-workedtime-tooltip-vacation': 'Отпуск',
+
+      'dashboard.timereport-job-person': 'Сотрудник',
+      'dashboard.timereport-job-total': 'Всего',
+      'dashboard.timereport-director-timing-title': 'Таблица учета времени',
+      'dashboard.timereport-director-timing-filterall': 'Все',
+
+      'dashboard.users-details': 'Подробнее',
+      'dashboard.users-describe_name': 'Ф.И.О.',
+      'dashboard.users-describe_name-ph': 'Иванов Иван',
+      'dashboard.users-describe_date': 'Дата рождения',
+      'dashboard.users-describe_date-ph': '12.03.1988',
+      'dashboard.users-describe_specialization': 'Образование',
+      'dashboard.users-describe_specialization-ph': 'Инженер',
+      'dashboard.users-describe_position': 'Должность',
+      'dashboard.users-describe_position-ph': 'Конструктор',
+      'dashboard.users-describe_role': 'Роль',
+
+      'dashboard.modal-attention': 'Вы уверены, что хотите продолжить?'
    }
 }
 

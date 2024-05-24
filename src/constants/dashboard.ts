@@ -1,4 +1,4 @@
-export type TID = 'greating' | 'account' | 'time' | 'qr' | 'radio' | 'employees' | 'timing' | 'logout'
+export type TID = 'greating' | 'account' | 'time' | 'qr' | 'radio' | 'employees' | 'timing' | 'CTO' | 'logout'
 
 type TBoardItems = {
    id: TID

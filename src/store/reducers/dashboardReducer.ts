@@ -2,7 +2,7 @@ import { TID } from '@/constants/dashboard'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 interface DashboardState {
-   dashboardItems: Record<TID, boolean>
+   dashboardItems: Record<Exclude<TID, 'logout'>, boolean>
 }
 
 const initialState: DashboardState = {

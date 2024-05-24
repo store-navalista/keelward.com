@@ -1,4 +1,4 @@
-export type TID = 'account' | 'time' | 'qr' | 'radio' | 'employees' | 'users'
+export type TID = 'greating' | 'account' | 'time' | 'qr' | 'radio' | 'employees' | 'timing' | 'logout'
 
 type TBoardItems = {
    id: TID
@@ -33,16 +33,21 @@ const nav: TBoardItems = [
       title: 'dashboard.nav-employees'
    },
    {
-      id: 'users',
-      icon: 'dashboard-nav-users.svg',
-      title: 'dashboard.nav-users'
+      id: 'timing',
+      icon: 'dashboard-nav-timing.svg',
+      title: 'dashboard.nav-timing'
+   },
+   {
+      id: 'logout',
+      icon: 'dashboard-nav-logout.svg',
+      title: 'dashboard.nav-logout'
    }
 ]
 
 const items = {
-   CTO: ['account', 'employees', 'users', 'qr', 'radio'],
-   Employee: ['account', 'time', 'qr', 'radio'],
-   Moderator: []
+   CTO: ['greating', 'account', 'employees', 'timing', 'qr', 'logout'],
+   Employee: ['greating', 'account', 'time', 'qr', 'radio', 'logout'],
+   Moderator: ['greating', 'CTO', 'employees', 'timing', 'qr', 'radio', 'logout']
 }
 
 export const DASHBOARD = {

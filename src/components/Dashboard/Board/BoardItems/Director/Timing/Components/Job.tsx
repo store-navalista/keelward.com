@@ -3,7 +3,7 @@ import css from '../Timing.module.scss'
 import { JobProps } from '../Timing'
 
 const Job: FC<JobProps> = ({ currentJob, days }) => {
-   const { job, hours_worked } = currentJob
+   const { project_number, ship_name, job_description, hours_worked } = currentJob
 
    const getStyles = (val: number) => {
       switch (val) {
@@ -23,9 +23,9 @@ const Job: FC<JobProps> = ({ currentJob, days }) => {
    return (
       <div className={css.row}>
          <p></p>
-         <p>{job.project_number}</p>
-         <p>{job.ship_name}</p>
-         <p>{job.job_description}</p>
+         <p>{project_number}</p>
+         <p>{ship_name}</p>
+         <p>{job_description}</p>
          <div className={css.days}>
             {days.map((d, i) => {
                const { day } = d

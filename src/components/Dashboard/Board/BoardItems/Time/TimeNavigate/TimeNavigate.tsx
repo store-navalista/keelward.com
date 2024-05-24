@@ -1,54 +1,43 @@
 import { Buttons } from '@/components/UI/dashboard'
+import { IconTooltip } from '@/components/UI/icon-tooltip/IconTooltip'
 import { Input } from '@/components/UI/input/Input'
 import { JC } from '@/constants/jobs'
-import { useAppDispatch, useAppSelector } from '@/hooks/redux'
-import { JobsActions } from '@/store/reducers/jobsReducer'
-import React, { ChangeEvent, FC, useEffect, useState } from 'react'
+import React, { FC, useState } from 'react'
 import { useIntl } from 'react-intl'
-import { reactLocalStorage } from 'reactjs-localstorage'
 import css from './TimeNavigate.module.scss'
-import { Services } from './services'
-import { IconTooltip } from '@/components/UI/icon-tooltip/IconTooltip'
-import { IUser } from '@/constants/users'
 
-const TimeNavigate: FC<{ currentDate: Date }> = ({ currentDate }) => {
-   const dispatch = useAppDispatch()
+const TimeNavigate: FC<{ updateJobs: any }> = ({ updateJobs }) => {
    const [currentTask, setCurrentTask] = useState({ value: '', time: '' })
-   const jobs = useAppSelector((state) => state.reducer.jobs)
    const staticTranslate = (id: string) => useIntl().formatMessage({ id: id, defaultMessage: id })
-   const local = reactLocalStorage.getObject('jobsLocal') as IUser
-   const period = currentDate.toLocaleString('en-US', { month: 'long', year: 'numeric' })
-   const services = new Services()
-
-   useEffect(() => {
-      if (local?.currentTask) setCurrentTask(local.currentTask)
-   }, [currentDate, jobs])
 
    const actions = (type: string) => {
       switch (type) {
          case 'add':
-            return () => dispatch(JobsActions.addJob())
-         case 'save':
-            return () => services.save(period, jobs)
-         case 'download':
-            return (e: ChangeEvent<HTMLInputElement>) => services.download(e, dispatch)
-         case 'upload':
-            return () => services.upload()
+            return () => updateJobs({ type: 'add', payload: '' })
          case 'reset':
             return () => {
                const result = confirm('Are you sure?')
-               if (result) dispatch(JobsActions.resetJobs())
-            }
-         case 'clean':
-            return () => {
-               const result = confirm('Are you sure?')
-               if (result) dispatch(JobsActions.cleanCache())
+               if (result) updateJobs({ type: 'reset', payload: '' })
             }
          case 'send_task':
-            return () => services.send_task(currentTask.value, period)
+            // return () => services.send_task(currentTask.value, period)
+            return () => {
+               console.log('send task')
+            }
          default:
             return
       }
+      // case 'save':
+      //    return () => services.save(period, jobs)
+      // case 'download':
+      //    return (e: ChangeEvent<HTMLInputElement>) => services.download(e, dispatch)
+      // case 'upload':
+      //    return () => services.upload()
+      // case 'clean':
+      //    return () => {
+      //       const result = confirm('Are you sure?')
+      //       if (result) dispatch(JobsActions.cleanCache())
+      //    }
    }
 
    return (

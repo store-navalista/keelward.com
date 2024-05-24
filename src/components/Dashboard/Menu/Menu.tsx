@@ -1,11 +1,10 @@
-import * as React from 'react'
-import { useRef } from 'react'
+import translate from '@/i18n/translate'
 import { motion } from 'framer-motion'
-import { useDimensions } from './use-dimensions'
+import * as React from 'react'
+import css from './Menu.module.scss'
 import { MenuToggle } from './MenuToggle'
 import { Navigation } from './Navigation'
-import css from './Menu.module.scss'
-import translate from '@/i18n/translate'
+import useUserByID from '@/hooks/useUserByID'
 
 const sidebar = {
    open: (height = 1000) => ({
@@ -28,8 +27,9 @@ const sidebar = {
 }
 
 export const Menu: React.FC<{ isOpen: boolean; toggleOpen: () => void }> = ({ isOpen, toggleOpen }) => {
-   const containerRef = useRef(null)
-   const { height } = useDimensions(containerRef)
+   const { data: user } = useUserByID()
+
+   if (!user) return
 
    return (
       <motion.nav
@@ -37,11 +37,9 @@ export const Menu: React.FC<{ isOpen: boolean; toggleOpen: () => void }> = ({ is
          style={{ '--shadow': isOpen ? 'var(--shadow-out)' : 'none' } as React.CSSProperties}
          initial={false}
          animate={isOpen ? 'open' : 'closed'}
-         custom={height}
-         ref={containerRef}
       >
          <motion.div className={css.background} variants={sidebar} />
-         <Navigation isOpen={isOpen} />
+         <Navigation isOpen={isOpen} user={user} />
          <MenuToggle toggle={() => toggleOpen()} />
          <h3 style={{ '--opacity': isOpen ? 1 : 0 } as React.CSSProperties} className={css.author}>
             {translate('dashboard.nav-author')}

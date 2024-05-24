@@ -25,6 +25,7 @@ export default {
       'menu.title-chapter_5': '3D Scan / Civil eng.',
       'tooltip.header-menu': 'Menu',
       'tooltip.header-cabinet': 'Cabinet',
+      'tooltip.header-logout': 'Logout',
       'tooltip.header-timemen': 'Time Management',
       'tooltip.header-careers': 'Careers',
       'tooltip.header-certificates': 'Certificates',
@@ -46,7 +47,8 @@ export default {
       'dashboard.nav-qr': 'Generate QR Code',
       'dashboard.nav-radio': 'Radio',
       'dashboard.nav-employees': 'Employees',
-      'dashboard.nav-users': 'Users',
+      'dashboard.nav-timing': 'Timing',
+      'dashboard.nav-logout': 'Logout',
       'dashboard.nav-author': 'Made by Sergey Otinov',
 
       'dashboard.account-describe_name': 'Name:',
@@ -81,15 +83,36 @@ export default {
 
       'dashboard.users-details': 'Details',
       'dashboard.users-describe_name': 'Name',
-      'dashboard.users-describe_name-ph': 'Ivanov Ivan',
+      'dashboard.users-describe_name-ph': 'Ivanov Ivan Viktorovich',
       'dashboard.users-describe_date': 'Date of Birth',
       'dashboard.users-describe_date-ph': '12.03.1988',
       'dashboard.users-describe_specialization': 'Specialization',
       'dashboard.users-describe_specialization-ph': 'Engineer',
       'dashboard.users-describe_position': 'Position',
       'dashboard.users-describe_position-ph': 'Chief Engineer',
+      'dashboard.users-describe_password': 'Password',
+      'dashboard.users-describe_password-ph': 'Password',
       'dashboard.users-describe_role': 'Role',
+      'dashboard.users-create_user': 'Create new user',
+      'dashboard.users-create_user-btn': 'Create user',
+      'dashboard.users-title': 'Employees',
 
-      'dashboard.modal-attention': 'Are you sure you want to continue?'
+      'dashboard.modal-attention': 'Are you sure you want to continue?',
+
+      'custom.client-errors_user_input_empty': 'The Name field cannot be empty or shorter than 5 characters',
+      'custom.client-errors_password_input_empty': 'The Password field cannot be empty or shorter than 5 characters',
+
+      'custom.login-errors-empty_username': 'The name field cannot be empty or less than 5 characters',
+      'custom.login-errors-empty_password': 'The password field cannot be empty or less than 5 characters',
+      'custom.login-errors-no_such_employee_exists': 'No such employee exists',
+      'custom.login-errors-incorrect_password': 'Incorrect password',
+
+      'custom.server-errors_user_exist_error': 'The username must not be repeated. Case matters.',
+
+      'server-status': 'Server status',
+
+      'unexpected_error': 'Unexpected error',
+      'i18n_error': 'i18n error',
+      'network_request_failed': 'Network error'
    }
 }

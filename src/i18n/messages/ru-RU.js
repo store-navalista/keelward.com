@@ -25,6 +25,7 @@ export default {
       'menu.title-chapter_5': '3D Сканирование / Гражданское проектирование',
       'tooltip.header-menu': 'Меню',
       'tooltip.header-cabinet': 'Кабинет',
+      'tooltip.header-logout': 'Выйти',
       'tooltip.header-timemen': 'Тайм менеджмент',
       'tooltip.header-careers': 'Карьера',
       'tooltip.header-certificates': 'Сертификаты',
@@ -34,7 +35,7 @@ export default {
       '404': 'Извините. Эта часть нашего приложения еще в разработке. В ближайшем будущем она появится.',
       '404.button': 'На главную',
       'auth-title': 'Авторизация',
-      'auth-login': 'Авторизироваться',
+      'auth-login': 'Войти',
       'auth-username': 'Логин',
       'auth-password': 'Пароль',
       'page-ABOUT.title': 'О нас',
@@ -46,7 +47,8 @@ export default {
       'dashboard.nav-qr': 'Сегенрировать QRC',
       'dashboard.nav-radio': 'Радио',
       'dashboard.nav-employees': 'Сотрудники',
-      'dashboard.nav-users': 'Пользователи',
+      'dashboard.nav-timing': 'Тайминг',
+      'dashboard.nav-logout': 'Выйти',
       'dashboard.nav-author': 'Автор: Сергей Отинов',
 
       'dashboard.account-describe_name': 'Имя:',
@@ -88,9 +90,30 @@ export default {
       'dashboard.users-describe_specialization-ph': 'Инженер',
       'dashboard.users-describe_position': 'Должность',
       'dashboard.users-describe_position-ph': 'Конструктор',
+      'dashboard.users-describe_password': 'Пароль',
+      'dashboard.users-describe_password-ph': 'Пароль',
       'dashboard.users-describe_role': 'Роль',
+      'dashboard.users-create_user': 'Создать пользователя',
+      'dashboard.users-create_user-btn': 'Создать',
+      'dashboard.users-title': 'Сотрудники',
 
-      'dashboard.modal-attention': 'Вы уверены, что хотите продолжить?'
+      'dashboard.modal-attention': 'Вы уверены, что хотите продолжить?',
+
+      'custom.client-errors_user_input_empty': 'Имя не может быть пустым и быть короче 5 символов',
+      'custom.client-errors_password_input_empty': 'Пароль не может быть пустым и быть короче 5 символов',
+
+      'custom.login-errors-empty_username': 'Поле имени сотрудника не может быть пустым или менее 5 символов',
+      'custom.login-errors-empty_password': 'Поле пароль не может быть пустым или менее 5 символов',
+      'custom.login-errors-no_such_employee_exists': 'Такого сотрудника не существует',
+      'custom.login-errors-incorrect_password': 'Неверный пароль',
+
+      'custom.server-errors_user_exist_error': 'Не должно повторяться имя пользователя. Регистр имеет значение.',
+
+      'server-status': 'Статус сервера',
+
+      'unexpected_error': 'Не предвиденная ошибка',
+      'i18n_error': 'Ошибка перевода',
+      'network_request_failed': 'Ошибка сети'
    }
 }
 

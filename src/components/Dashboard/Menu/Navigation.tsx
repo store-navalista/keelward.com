@@ -1,13 +1,11 @@
 import LanguageSwitcher from '@/components/Header/components/QuickPanel/LanguageSwitcher/LanguageSwitcher'
 import { DASHBOARD } from '@/constants/dashboard'
+import { IUser } from '@/constants/users'
+import translate from '@/i18n/translate'
 import { motion } from 'framer-motion'
 import * as React from 'react'
 import css from './Menu.module.scss'
 import { MenuItem } from './MenuItem'
-import translate from '@/i18n/translate'
-import { useGetUserQuery } from '@/store/reducers/apiReducer'
-import Loader from '@/components/UI/loader/Loader'
-import { User } from '@/constants/users'
 
 const variants = {
    open: {
@@ -18,16 +16,13 @@ const variants = {
    }
 }
 
-export const Navigation: React.FC<{ isOpen: boolean }> = ({ isOpen }) => {
-   const { data, error, isLoading } = useGetUserQuery()
+export const Navigation: React.FC<{ isOpen: boolean; user: IUser }> = ({ isOpen, user }) => {
    const { nav, items } = DASHBOARD
    const mutateNav = []
 
-   if (isLoading) return <Loader />
+   const { describe_role } = user
 
-   const { describe_role } = data as User
-
-   DASHBOARD.nav.forEach((item) => {
+   nav.forEach((item) => {
       if (describe_role && items[describe_role].includes(item.id)) mutateNav.push(item)
    })
 

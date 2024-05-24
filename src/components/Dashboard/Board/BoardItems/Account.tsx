@@ -1,37 +1,33 @@
-import React, { FC } from 'react'
-import css from './Boards.module.scss'
-import Image from 'next/image'
+import Loader from '@/components/UI/loader/Loader'
+import { IUser } from '@/constants/users'
 import translate from '@/i18n/translate'
+import { useGetUserQuery } from '@/store/reducers/apiReducer'
+import Image from 'next/image'
+import React, { FC, useEffect } from 'react'
+import css from './Boards.module.scss'
 
 const rows = ['name', 'date', 'specialization', 'position', 'role']
 
-const user = {
-   avatar: 'otinov_a_v.png',
-   describe_name: 'Otinov Anton',
-   describe_date: '02.03.1985',
-   describe_specialization: 'Engineer',
-   describe_position: 'Chief Engineer',
-   describe_role: 'Employee',
-   time_report: [
-      {
-         job_description: '',
-         timing: []
-      },
-      {
-         job_description: '',
-         timing: []
-      }
-   ]
-}
-
-const Account: FC = () => {
+const Account: FC<{ user: IUser }> = ({ user }) => {
    const w = 250
+
+   if (!user) return <Loader />
+
+   const { refetch } = useGetUserQuery({ userId: user.id })
+   const { describe_name } = user
+   const avatar = describe_name.toLowerCase().replace(/[\s_-]+/g, '-')
+
+   const refresh = async () => await refetch()
+
+   useEffect(() => {
+      refresh()
+   }, [])
 
    return (
       <div className={css.account}>
          <div className={css.avatar}>
             <div>
-               <Image src={`/assets/images/dashboard/${user.avatar}`} alt={'Person'} width={w} height={w} />
+               <Image src={`/assets/images/dashboard/${avatar}.png`} alt={'Person'} width={w} height={w} />
             </div>
             <div className={css.describe}>
                {rows.map((r, i) => {

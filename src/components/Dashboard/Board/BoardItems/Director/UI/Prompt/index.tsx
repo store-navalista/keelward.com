@@ -7,19 +7,23 @@ import Image from 'next/image'
 type ConfirmProps = {
    apply(): Promise<Record<string, string>>
    cancel(): void
+   isLoading: boolean
 }
 
-const Confirm: FC<ConfirmProps> = ({ apply, cancel }) => {
-   const [isLoading, setisLoading] = useState(false)
-
+const Confirm: FC<ConfirmProps> = ({ apply, cancel, isLoading }) => {
    const confirm = async () => {
-      setisLoading(true)
       const result = await apply()
-      // if(result)
+
+      if (result) {
+         if ('error' in result) {
+            cancel()
+         }
+      }
    }
 
    const style = {
-      backgroundColor: isLoading && '#cfcfcf'
+      backgroundColor: isLoading && '#cfcfcf',
+      cursor: isLoading && 'default'
    }
 
    return (

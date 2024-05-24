@@ -17,6 +17,13 @@
       align-items: center;
       gap: 2rem;
    }
+   .leftBlock {
+      .auth {
+         display: flex;
+         align-items: center;
+         gap: 12px;
+      }
+   }
    .blur {
       position: absolute;
       left: 0;

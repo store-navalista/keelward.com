@@ -1,20 +1,49 @@
-import React, { CSSProperties, FC, useEffect, useMemo, useState } from 'react'
+import React, { CSSProperties, FC, useState } from 'react'
 import css from '../Employees.module.scss'
-import translate from '@/i18n/translate'
 import Image from 'next/image'
 import UserDescription from './UserDescription'
 import { UI } from '../../UI'
+import { IUser } from '@/constants/users'
+import { useUpdatePasswordMutation } from '@/store/reducers/apiReducer'
+import { LogProps } from '../Employees'
+import user_log from './logs-messages'
 
-const User: FC<any> = ({ expand, setExpand, user }) => {
+type UserProps = {
+   expand: {
+      id: string
+      isOpen: boolean
+   }[]
+   setExpand: React.Dispatch<any>
+   user: IUser
+   setLog: LogProps['setLog']
+}
+
+const User: FC<UserProps> = ({ expand, setExpand, user, setLog }) => {
    if (!expand) return
-   const { _id, avatar, describe_name, describe_date, describe_specialization, describe_position, describe_role } = user
-   const userExpand = expand.find((item: { id: string; isOpen: boolean }) => item.id === user._id)
+   const { id, describe_name, describe_date, describe_specialization, describe_position, describe_role } = user
 
-   const [data, setData] = useState()
+   const [password, setPassword] = useState('')
+   const [updatePassword, { isLoading }] = useUpdatePasswordMutation()
+
+   const updatePasswordHandler = async () => {
+      const result = await updatePassword({ id, newPassword: password })
+      if ('error' in result) {
+         user_log(setLog, '104', user.describe_name)
+         return
+      }
+
+      user_log(setLog, '004', user.describe_name)
+      setPassword('')
+   }
+
+   const URL = '/assets/images/dashboard/mini-'
+   const initialAvatar = URL + `${describe_name.toLowerCase().replace(/ /g, '-')}.png`
+   const [avatar, setAvatar] = useState(initialAvatar)
+   const userExpand = expand.find((item: { id: string; isOpen: boolean }) => item.id === user.id)
 
    const openDescription = () => {
       const correctExpands = expand.map((item) => {
-         if (item.id === user._id) return { id: _id, isOpen: !userExpand.isOpen }
+         if (item.id === user.id) return { id, isOpen: !userExpand.isOpen }
          return item
       })
       setExpand(correctExpands)
@@ -38,18 +67,36 @@ const User: FC<any> = ({ expand, setExpand, user }) => {
                <Image
                   className={css.avatar}
                   alt='avatar'
-                  src={`/assets/images/dashboard/mini-${avatar}`}
+                  src={avatar}
                   width={30}
                   height={30}
+                  onError={() => setAvatar(URL + 'new-employe.png')}
                />
                <p className={css.name}>{describe_name}</p>
-               <UI.Input data-type='id' icon='user-managment-id.svg' value={_id} readOnly />
-               <UI.Input icon='user-managment-password.svg' placeholder='Password' />
-               <button className={css.save} disabled={true} />
+               <UI.Input data-type='id' icon='user-managment-id.svg' value={id} readOnly />
+               <UI.Input
+                  onChange={(e) => setPassword(e.target.value)}
+                  value={password}
+                  icon='user-managment-password.svg'
+                  placeholder='Password'
+               />
+               <button
+                  onClick={updatePasswordHandler}
+                  className={css.save + `${isLoading ? ' ' + css.isLoading : ''}`}
+                  disabled={isLoading || password.length < 5}
+               />
             </div>
             {userExpand?.isOpen ? (
                <UserDescription
-                  {...{ describe_name, describe_date, describe_specialization, describe_position, describe_role }}
+                  {...{
+                     id,
+                     describe_name,
+                     describe_date,
+                     describe_specialization,
+                     describe_position,
+                     describe_role,
+                     setLog
+                  }}
                />
             ) : null}
          </div>

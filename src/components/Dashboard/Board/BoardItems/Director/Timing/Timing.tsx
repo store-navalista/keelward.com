@@ -1,4 +1,5 @@
 import { IJob } from '@/constants/jobs'
+import { IUser } from '@/constants/users'
 import { useAppSelector } from '@/hooks/redux'
 import translate from '@/i18n/translate'
 import { useGetUsersQuery } from '@/store/reducers/apiReducer'
@@ -29,10 +30,9 @@ export interface HeaderProps extends Props {
 }
 
 export interface PersonProps extends Props {
-   _id: string
-   employee: string
+   user: IUser
    isReportExist: boolean
-   currentJobs: IJob[]
+   filteredJobs: IJob[]
 }
 
 export interface JobProps extends Props {
@@ -40,8 +40,9 @@ export interface JobProps extends Props {
 }
 
 const Timing: FC = () => {
-   const { data: users, error, isLoading } = useGetUsersQuery()
+   const { data: users, isLoading, refetch } = useGetUsersQuery()
    const [currentDate, setCurrentDate] = useState(new Date())
+   const period = currentDate.toLocaleString('en-US', { month: 'long', year: 'numeric' })
    const [openedJobs, setOpenedJobs] = useState<IOpenedJobs>([])
    const [activeFilter, setActiveFilter] = useState(null)
    const i18n = useAppSelector((state) => state.reducer.content.i18n)
@@ -50,31 +51,27 @@ const Timing: FC = () => {
 
    const filters = useMemo(() => [new Set(), new Set(), new Set()] as Set<string>[], [currentDate])
 
-   const currentFormattedDate = currentDate.toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long'
-   })
-
    useEffect(() => {
       if (users) {
          setOpenedJobs(
             users.map((user) => {
-               return { id: user._id, isOpen: false }
+               return { id: user.id, isOpen: false }
             })
          )
+
          users.forEach((user) => {
-            user.reports
-               .find((r) => r.period === currentFormattedDate)
-               ?.jobs.forEach((j) => {
-                  filters[0].add(j.job.project_number)
-                  filters[1].add(j.job.ship_name)
-                  filters[2].add(j.job.job_description)
-               })
+            user.jobs.forEach((j) => {
+               if (j.report_period !== period) return
+               filters[0].add(j.project_number)
+               filters[1].add(j.ship_name)
+               filters[2].add(j.job_description)
+            })
          })
       }
    }, [users, currentDate])
 
    useEffect(() => {
+      refetch()
       setActiveFilter(null)
    }, [currentDate])
 
@@ -89,25 +86,24 @@ const Timing: FC = () => {
             <Filters filters={filters} setActiveFilter={setActiveFilter} />
             <Header {...{ timeService, currentDate, setCurrentDate, days, openedJobs, setOpenedJobs, filters }} />
             {users.map((user) => {
-               const { _id, employee, reports } = user
-               const isOpen = openedJobs.find((j) => j.id === _id)?.isOpen
-
-               const filteredJobs = () => {
-                  const jobs = reports.find((r) => r.period === currentFormattedDate)?.jobs || []
-                  if (activeFilter) {
-                     const [key, value] = [...Object.keys(activeFilter), ...Object.values(activeFilter)] as string[]
-                     return jobs.filter((obj) => obj.job[key] === value)
-                  }
-                  return jobs
-               }
-               const currentJobs = filteredJobs()
+               const { id, jobs } = user
+               const isOpen = openedJobs.find((j) => j.id === id)?.isOpen
+               const currentJobs = jobs.filter((j) => j.report_period === period)
                const isReportExist = !!currentJobs.length
 
+               const filteredJobs = [...currentJobs].filter((j) => {
+                  if (activeFilter) {
+                     const [key, value] = [...Object.keys(activeFilter), ...Object.values(activeFilter)] as string[]
+                     return j[key] === value
+                  }
+                  return j
+               })
+
                return (
-                  <Fragment key={_id}>
-                     <Person {...{ _id, days, employee, isReportExist, currentJobs, setOpenedJobs, openedJobs }} />
+                  <Fragment key={id}>
+                     <Person {...{ user, days, isReportExist, filteredJobs, setOpenedJobs, openedJobs }} />
                      {isOpen
-                        ? currentJobs.map((currentJob, i) => (
+                        ? filteredJobs.map((currentJob, i) => (
                              <Fragment key={i}>
                                 <Job currentJob={currentJob} days={days} />
                              </Fragment>

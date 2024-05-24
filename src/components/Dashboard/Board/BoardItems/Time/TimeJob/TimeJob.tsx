@@ -1,12 +1,8 @@
 import { Input } from '@/components/UI/input/Input'
 import { IJob } from '@/constants/jobs'
-import { useAppDispatch } from '@/hooks/redux'
 import useHover from '@/hooks/useHover'
 import translate from '@/i18n/translate'
-import { JobsActions } from '@/store/reducers/jobsReducer'
-import Image from 'next/image'
-import React, { CSSProperties, FC, useEffect, useRef, useState } from 'react'
-import { useIntl } from 'react-intl'
+import React, { CSSProperties, FC, useRef, useState } from 'react'
 import TimeService from '../services'
 import css from './TimeJob.module.scss'
 import WorkedTime from './WorkedTime'
@@ -41,42 +37,23 @@ interface ITimeJob {
    j: IJob
    days: ReturnType<TimeService['getDaysOfMonth']>
    index: number
+   jobs: IJob[]
+   updateJobs: any
 }
 
-const TimeJob: FC<ITimeJob> = ({ j, days, index }) => {
-   const dispatch = useAppDispatch()
+const TimeJob: FC<ITimeJob> = ({ j, days, index, jobs, updateJobs }) => {
    const ref = useRef(null)
    const isHover = useHover(ref)
-   const staticTranslate = (id: string) => useIntl().formatMessage({ id: id, defaultMessage: id })
-   const errorMessage = staticTranslate('dashboard.timereport-job-errors-empty')
-   const [error, setError] = useState('')
 
-   const { _id, job, hours_worked } = j
+   const { hours_worked } = j
+
    const [isTimingOpen, setisTimingOpen] = useState(undefined)
-
-   useEffect(() => {
-      if (!hours_worked.length) {
-         const emptyArr = []
-         days.forEach((_, i) => {
-            if (_.day_of) return (emptyArr[i] = -0.5)
-            emptyArr[i] = 0
-         })
-         dispatch(JobsActions.updateJob({ ...j, hours_worked: [...hours_worked, ...emptyArr] }))
-      }
-   }, [hours_worked, isTimingOpen])
-
-   if (!j)
-      return (
-         <div className={css.preloader}>
-            <Image src={'/assets/images/svg/timereport-preloader.svg'} width={32} height={32} alt='preloader' />
-         </div>
-      )
 
    const fields = [
       {
          field: 'project_number',
          styles: { textAlign: 'center' },
-         options: { ph: '3240010', onlyDigits: true }
+         options: { ph: '3240010' }
       },
       { field: 'ship_name', options: { ph: 'CHELSEA-2' } },
       {
@@ -85,14 +62,12 @@ const TimeJob: FC<ITimeJob> = ({ j, days, index }) => {
       }
    ]
 
-   const sum = j.hours_worked.length
-      ? j.hours_worked.reduce((acc, current) => (current > 0 ? acc + current : acc), 0)
-      : 0
+   const sum = j.hours_worked.length ? hours_worked.reduce((acc, current) => (current > 0 ? acc + current : acc), 0) : 0
 
    return (
       <div className={css.job} style={{ marginTop: index === 0 ? '25px' : '20px' }}>
          <div className={css.desc}>
-            <button ref={ref} className={css.remove} onClick={() => dispatch(JobsActions.removeJob(_id))} />
+            <button ref={ref} className={css.remove} onClick={() => updateJobs({ type: 'remove', payload: index })} />
             {fields.map((f) => {
                const { field, styles, options } = f
 
@@ -107,16 +82,9 @@ const TimeJob: FC<ITimeJob> = ({ j, days, index }) => {
                         type='l'
                         className={css.job_name}
                         style={styles as CSSProperties}
-                        value={job[field]}
+                        value={j[field]}
                         placeholder={options.ph}
-                        onChange={(v) => {
-                           if (options.onlyDigits) {
-                              const digitOnlyValue = v.target.value.replace(/\D/g, '')
-                              dispatch(JobsActions.updateJob({ ...j, job: { ...job, [field]: digitOnlyValue } }))
-                           } else {
-                              dispatch(JobsActions.updateJob({ ...j, job: { ...job, [field]: v.target.value } }))
-                           }
-                        }}
+                        onChange={(e) => updateJobs({ type: field, payload: { val: e.target.value, index } })}
                      />
                   </div>
                )
@@ -125,7 +93,7 @@ const TimeJob: FC<ITimeJob> = ({ j, days, index }) => {
          </div>
          <ul style={{ opacity: isHover ? 0.3 : 1 }}>
             {days.map((_, i) => {
-               const WorkedTimeProps = { j, i, days, colors, setisTimingOpen }
+               const WorkedTimeProps = { j, i, days, updateJobs, index, colors, setisTimingOpen }
 
                return (
                   <li style={getStyle(hours_worked[i]) as CSSProperties} key={i}>

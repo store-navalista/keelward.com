@@ -2,8 +2,9 @@ import React, { FC } from 'react'
 import { PersonProps } from '../Timing'
 import css from '../Timing.module.scss'
 
-const Person: FC<PersonProps> = ({ _id, days, employee, isReportExist, currentJobs, setOpenedJobs, openedJobs }) => {
-   const summedHours = currentJobs.reduce((accumulator, currentValue) => {
+const Person: FC<PersonProps> = ({ user, days, isReportExist, filteredJobs, setOpenedJobs, openedJobs }) => {
+   const { id, describe_name } = user
+   const summedHours = filteredJobs.reduce((accumulator, currentValue) => {
       currentValue.hours_worked.forEach((value, index) => {
          if (value > 0) {
             if (accumulator[index] === undefined) {
@@ -19,7 +20,7 @@ const Person: FC<PersonProps> = ({ _id, days, employee, isReportExist, currentJo
    const expandHandler = () => {
       setOpenedJobs(
          openedJobs.map((j) => {
-            if (j.id === _id) {
+            if (j.id === id) {
                return { ...j, isOpen: !j.isOpen }
             }
             return j
@@ -32,13 +33,13 @@ const Person: FC<PersonProps> = ({ _id, days, employee, isReportExist, currentJo
    return (
       <div className={css.row}>
          <p style={{ paddingLeft: isReportExist ? '22px' : '5px' }}>
-            {employee}
+            {describe_name}
             {isReportExist ? (
                <button
                   onClick={expandHandler}
                   style={{
                      backgroundImage: `url(/assets/images/svg/custom-button-icon-${
-                        openedJobs.find((j) => j.id === _id)?.isOpen ? 'minus' : 'plus'
+                        openedJobs.find((j) => j.id === id)?.isOpen ? 'minus' : 'plus'
                      }.svg)`
                   }}
                   className={css.expand}

@@ -1,34 +1,128 @@
-import { useAppDispatch, useAppSelector } from '@/hooks/redux'
+import Loader from '@/components/UI/loader/Loader'
+import { IJob } from '@/constants/jobs'
+import { useAppSelector } from '@/hooks/redux'
+import useUserByID from '@/hooks/useUserByID'
 import translate from '@/i18n/translate'
-import { JobsActions } from '@/store/reducers/jobsReducer'
-import React, { FC, Fragment, useEffect, useState } from 'react'
-import { reactLocalStorage } from 'reactjs-localstorage'
+import { useGetJobsByUserIdAndPeriodQuery, useUpdateJobsByUserIdAndPeriodMutation } from '@/store/reducers/apiReducer'
+import Image from 'next/image'
+import React, { CSSProperties, FC, Fragment, useEffect, useMemo, useReducer, useState } from 'react'
 import css from '../Boards.module.scss'
 import TimeHeader from './TimeHeader/TimeHeader'
 import TimeJob from './TimeJob/TimeJob'
 import TimeNavigate from './TimeNavigate/TimeNavigate'
 import TimeService from './services'
-import { IUser } from '@/constants/users'
+
+interface IJobDataAction {
+   type:
+      | 'ship_name'
+      | 'project_number'
+      | 'job_description'
+      | 'hours_worked'
+      | 'order'
+      | 'add'
+      | 'remove'
+      | 'reset'
+      | 'reload'
+   payload: { val: any; index: number } | number | string | ''
+}
 
 const Time: FC = () => {
+   const { data: user } = useUserByID()
+   const [sendData, { isLoading: updateLoading }] = useUpdateJobsByUserIdAndPeriodMutation()
    const [currentDate, setCurrentDate] = useState(new Date())
-   const dispatch = useAppDispatch()
    const i18n = useAppSelector((state) => state.reducer.content.i18n)
    const timeService = new TimeService(i18n)
-   const localUser = reactLocalStorage.getObject('jobsLocal') as IUser
-   const jobs = useAppSelector((state) => state.reducer.jobs)
-
-   useEffect(() => {
-      if (Object.keys(localUser).length) {
-         const existJobs = localUser.reports.find(
-            (j) => j.period === currentDate.toLocaleString('en-US', { month: 'long', year: 'numeric' })
-         )?.jobs
-         if (existJobs) dispatch(JobsActions.updateJobs(existJobs))
+   const period = currentDate.toLocaleString('en-US', { month: 'long', year: 'numeric' })
+   const { data, isSuccess, isError, refetch } = useGetJobsByUserIdAndPeriodQuery({
+      userId: user?.id,
+      period
+   })
+   const sortedData = useMemo(() => {
+      if (data) {
+         return [...data].sort((a, b) => a.order - b.order)
       }
-   }, [currentDate])
+   }, [data])
 
    const days = timeService.getDaysOfMonth(currentDate)
-   const timeServiceProps = { timeService, currentDate, setCurrentDate, days }
+
+   const new_hours_worked = useMemo(() => {
+      return days.map((d) => (d.day_of ? -0.5 : 0))
+   }, [currentDate])
+
+   const empty_job = {
+      ship_name: '',
+      job_description: '',
+      project_number: '',
+      hours_worked: new_hours_worked,
+      report_period: period
+   }
+
+   const [jobs, updateJobs] = useReducer((state: IJob[], action: IJobDataAction): IJob[] => {
+      const updateProperty = (property: IJobDataAction['type']) => {
+         const { val, index } = action.payload as { val: string | number | number[]; index: number }
+         let correctVal = val
+
+         if (property === 'project_number') {
+            correctVal = action.payload['val'].replace(/\D/g, '')
+         }
+
+         const updatedJob = { ...state[index], [property]: correctVal }
+
+         return [...state.slice(0, index), updatedJob, ...state.slice(index + 1)]
+      }
+
+      switch (action.type) {
+         case 'ship_name':
+            return updateProperty('ship_name')
+         case 'project_number': {
+            return updateProperty('project_number')
+         }
+         case 'job_description': {
+            return updateProperty('job_description')
+         }
+         case 'hours_worked': {
+            return updateProperty('hours_worked')
+         }
+         case 'order': {
+            return updateProperty('order')
+         }
+         case 'add': {
+            return !state
+               ? [{ ...empty_job, order: 0 }]
+               : [...state, { ...empty_job, order: state[state.length - 1].order + 1 }]
+         }
+         case 'remove': {
+            return state.length <= 1 ? state : [...state].filter((_, i) => i !== action.payload)
+         }
+         case 'reload':
+            return [...sortedData]
+         case 'reset': {
+            return [{ ...empty_job, order: 0 }]
+         }
+         default:
+            return state
+      }
+   }, sortedData)
+
+   const timeServiceProps = { timeService, currentDate, setCurrentDate, days, updateJobs }
+
+   const sendReport = async () => {
+      const updateJobsData = { userId: user?.id, period, jobs }
+      const result = await sendData(updateJobsData)
+
+      if ('error' in result) return
+      await refetch()
+   }
+
+   useEffect(() => {
+      if (isSuccess && data.length) {
+         return updateJobs({ type: 'reload', payload: '' })
+      }
+
+      if (!jobs?.length) updateJobs({ type: 'add', payload: '' })
+   }, [data, currentDate])
+
+   if (!jobs) return <Loader />
 
    return (
       <div className={css.time}>
@@ -36,7 +130,7 @@ const Time: FC = () => {
          <div className={css.body}>
             <TimeHeader {...timeServiceProps} />
             {jobs.map((j, index) => {
-               const jobProps = { j, days }
+               const jobProps = { j, days, jobs, updateJobs }
 
                return (
                   <Fragment key={index}>
@@ -44,8 +138,21 @@ const Time: FC = () => {
                   </Fragment>
                )
             })}
-            <TimeNavigate currentDate={currentDate} />
-            <button className={css.send}>{translate('dashboard.timereport-send')}</button>
+            <TimeNavigate updateJobs={updateJobs} />
+            <button onClick={sendReport} className={css.send} disabled={updateLoading}>
+               {updateLoading ? null : translate('dashboard.timereport-send')}
+               <Image
+                  style={{ display: updateLoading ? 'block' : 'none' }}
+                  src='/assets/images/svg/request-loader.svg'
+                  width={14}
+                  height={14}
+                  alt='loader'
+               />
+            </button>
+            <div className={css.network_status}>
+               <p>{translate('server-status')}:</p>
+               <span style={{ '--bg': isError ? 'red' : 'green' } as CSSProperties} />
+            </div>
          </div>
       </div>
    )

@@ -1,19 +1,27 @@
-import { IReport } from './jobs'
-
 type TCurrentTask = {
    value: string
    time: string
 }
 
+export interface Job {
+   id: number
+   ship_name: string
+   job_description: string
+   project_number: string
+   hours_worked: number[]
+   report_period: string
+   order: number
+}
+
 export interface IUser {
-   _id: string
-   employee: string
-   avatar: string
-   describe_name: string
-   describe_date: string
-   describe_specialization: string
-   describe_position: string
-   describe_role: 'CTO' | 'Employee' | 'Moderator'
-   currentTask: TCurrentTask
-   reports: IReport[]
+   id: string
+   describe_name?: string
+   describe_date?: string
+   describe_specialization?: string
+   describe_position?: string
+   describe_role: string
+   currentTask?: string
+   jobs: Job[]
+   describe_password: string
+   mail: string
 }

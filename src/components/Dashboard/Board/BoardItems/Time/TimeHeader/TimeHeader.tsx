@@ -1,14 +1,13 @@
 import React, { CSSProperties, FC } from 'react'
 import TimeService from '../services'
 import css from './TimeHeader.module.scss'
-import { useAppDispatch } from '@/hooks/redux'
-import { JobsActions } from '@/store/reducers/jobsReducer'
 
 interface ITimeHeader {
    timeService: TimeService
    currentDate: Date
    setCurrentDate: React.Dispatch<React.SetStateAction<Date>>
    days: ReturnType<TimeService['getDaysOfMonth']>
+   updateJobs: any
 }
 
 const getStyle = (day_of: boolean) => {
@@ -20,16 +19,14 @@ const getStyle = (day_of: boolean) => {
    return style
 }
 
-const TimeHeader: FC<ITimeHeader> = ({ timeService, currentDate, setCurrentDate, days }) => {
-   const dispatch = useAppDispatch()
-
+const TimeHeader: FC<ITimeHeader> = ({ timeService, currentDate, setCurrentDate, days, updateJobs }) => {
    const previousMonth = () => {
-      dispatch(JobsActions.resetJobs())
+      updateJobs({ type: 'reset', payload: '' })
       setCurrentDate((prevDate) => timeService.getPreviousMonth(prevDate))
    }
 
    const nextMonth = () => {
-      dispatch(JobsActions.resetJobs())
+      updateJobs({ type: 'reset', payload: '' })
       setCurrentDate((prevDate) => timeService.getNextMonth(prevDate))
    }
 

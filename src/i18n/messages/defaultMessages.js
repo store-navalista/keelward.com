@@ -22,6 +22,7 @@ export default {
    'services.title-chapter_5': { defaultMessage: '3D Scanning / Civil engineering' },
    'tooltip.header-menu': { defaultMessage: 'Menu' },
    'tooltip.header-cabinet': { defaultMessage: 'Cabinet' },
+   'tooltip.header-logout': { defaultMessage: 'Logout' },
    'tooltip.header-timemen': { defaultMessage: 'Time Management' },
    'tooltip.header-careers': { defaultMessage: 'Careers' },
    'tooltip.header-certificates': { defaultMessage: 'Certificates' },
@@ -43,7 +44,8 @@ export default {
    'dashboard.nav-qr': { defaultMessage: 'Generate QR Code' },
    'dashboard.nav-radio': { defaultMessage: 'Radio' },
    'dashboard.nav-employees': { defaultMessage: 'Employees' },
-   'dashboard.nav-users': { defaultMessage: 'Users' },
+   'dashboard.nav-timing': { defaultMessage: 'Timing' },
+   'dashboard.nav-logout': { defaultMessage: 'Logout' },
    'dashboard.nav-author': { defaultMessage: 'Made by Sergey Otinov' },
 
    'dashboard.account-describe_name': { defaultMessage: 'Name:' },
@@ -85,7 +87,27 @@ export default {
    'dashboard.users-describe_specialization-ph': { defaultMessage: 'Engineer' },
    'dashboard.users-describe_position': { defaultMessage: 'Position' },
    'dashboard.users-describe_position-ph': { defaultMessage: 'Chief Engineer' },
+   'dashboard.users-describe_password': { defaultMessage: 'Password' },
+   'dashboard.users-describe_password-ph': { defaultMessage: 'Password' },
    'dashboard.users-describe_role': { defaultMessage: 'Role' },
+   'dashboard.users-create_user': { defaultMessage: 'Create new user' },
+   'dashboard.users-create_user-btn': { defaultMessage: 'Create user' },
+   'dashboard.users-title': { defaultMessage: 'Employees' },
 
-   'dashboard.modal-attention': { defaultMessage: 'Are you sure you want to continue?' }
+   'dashboard.modal-attention': { defaultMessage: 'Are you sure you want to continue?' },
+
+   'custom.client-errors_user_input_empty': { defaultMessage: 'The Name field cannot be empty or shorter than 5 characters' },
+   'custom.client-errors_password_input_empty': { defaultMessage: 'The Password field cannot be empty or shorter than 5 characters' },
+   'custom.server-errors_user_exist_error': { defaultMessage: 'The username must not be repeated. Case matters' },
+
+   'custom.login-errors-empty_username': { defaultMessage: 'The name field cannot be empty or less than 5 characters' },
+   'custom.login-errors-empty_password': { defaultMessage: 'The password field cannot be empty or less than 5 characters' },
+   'custom.login-errors-no_such_employee_exists': { defaultMessage: 'No such employee exists' },
+   'custom.login-errors-incorrect_password': { defaultMessage: 'Incorrect password' },
+
+   'server-status': { defaultMessage: 'Server status' },
+
+   'unexpected_error': { defaultMessage: 'Unexpected error' },
+   'i18n_error': { defaultMessage: 'i18n error' },
+   'network_request_failed': { defaultMessage: 'Network error' }
 }

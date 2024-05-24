@@ -1,11 +1,9 @@
 import { IJob } from '@/constants/jobs'
-import { useAppDispatch } from '@/hooks/redux'
 import useOutsideClick from '@/hooks/useOutsideClick'
-import { JobsActions } from '@/store/reducers/jobsReducer'
+import translate from '@/i18n/translate'
 import React, { CSSProperties, FC, useRef } from 'react'
 import TimeService from '../services'
 import css from './TimeJob.module.scss'
-import translate from '@/i18n/translate'
 
 interface ITimeJob {
    j: IJob
@@ -16,6 +14,8 @@ interface IWorkedTime extends ITimeJob {
    setisTimingOpen: React.Dispatch<React.SetStateAction<boolean>>
    i: number
    colors: string[]
+   updateJobs: any
+   index: number
 }
 
 const quick = [
@@ -37,8 +37,7 @@ const getValue = (v: number) => {
    }
 }
 
-const WorkedTime: FC<IWorkedTime> = ({ j, i, days, setisTimingOpen, colors }) => {
-   const dispatch = useAppDispatch()
+const WorkedTime: FC<IWorkedTime> = ({ j, i, days, updateJobs, index, setisTimingOpen, colors }) => {
    const ref = useRef(null)
    const { hours_worked } = j
 
@@ -48,12 +47,12 @@ const WorkedTime: FC<IWorkedTime> = ({ j, i, days, setisTimingOpen, colors }) =>
       const scrollDirection = e.deltaY > 0 ? (j.hours_worked[i] > -1.5 ? -0.5 : 0) : j.hours_worked[i] < 24 ? 0.5 : 0
       const correctValue = j.hours_worked[i] + scrollDirection
       const changedArr = [...hours_worked].with(i, correctValue)
-      dispatch(JobsActions.updateJob({ ...j, hours_worked: changedArr }))
+      updateJobs({ type: 'hours_worked', payload: { val: changedArr, index } })
    }
 
    function updateValue(value: number) {
       const changedArr = [...hours_worked].with(i, value)
-      dispatch(JobsActions.updateJob({ ...j, hours_worked: changedArr }))
+      updateJobs({ type: 'hours_worked', payload: { val: changedArr, index } })
       setisTimingOpen(false)
    }
 

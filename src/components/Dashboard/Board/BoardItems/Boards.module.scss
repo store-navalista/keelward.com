@@ -52,6 +52,25 @@
    margin-right: auto;
    font-family: var(--font-nunito-semibold);
    overflow: auto;
+   .network_status {
+      position: absolute;
+      right: 30px;
+      bottom: 25px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      p {
+         font-size: 12px;
+      }
+      span {
+         --bg: red;
+         display: block;
+         width: 12px;
+         height: 12px;
+         border-radius: 50%;
+         background-color: var(--bg);
+      }
+   }
    button {
       cursor: pointer;
       background-color: transparent;
@@ -77,12 +96,13 @@
    }
    button.send {
       box-sizing: border-box;
+      height: 40px;
+      width: 160px;
       background-color: transparent;
       border: 2px solid #fff;
       font-family: var(--font-nunito-bold);
       box-shadow: var(--shadow-out);
       margin: 30px 0 0 40px;
-      padding: 8px 16px 6px;
       border-radius: 20px;
       text-transform: uppercase;
       color: var(--main-red);
@@ -92,6 +112,13 @@
       }
       &:active {
          transform: scale(0.97);
+      }
+      &:disabled {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         transform: scale(0.97);
+         background-color: #858585;
       }
    }
 }

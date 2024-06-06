@@ -1,4 +1,15 @@
-export type TID = 'greating' | 'account' | 'time' | 'qr' | 'radio' | 'employees' | 'timing' | 'CTO' | 'logout'
+export type TID =
+   | 'greating'
+   | 'ctoProperty'
+   | 'account'
+   | 'time'
+   | 'qr'
+   | 'radio'
+   | 'employees'
+   | 'timing'
+   | 'CTO'
+   | 'logout'
+   | 'return'
 
 type TBoardItems = {
    id: TID
@@ -7,6 +18,21 @@ type TBoardItems = {
 }[]
 
 const nav: TBoardItems = [
+   {
+      id: 'greating',
+      icon: 'dashboard-nav-greating.svg',
+      title: 'dashboard.nav-greating'
+   },
+   {
+      id: 'return',
+      icon: 'dashboard-nav-return.svg',
+      title: 'dashboard.nav-return'
+   },
+   {
+      id: 'ctoProperty',
+      icon: 'dashboard-nav-ctoProperty.svg',
+      title: 'dashboard.nav-ctoProperty'
+   },
    {
       id: 'account',
       icon: 'dashboard-nav-info.svg',
@@ -47,7 +73,7 @@ const nav: TBoardItems = [
 const items = {
    CTO: ['greating', 'account', 'employees', 'timing', 'qr', 'logout'],
    Employee: ['greating', 'account', 'time', 'qr', 'radio', 'logout'],
-   Moderator: ['greating', 'CTO', 'employees', 'timing', 'qr', 'radio', 'logout']
+   Moderator: ['greating', 'ctoProperty', 'CTO', 'employees', 'timing', 'qr', 'radio', 'return', 'logout']
 }
 
 export const DASHBOARD = {

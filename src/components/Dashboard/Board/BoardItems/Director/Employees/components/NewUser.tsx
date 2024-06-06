@@ -1,5 +1,5 @@
 import translate from '@/i18n/translate'
-import { useCreateUserMutation, useGetUsersQuery } from '@/store/reducers/apiReducer'
+import { useCreateUserMutation, useGetCTOQuery, useGetUsersQuery } from '@/store/reducers/apiReducer'
 import Image from 'next/image'
 import React, { FC, useEffect, useReducer, useState } from 'react'
 import { useIntl } from 'react-intl'
@@ -21,6 +21,7 @@ interface CreateUserData {
    describe_specialization: string
    describe_position: string
    describe_password: string
+   CTO: boolean
 }
 
 interface ChangeUserAction {
@@ -28,23 +29,26 @@ interface ChangeUserAction {
    payload: string
 }
 
-const initialState = {
-   describe_name: '',
-   describe_date: '',
-   describe_specialization: '',
-   describe_position: '',
-   describe_password: ''
-}
-
 interface NewUserProps {
    setisModal: React.Dispatch<React.SetStateAction<boolean>>
    setLog: React.Dispatch<React.SetStateAction<LogType>>
+   role?: 'Employee' | 'CTO'
 }
 
-const NewUser: FC<NewUserProps> = ({ setisModal, setLog }) => {
+const NewUser: FC<NewUserProps> = ({ setisModal, setLog, role = 'Employee' }) => {
    const [createUser, { error, isLoading }] = useCreateUserMutation()
    const [errorMessage, setErrorMessage] = useState({ type: '', message: '' })
    const { refetch } = useGetUsersQuery()
+   const { refetch: CTO_refetch } = useGetCTOQuery()
+
+   const initialState = {
+      describe_name: '',
+      describe_date: '',
+      describe_specialization: '',
+      describe_position: '',
+      describe_password: '',
+      CTO: role === 'CTO'
+   }
 
    const [userData, setUserData] = useReducer((state: CreateUserData, action: ChangeUserAction) => {
       switch (action.type) {
@@ -96,7 +100,7 @@ const NewUser: FC<NewUserProps> = ({ setisModal, setLog }) => {
       }
 
       user_log(setLog, '001', userData.describe_name)
-      await refetch()
+      role === 'Employee' ? await refetch() : await CTO_refetch()
       setisModal(false)
    }
 
@@ -139,7 +143,7 @@ const NewUser: FC<NewUserProps> = ({ setisModal, setLog }) => {
             })}
             <div className={css.input_box}>
                <p>{translate('dashboard.users-describe_role')}</p>
-               <UI.Input locked icon='user-describe_role.svg' value='Employee' readOnly />
+               <UI.Input locked icon='user-describe_role.svg' value={role} readOnly />
             </div>
          </div>
          {errorMessage.message ? <p className={css.error_message}>{translate(errorMessage.message)}</p> : null}

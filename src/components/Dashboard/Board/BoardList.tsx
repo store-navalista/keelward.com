@@ -7,6 +7,8 @@ import { Director } from './BoardItems/Director'
 import QR from './BoardItems/QR'
 import Radio from './BoardItems/Radio'
 import Time from './BoardItems/Time/Time'
+import Greating from './BoardItems/Greating/Greating'
+import CTOProperty from './BoardItems/CTOProperty/CTOProperty'
 
 const BoardList: FC = () => {
    const type = useAppSelector((state) => state.reducer.dashboard.dashboardItems)
@@ -14,6 +16,8 @@ const BoardList: FC = () => {
 
    return (
       <div className={css.wrapper}>
+         {type.greating ? <Greating /> : null}
+         {type.ctoProperty ? <CTOProperty /> : null}
          {type.account ? <Account user={user} /> : null}
          {type.time ? <Time /> : null}
          {type.qr ? <QR /> : null}

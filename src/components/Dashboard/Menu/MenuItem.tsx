@@ -3,9 +3,10 @@ import { useAppDispatch, useAppSelector } from '@/hooks/redux'
 import translate from '@/i18n/translate'
 import { DashboardActions } from '@/store/reducers/dashboardReducer'
 import { motion } from 'framer-motion'
+import { useRouter } from 'next/router'
 import * as React from 'react'
-import css from './Menu.module.scss'
 import { useCookies } from 'react-cookie'
+import css from './Menu.module.scss'
 
 const variants = {
    open: {
@@ -37,12 +38,14 @@ export const MenuItem: React.FC<MenuItemProps> = React.memo(({ i }) => {
    const dashboarItems = useAppSelector((state) => state.reducer.dashboard.dashboardItems)
    const { id, icon, title } = i
    const [, , removeCookie] = useCookies()
+   const router = useRouter()
 
    function setItem() {
       const items = { ...dashboarItems }
+
       for (const key in items) {
          items[key] = false
-         if (key === id) items[key] = !dashboarItems[id]
+         if (key === id) items[key] = true
       }
 
       dispatch(DashboardActions.setDahsboardItems(items))
@@ -53,7 +56,11 @@ export const MenuItem: React.FC<MenuItemProps> = React.memo(({ i }) => {
          case 'logout': {
             removeCookie('token')
             removeCookie('user_id')
-            return
+            break
+         }
+         case 'return': {
+            router.push({ pathname: '/' })
+            break
          }
          default:
             setItem()

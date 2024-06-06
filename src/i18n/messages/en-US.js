@@ -49,6 +49,10 @@ export default {
       'dashboard.nav-employees': 'Employees',
       'dashboard.nav-timing': 'Timing',
       'dashboard.nav-logout': 'Logout',
+      'dashboard.nav-ctoProperty': 'Property CTO',
+      'dashboard.nav-return': 'Return to site',
+      'dashboard.nav-greating': 'Greating',
+
       'dashboard.nav-author': 'Made by Sergey Otinov',
 
       'dashboard.account-describe_name': 'Name:',
@@ -95,7 +99,12 @@ export default {
       'dashboard.users-describe_role': 'Role',
       'dashboard.users-create_user': 'Create new user',
       'dashboard.users-create_user-btn': 'Create user',
+      'dashboard.users-mail': 'Mail',
       'dashboard.users-title': 'Employees',
+
+      'dashboard.users-cto-empty': 'You still haven\'t created a technical director',
+
+      'dashboard.users-welcome': 'welcome to the time tracking program ETM "Garfield"',
 
       'dashboard.modal-attention': 'Are you sure you want to continue?',
 

@@ -11,6 +11,10 @@
    box-shadow: var(--shadow-aside);
    margin-top: 10px;
    min-height: 870px;
+   @media (max-width: $mobile) {
+      height: calc(100vh - 265px);
+      min-height: auto;
+   }
    .heading {
       position: absolute;
       top: calc(-165.1px + 225.1 * (100vw / 2560));

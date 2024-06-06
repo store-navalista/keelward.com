@@ -49,6 +49,10 @@ export default {
       'dashboard.nav-employees': 'Сотрудники',
       'dashboard.nav-timing': 'Тайминг',
       'dashboard.nav-logout': 'Выйти',
+      'dashboard.nav-ctoProperty': 'CTO данные',
+      'dashboard.nav-return': 'Вернуться на сайт',
+      'dashboard.nav-greating': 'Приветствие',
+
       'dashboard.nav-author': 'Автор: Сергей Отинов',
 
       'dashboard.account-describe_name': 'Имя:',
@@ -95,7 +99,12 @@ export default {
       'dashboard.users-describe_role': 'Роль',
       'dashboard.users-create_user': 'Создать пользователя',
       'dashboard.users-create_user-btn': 'Создать',
+      'dashboard.users-mail': 'Почта',
       'dashboard.users-title': 'Сотрудники',
+
+      'dashboard.users-cto-empty': 'У вас до сих пор не создан технический директор',
+
+      'dashboard.users-welcome': 'добро пожаловать в программу по учету рабочего времени ETM "Garfield"',
 
       'dashboard.modal-attention': 'Вы уверены, что хотите продолжить?',
 

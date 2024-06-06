@@ -8,9 +8,9 @@ import { useGetUserQuery, useLoginMutation } from '@/store/reducers/apiReducer'
 import { AnimatePresence, motion } from 'framer-motion'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import React, { FC, useEffect, useRef, useState } from 'react'
-import css from './Cabinet.module.scss'
+import React, { FC, KeyboardEvent, useEffect, useRef, useState } from 'react'
 import { useCookies } from 'react-cookie'
+import css from './Cabinet.module.scss'
 
 const Cabinet: FC = () => {
    const [login, { data, isLoading, error, isError, isSuccess }] = useLoginMutation()
@@ -18,11 +18,29 @@ const Cabinet: FC = () => {
    const [loginData, setLoginData] = useState({ username: '', password: '' })
    const [i18n_error, setI18n_error] = useState('')
    const wrapperRef = useRef(null)
+   const keysRef = useRef(null)
    const hoverRef = useRef(null)
    const isHovering = useHover(hoverRef)
    const router = useRouter()
    const [cookies, setCookies] = useCookies(['token', 'user_id'])
    const { data: user } = useGetUserQuery({ userId: cookies['user_id'] })
+
+   const handlePressKey = (event: KeyboardEvent) => {
+      if (event.key === 'Enter') {
+         logIn()
+      }
+   }
+   useEffect(() => {
+      if (keysRef.current) {
+         keysRef.current.addEventListener('keydown', handlePressKey)
+
+         return () => {
+            if (keysRef.current) {
+               keysRef.current.removeEventListener('keydown', handlePressKey)
+            }
+         }
+      }
+   }, [isOpen, handlePressKey])
 
    function exit() {
       setLoginData({ username: '', password: '' })
@@ -49,6 +67,13 @@ const Cabinet: FC = () => {
    const logIn = async () => {
       const invalidate = isCustomError()
       if (!invalidate) await login(loginData)
+
+      if (isSuccess) {
+         router.push({
+            pathname: '/dashboard',
+            query: { id: cookies['user_id'] }
+         })
+      }
    }
 
    const routeCabinet = () => {
@@ -112,7 +137,7 @@ const Cabinet: FC = () => {
                      exit={{ opacity: 0 }}
                      transition={{ duration: 0.3 }}
                   >
-                     <div className={css.wrapper}>
+                     <div ref={keysRef} className={css.wrapper}>
                         <div ref={wrapperRef} className={css.block}>
                            <h3>{translate('auth-title')}</h3>
                            <div className={css.username}>

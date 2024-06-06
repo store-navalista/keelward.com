@@ -46,6 +46,10 @@ export default {
    'dashboard.nav-employees': { defaultMessage: 'Employees' },
    'dashboard.nav-timing': { defaultMessage: 'Timing' },
    'dashboard.nav-logout': { defaultMessage: 'Logout' },
+   'dashboard.nav-ctoProperty': { defaultMessage: 'Property CTO' },
+   'dashboard.nav-return': { defaultMessage: 'Return to site' },
+   'dashboard.nav-greating': { defaultMessage: 'Greating' },
+
    'dashboard.nav-author': { defaultMessage: 'Made by Sergey Otinov' },
 
    'dashboard.account-describe_name': { defaultMessage: 'Name:' },
@@ -92,7 +96,12 @@ export default {
    'dashboard.users-describe_role': { defaultMessage: 'Role' },
    'dashboard.users-create_user': { defaultMessage: 'Create new user' },
    'dashboard.users-create_user-btn': { defaultMessage: 'Create user' },
+   'dashboard.users-mail': { defaultMessage: 'Mail' },
    'dashboard.users-title': { defaultMessage: 'Employees' },
+
+   'dashboard.users-cto-empty': { defaultMessage: 'You still haven\'t created a technical director' },
+
+   'dashboard.users-welcome': { defaultMessage: 'welcome to the time tracking program ETM "Garfield"' },
 
    'dashboard.modal-attention': { defaultMessage: 'Are you sure you want to continue?' },
 

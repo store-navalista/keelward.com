@@ -12,6 +12,7 @@ interface CreateUserData {
    describe_specialization?: string
    describe_position?: string
    describe_password: string
+   CTO?: boolean
 }
 
 type UpdateUserData = Omit<CreateUserData, 'describe_password'>
@@ -66,6 +67,34 @@ export const api = createApi({
             variables: { userId }
          }),
          transformResponse: (response: { getUser: IUser }) => response.getUser
+      }),
+
+      getCTO: builder.query<IUser, void>({
+         query: () => ({
+            document: gql`
+               query {
+                  getCTO {
+                     id
+                     describe_name
+                     describe_date
+                     describe_specialization
+                     describe_position
+                     describe_role
+                     currentTask
+                     describe_password
+                     mail
+                     jobs {
+                        ship_name
+                        job_description
+                        project_number
+                        hours_worked
+                        report_period
+                     }
+                  }
+               }
+            `
+         }),
+         transformResponse: (response: { getCTO: IUser }) => response.getCTO
       }),
 
       getUsers: builder.query<IUser[], void>({
@@ -150,7 +179,14 @@ export const api = createApi({
       }),
 
       createUser: builder.mutation<IUser, CreateUserData>({
-         query: ({ describe_name, describe_date, describe_specialization, describe_position, describe_password }) => ({
+         query: ({
+            describe_name,
+            describe_date,
+            describe_specialization,
+            describe_position,
+            describe_password,
+            CTO = false
+         }) => ({
             document: gql`
                mutation CreateUser(
                   $describe_name: String!
@@ -158,6 +194,7 @@ export const api = createApi({
                   $describe_specialization: String
                   $describe_position: String
                   $describe_password: String!
+                  $CTO: Boolean
                ) {
                   createUser(
                      createUserData: {
@@ -166,6 +203,7 @@ export const api = createApi({
                         describe_specialization: $describe_specialization
                         describe_position: $describe_position
                         describe_password: $describe_password
+                        CTO: $CTO
                      }
                   ) {
                      id
@@ -177,7 +215,8 @@ export const api = createApi({
                describe_date,
                describe_specialization,
                describe_position,
-               describe_password
+               describe_password,
+               CTO
             }
          }),
          transformResponse: (response: { createUser: IUser }) => response.createUser
@@ -254,5 +293,6 @@ export const {
    useDeleteUserMutation,
    useUpdatePasswordMutation,
    useUpdateUserMutation,
-   useLoginMutation
+   useLoginMutation,
+   useGetCTOQuery
 } = api

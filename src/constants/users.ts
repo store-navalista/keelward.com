@@ -3,6 +3,8 @@ type TCurrentTask = {
    time: string
 }
 
+export type RolesType = 'Employee' | 'CTO' | 'Moderator'
+
 export interface Job {
    id: number
    ship_name: string
@@ -15,11 +17,11 @@ export interface Job {
 
 export interface IUser {
    id: string
-   describe_name?: string
+   describe_name: string
    describe_date?: string
    describe_specialization?: string
    describe_position?: string
-   describe_role: string
+   describe_role: RolesType
    currentTask?: string
    jobs: Job[]
    describe_password: string

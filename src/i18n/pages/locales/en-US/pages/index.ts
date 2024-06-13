@@ -1,3 +1,4 @@
+import { SD_union } from '../../helpers/SD'
 import { default as ABOUT } from './ABOUT.json'
 import { default as BOOKLETS } from './BOOKLETS.json'
 import { default as BROCH } from './BROCH.json'
@@ -39,7 +40,7 @@ export default {
       REPAIR,
       SCANSURV,
       SCANSURVCIV,
-      SD,
+      SD: SD_union(SD),
       SHIPREG,
       TECHADV,
       TONNAGE,

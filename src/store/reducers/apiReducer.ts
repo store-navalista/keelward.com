@@ -1,6 +1,5 @@
 import { IJob } from '@/constants/jobs'
 import { IUser } from '@/constants/users'
-import { RootState } from '@/hooks/redux'
 import { createApi } from '@reduxjs/toolkit/query/react'
 import { graphqlRequestBaseQuery } from '@rtk-query/graphql-request-base-query'
 import { gql } from 'graphql-request'
@@ -23,11 +22,9 @@ interface UpdateJobsData {
    jobs: IJob[]
 }
 
-const apiUrl = 'http://localhost:3001/graphql/'
-
 export const api = createApi({
    baseQuery: graphqlRequestBaseQuery({
-      url: apiUrl,
+      url: process.env.NEXT_PUBLIC_API,
       prepareHeaders: (headers) => {
          const token = Cookies.get('token')
 

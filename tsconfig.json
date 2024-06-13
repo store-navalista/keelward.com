@@ -21,5 +21,5 @@
       "jsx": "preserve"
    },
    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "additional.d.ts"],
-   "exclude": ["node_modules", "next.config.js", ".next"]
+   "exclude": ["node_modules", "next.config.js", "environment.d.ts", ".next"]
 }

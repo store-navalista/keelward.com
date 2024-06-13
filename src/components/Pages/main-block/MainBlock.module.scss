@@ -13,7 +13,7 @@
    min-height: 870px;
    @media (max-width: $mobile) {
       height: calc(100vh - 265px);
-      min-height: auto;
+      min-height: 790px;
    }
    .heading {
       position: absolute;

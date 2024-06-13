@@ -7,6 +7,9 @@
    @media (max-width: $medium) {
       padding-top: 155px;
    }
+   @media (max-width: $mobile) {
+      padding-top: 120px;
+   }
    & > h2 {
       position: absolute;
       left: 50%;
@@ -18,6 +21,7 @@
       text-transform: uppercase;
       @media (max-width: $mobile) {
          font-size: 30px;
+         top: 74px;
       }
    }
    section {

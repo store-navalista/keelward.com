@@ -3,7 +3,7 @@ import { IUser } from '@/constants/users'
 import translate from '@/i18n/translate'
 import { useGetUserQuery } from '@/store/reducers/apiReducer'
 import Image from 'next/image'
-import React, { FC, useEffect } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import css from './Boards.module.scss'
 
 const rows = ['name', 'date', 'specialization', 'position', 'role']
@@ -16,6 +16,8 @@ const Account: FC<{ user: IUser }> = ({ user }) => {
    const { refetch } = useGetUserQuery({ userId: user.id })
    const { describe_name } = user
    const avatar = describe_name.toLowerCase().replace(/[\s_-]+/g, '-')
+   const URL = '/assets/images/dashboard/'
+   const [actualAvatar, setAvatar] = useState(`${URL}${avatar}.png`)
 
    const refresh = async () => await refetch()
 
@@ -27,7 +29,13 @@ const Account: FC<{ user: IUser }> = ({ user }) => {
       <div className={css.account}>
          <div className={css.avatar}>
             <div>
-               <Image src={`/assets/images/dashboard/${avatar}.png`} alt={'Person'} width={w} height={w} />
+               <Image
+                  src={actualAvatar}
+                  alt={'Person'}
+                  width={w}
+                  height={w}
+                  onError={() => setAvatar(`${URL}new-employee.png`)}
+               />
             </div>
             <div className={css.describe}>
                {rows.map((r, i) => {

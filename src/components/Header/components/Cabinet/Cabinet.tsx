@@ -24,6 +24,7 @@ const Cabinet: FC = () => {
    const router = useRouter()
    const [cookies, setCookies] = useCookies(['token', 'user_id'])
    const { data: user } = useGetUserQuery({ userId: cookies['user_id'] })
+   const [isHidden, setisHidden] = useState(true)
 
    const handlePressKey = (event: KeyboardEvent) => {
       if (event.key === 'Enter') {
@@ -145,7 +146,7 @@ const Cabinet: FC = () => {
                               <div>
                                  <input
                                     type='text'
-                                    placeholder='user@gmail.com'
+                                    placeholder='Ivan Ivanov'
                                     value={loginData.username}
                                     onChange={(e) => setLoginData({ ...loginData, username: e.target.value })}
                                  />
@@ -155,10 +156,19 @@ const Cabinet: FC = () => {
                               <h4>{translate('auth-password')}</h4>
                               <div>
                                  <input
-                                    type='password'
+                                    type={isHidden ? 'password' : 'text'}
                                     placeholder='password123'
                                     value={loginData.password}
                                     onChange={(e) => setLoginData({ ...loginData, password: e.target.value })}
+                                 />
+                                 <button
+                                    className={css.see}
+                                    onClick={() => setisHidden(!isHidden)}
+                                    style={{
+                                       backgroundImage: `url(/assets/images/svg/user-password-${
+                                          isHidden ? 'hide' : 'show'
+                                       }.svg)`
+                                    }}
                                  />
                               </div>
                            </div>

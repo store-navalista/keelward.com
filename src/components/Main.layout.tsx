@@ -8,12 +8,16 @@ import st from './Main.layout.module.scss'
 import Seo from './seo'
 import { PagesData as SEO } from '@/i18n/pages/locales'
 import { Map } from './Pages/map/Map'
+import { useCookies } from 'react-cookie'
+import { useRouter } from 'next/router'
+import useUserByID from '@/hooks/useUserByID'
 
 const MainLayout: FC<{ children: ReactNode }> = ({ children }) => {
    const isLaptop = useAppSelector((state) => state.reducer.content.mediaQuery.isLaptop)
    const i18n = useAppSelector((state) => state.reducer.content.i18n)
    const id = useAppSelector((state) => state.reducer.content._id)
    const [scrollStep, setcrollStep] = useState(0)
+
    const scroll = () => {
       setcrollStep(window.pageYOffset)
    }

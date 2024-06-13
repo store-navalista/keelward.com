@@ -140,6 +140,11 @@
             padding: 8px;
             border-radius: 8px;
             z-index: 5;
+            &[data-isout='true'] {
+               left: auto;
+               right: 0;
+               transform: translate(0, -50%);
+            }
             .apply {
                position: absolute;
                width: 15px;

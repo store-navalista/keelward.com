@@ -11,11 +11,11 @@ const DashboardLayout: FC<{ children: ReactNode }> = ({ children }) => {
    const i18n = useAppSelector((state) => state.reducer.content.i18n)
    const id = useAppSelector((state) => state.reducer.content._id)
    const [scrollStep, setcrollStep] = useState(0)
-   const { data: user } = useUserByID()
+   const data = useUserByID()
 
    return (
       <ErrorBoundary fallbackRender={ErrorBoundaryComponent}>
-         <Seo siteTitle='Dashboard' pageTitle={user?.describe_name} description='All in one!' />
+         <Seo siteTitle='Dashboard' pageTitle={data?.data?.describe_name} description='All in one!' />
          <main className={css.wrapper}>{children}</main>
       </ErrorBoundary>
    )

@@ -40,7 +40,7 @@ export default {
       REPAIR,
       SCANSURV,
       SCANSURVCIV,
-      SD,
+      SD: SD_union(SD),
       SHIPREG,
       TECHADV,
       TONNAGE,

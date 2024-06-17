@@ -1,10 +1,9 @@
 import { IJob } from '@/constants/jobs'
 import useOutsideClick from '@/hooks/useOutsideClick'
 import translate from '@/i18n/translate'
-import React, { CSSProperties, FC, useEffect, useLayoutEffect, useRef, useState } from 'react'
+import React, { CSSProperties, FC, useLayoutEffect, useRef, useState } from 'react'
 import TimeService from '../services'
 import css from './TimeJob.module.scss'
-import { useInView } from 'react-intersection-observer';
 
 interface ITimeJob {
    j: IJob
@@ -60,7 +59,7 @@ const WorkedTime: FC<IWorkedTime> = ({ j, i, days, updateJobs, index, setisTimin
 
    const isOutBox = () => {
       const rect = ref.current.getBoundingClientRect()
-      if(rect.right > 1970) setIsoutbox(true)
+      if (rect.right > 1970) setIsoutbox(true)
    }
 
    useLayoutEffect(() => {

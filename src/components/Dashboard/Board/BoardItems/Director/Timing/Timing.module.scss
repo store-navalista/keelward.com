@@ -45,12 +45,13 @@
       .row {
          position: relative;
          display: grid;
-         grid-template-columns: 200px 85px 120px 170px 1000px 50px;
+         grid-template-columns: 160px 85px 160px 270px 1000px 50px;
          grid-column-gap: 0px;
          grid-row-gap: 0px;
          align-items: center;
          font-size: 14px;
          border-bottom: 1px solid var(--border);
+         line-height: 1.3;
          .expand {
             cursor: pointer;
             position: absolute;

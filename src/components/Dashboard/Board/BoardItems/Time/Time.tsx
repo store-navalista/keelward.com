@@ -23,6 +23,7 @@ interface IJobDataAction {
       | 'remove'
       | 'reset'
       | 'reload'
+      | 'add_common'
    payload: { val: any; index: number } | number | string | ''
 }
 
@@ -32,6 +33,7 @@ const Time: FC = () => {
    const [currentDate, setCurrentDate] = useState(new Date())
    const i18n = useAppSelector((state) => state.reducer.content.i18n)
    const timeService = new TimeService(i18n)
+   const [isCommonTasks, setisCommonTasks] = useState<any>()
    const period = currentDate.toLocaleString('en-US', { month: 'long', year: 'numeric' })
    const { data, isSuccess, isError, refetch } = useGetJobsByUserIdAndPeriodQuery({
       userId: user?.id,
@@ -91,8 +93,17 @@ const Time: FC = () => {
                ? [{ ...empty_job, order: 0 }]
                : [...state, { ...empty_job, order: state[state.length - 1].order + 1 }]
          }
+         case 'add_common': {
+            return [{ ...empty_job, project_number: '_common_tasks', order: -1 }, ...state]
+         }
          case 'remove': {
-            return state.length <= 1 ? state : [...state].filter((_, i) => i !== action.payload)
+            if (state[action.payload as number].project_number === '_common_tasks') {
+               const modify = state.slice(1)
+               return modify
+            }
+
+            const filtered = [...state].filter((j) => j.project_number !== '_common_tasks')
+            return filtered.length <= 1 ? state : [...state].filter((_, i) => i !== action.payload)
          }
          case 'reload':
             return [...sortedData]
@@ -104,7 +115,19 @@ const Time: FC = () => {
       }
    }, sortedData)
 
-   const timeServiceProps = { timeService, currentDate, setCurrentDate, days, updateJobs }
+   const findCommonTasks = () => {
+      if (jobs?.find((j) => j.project_number === '_common_tasks')) {
+         setisCommonTasks(true)
+      } else {
+         setisCommonTasks(false)
+      }
+   }
+
+   useEffect(() => {
+      findCommonTasks()
+   }, [currentDate, jobs])
+
+   const timeServiceProps = { timeService, currentDate, setCurrentDate, days, updateJobs, findCommonTasks }
 
    const sendReport = async () => {
       const updateJobsData = { userId: user?.id, period, jobs }
@@ -130,7 +153,7 @@ const Time: FC = () => {
          <div className={css.body}>
             <TimeHeader {...timeServiceProps} />
             {jobs.map((j, index) => {
-               const jobProps = { j, days, jobs, updateJobs }
+               const jobProps = { j, days, jobs, updateJobs, isCommonTasks }
 
                return (
                   <Fragment key={index}>
@@ -138,7 +161,7 @@ const Time: FC = () => {
                   </Fragment>
                )
             })}
-            <TimeNavigate updateJobs={updateJobs} />
+            <TimeNavigate updateJobs={updateJobs} jobs={jobs} isCommonTasks={isCommonTasks} />
             <button onClick={sendReport} className={css.send} disabled={updateLoading}>
                {updateLoading ? null : translate('dashboard.timereport-send')}
                <Image

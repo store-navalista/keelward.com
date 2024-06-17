@@ -15,7 +15,7 @@ export const DashboardButton: FC<TIconTooltip> = ({ btn_type, tooltip, ...rest }
       case 'icon-btn':
          return (
             <div className={`${css.wrapper} ${rest.className}`}>
-               <button style={rest.style} onClick={rest.onClick} className={css.icon_btn}>
+               <button style={rest.style} onClick={rest.onClick} className={css.icon_btn} disabled={rest.disabled}>
                   {tooltip ? (
                      <span style={{ '--top': tooltip.position[0], '--left': tooltip.position[1] } as CSSProperties}>
                         {tooltip.message}

@@ -71,8 +71,8 @@ const nav: TBoardItems = [
 ]
 
 const items = {
-   CTO: ['greating', 'account', 'employees', 'timing', 'qr', 'logout'],
-   Employee: ['greating', 'account', 'time', 'qr', 'radio', 'logout'],
+   CTO: ['greating', 'account', 'employees', 'timing', 'qr', 'return', 'logout'],
+   Employee: ['greating', 'account', 'time', 'qr', 'radio', 'return', 'logout'],
    Moderator: ['greating', 'ctoProperty', 'CTO', 'employees', 'timing', 'qr', 'radio', 'return', 'logout']
 }
 

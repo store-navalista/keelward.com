@@ -1,5 +1,5 @@
 import { useAppSelector } from '@/hooks/redux'
-import React, { FC, ReactNode, useEffect, useState } from 'react'
+import React, { FC, ReactNode, useState } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import { ErrorBoundaryComponent } from './Error/Error'
 import css from './Dashboard.layout.module.scss'

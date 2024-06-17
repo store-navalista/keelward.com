@@ -6,7 +6,7 @@ import React, { FC, useState } from 'react'
 import { useIntl } from 'react-intl'
 import css from './TimeNavigate.module.scss'
 
-const TimeNavigate: FC<{ updateJobs: any }> = ({ updateJobs }) => {
+const TimeNavigate: FC<{ updateJobs: any; jobs: any; isCommonTasks: any }> = ({ jobs, updateJobs, isCommonTasks }) => {
    const [currentTask, setCurrentTask] = useState({ value: '', time: '' })
    const staticTranslate = (id: string) => useIntl().formatMessage({ id: id, defaultMessage: id })
 
@@ -14,6 +14,8 @@ const TimeNavigate: FC<{ updateJobs: any }> = ({ updateJobs }) => {
       switch (type) {
          case 'add':
             return () => updateJobs({ type: 'add', payload: '' })
+         case 'add_common':
+            return () => updateJobs({ type: 'add_common', payload: '' })
          case 'reset':
             return () => {
                const result = confirm('Are you sure?')
@@ -27,6 +29,7 @@ const TimeNavigate: FC<{ updateJobs: any }> = ({ updateJobs }) => {
          default:
             return
       }
+
       // case 'save':
       //    return () => services.save(period, jobs)
       // case 'download':
@@ -49,8 +52,12 @@ const TimeNavigate: FC<{ updateJobs: any }> = ({ updateJobs }) => {
 
                return (
                   <Buttons.DashboardButton
-                     style={{ backgroundImage: `url(/assets/images/svg/timereport-job-${name}.svg)` }}
+                     style={{
+                        backgroundImage: `url(/assets/images/svg/timereport-job-${name}.svg)`,
+                        backgroundSize: name === 'add_common' ? '65%' : '50%'
+                     }}
                      key={name}
+                     disabled={name === 'add_common' && isCommonTasks}
                      btn_type={type}
                      tooltip={{ message: staticTranslate(`dashboard.timereport-job-${name}`) }}
                      onClick={handler as () => void}

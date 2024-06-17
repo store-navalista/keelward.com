@@ -12,6 +12,7 @@ interface CreateUserData {
    describe_position?: string
    describe_password: string
    CTO?: boolean
+   mail?: string
 }
 
 type UpdateUserData = Omit<CreateUserData, 'describe_password'>

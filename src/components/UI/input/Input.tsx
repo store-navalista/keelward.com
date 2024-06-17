@@ -12,6 +12,7 @@ export const Input: FC<TInput> = ({ type, ...rest }) => {
          placeholder={rest.placeholder}
          value={rest.value}
          onChange={rest.onChange}
+         disabled={rest.disabled}
       />
    )
 }

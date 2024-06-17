@@ -16,7 +16,7 @@ const Account: FC<{ user: IUser }> = ({ user }) => {
    const { refetch } = useGetUserQuery({ userId: user.id })
    const { describe_name } = user
    const avatar = describe_name.toLowerCase().replace(/[\s_-]+/g, '-')
-   const URL = '/assets/images/dashboard/'
+   const URL = '/assets/images/dashboard/employees/'
    const [actualAvatar, setAvatar] = useState(`${URL}${avatar}.png`)
 
    const refresh = async () => await refetch()

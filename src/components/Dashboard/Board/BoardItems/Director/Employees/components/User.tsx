@@ -36,7 +36,7 @@ const User: FC<UserProps> = ({ expand, setExpand, user, setLog }) => {
       setPassword('')
    }
 
-   const URL = '/assets/images/dashboard/mini-'
+   const URL = '/assets/images/dashboard/employees/mini-'
    const initialAvatar = URL + `${describe_name.toLowerCase().replace(/ /g, '-')}.png`
    const [avatar, setAvatar] = useState(initialAvatar)
    const userExpand = expand.find((item: { id: string; isOpen: boolean }) => item.id === user.id)

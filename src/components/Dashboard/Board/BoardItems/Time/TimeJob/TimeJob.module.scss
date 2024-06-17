@@ -44,7 +44,7 @@
             width: var(--second-input);
          }
          &:nth-of-type(3) {
-            left: 247px;
+            left: 242px;
             width: var(--third-input);
          }
          span {
@@ -75,6 +75,7 @@
          display: flex;
          align-items: center;
          justify-content: center;
+         z-index: 10;
          &::before {
             position: absolute;
             left: -15px;
@@ -83,6 +84,9 @@
             content: '\002211';
             font-size: 14px;
          }
+      }
+      .fill {
+         width: 85%;
       }
       &:hover {
          button.remove {
@@ -142,7 +146,7 @@
             z-index: 5;
             &[data-isout='true'] {
                left: auto;
-               right: 0;
+               right: -17px;
                transform: translate(0, -50%);
             }
             .apply {

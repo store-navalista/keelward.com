@@ -6,32 +6,8 @@ import React, { CSSProperties, FC, useRef, useState } from 'react'
 import TimeService from '../services'
 import css from './TimeJob.module.scss'
 import WorkedTime from './WorkedTime'
-
-const colors = ['#29abe2', '#9dd251', '#eb5757']
-
-const getStyle = (type: number) => {
-   switch (type) {
-      case -0.5: // day of
-         return {
-            '--borderColor': colors[0],
-            '--bg-icon': 'url(/assets/images/svg/timereport-days-dayof.svg)'
-         }
-      case -1: //sick day
-         return {
-            '--borderColor': colors[1],
-            '--bg-icon': 'url(/assets/images/svg/timereport-days-sick.svg)'
-         }
-      case -1.5: //vacation
-         return {
-            '--borderColor': colors[2],
-            '--bg-icon': 'url(/assets/images/svg/timereport-days-vac.svg)'
-         }
-      default: //default
-         return {
-            '--borderColor': '#fff'
-         }
-   }
-}
+import Services from './services'
+import { useIntl } from 'react-intl'
 
 interface ITimeJob {
    j: IJob
@@ -39,11 +15,13 @@ interface ITimeJob {
    index: number
    jobs: IJob[]
    updateJobs: any
+   isCommonTasks: any
 }
 
-const TimeJob: FC<ITimeJob> = ({ j, days, index, jobs, updateJobs }) => {
+const TimeJob: FC<ITimeJob> = ({ j, days, index, jobs, updateJobs, isCommonTasks }) => {
    const ref = useRef(null)
    const isHover = useHover(ref)
+   const staticTranslate = (id: string) => useIntl().formatMessage({ id: id, defaultMessage: id })
 
    const { hours_worked } = j
 
@@ -68,35 +46,53 @@ const TimeJob: FC<ITimeJob> = ({ j, days, index, jobs, updateJobs }) => {
       <div className={css.job} style={{ marginTop: index === 0 ? '25px' : '20px' }}>
          <div className={css.desc}>
             <button ref={ref} className={css.remove} onClick={() => updateJobs({ type: 'remove', payload: index })} />
-            {fields.map((f) => {
-               const { field, styles, options } = f
+            {j.project_number !== '_common_tasks' ? (
+               fields.map((f) => {
+                  const { field, styles, options } = f
 
-               return (
-                  <div
-                     style={{ transform: index === 0 ? 'translateY(-69%)' : 'translateY(-50%)' }}
-                     className={css.inputs}
-                     key={field}
-                  >
-                     {index === 0 ? <span>{translate(`dashboard.timereport-job-${field}`)}</span> : null}
-                     <Input
-                        type='l'
-                        className={css.job_name}
-                        style={styles as CSSProperties}
-                        value={j[field]}
-                        placeholder={options.ph}
-                        onChange={(e) => updateJobs({ type: field, payload: { val: e.target.value, index } })}
-                     />
-                  </div>
-               )
-            })}
+                  return (
+                     <div
+                        style={{ transform: index === 0 ? 'translateY(-69%)' : 'translateY(-50%)' }}
+                        className={css.inputs}
+                        key={field}
+                     >
+                        {index === 0 || (index === 1 && isCommonTasks) ? (
+                           <span>{translate(`dashboard.timereport-job-${field}`)}</span>
+                        ) : null}
+                        <Input
+                           type='l'
+                           className={css.job_name}
+                           style={styles as CSSProperties}
+                           value={j[field]}
+                           placeholder={options.ph}
+                           onChange={(e) => updateJobs({ type: field, payload: { val: e.target.value, index } })}
+                        />
+                     </div>
+                  )
+               })
+            ) : (
+               <div
+                  style={{ transform: index === 0 ? 'translateY(-69%)' : 'translateY(-50%)' }}
+                  className={css.inputs + ' ' + css.fill}
+               >
+                  <span>{translate('dashboard.timereport-job-common-tasks')}</span>
+                  <Input
+                     type='l'
+                     className={css.job_name}
+                     value={staticTranslate('dashboard.timereport-job-common-tasks')}
+                     disabled
+                  />
+               </div>
+            )}
             <p>{sum}</p>
          </div>
          <ul style={{ opacity: isHover ? 0.3 : 1 }}>
             {days.map((_, i) => {
-               const WorkedTimeProps = { j, i, days, updateJobs, index, colors, setisTimingOpen }
+               const serv = new Services(hours_worked[i])
+               const WorkedTimeProps = { j, i, days, updateJobs, index, colors: serv.getColors(), setisTimingOpen }
 
                return (
-                  <li style={getStyle(hours_worked[i]) as CSSProperties} key={i}>
+                  <li style={serv.getStyle() as CSSProperties} key={i}>
                      <button onClick={() => setisTimingOpen(i)}>{hours_worked[i] > 0 ? hours_worked[i] : ''}</button>
                      {isTimingOpen === i ? <WorkedTime {...WorkedTimeProps} /> : null}
                   </li>

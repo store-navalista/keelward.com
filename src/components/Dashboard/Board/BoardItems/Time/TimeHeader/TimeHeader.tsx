@@ -1,6 +1,7 @@
 import React, { CSSProperties, FC } from 'react'
 import TimeService from '../services'
 import css from './TimeHeader.module.scss'
+import translate from '@/i18n/translate'
 
 interface ITimeHeader {
    timeService: TimeService
@@ -8,6 +9,7 @@ interface ITimeHeader {
    setCurrentDate: React.Dispatch<React.SetStateAction<Date>>
    days: ReturnType<TimeService['getDaysOfMonth']>
    updateJobs: any
+   findCommonTasks(): void
 }
 
 const getStyle = (day_of: boolean) => {
@@ -19,15 +21,24 @@ const getStyle = (day_of: boolean) => {
    return style
 }
 
-const TimeHeader: FC<ITimeHeader> = ({ timeService, currentDate, setCurrentDate, days, updateJobs }) => {
+const TimeHeader: FC<ITimeHeader> = ({
+   timeService,
+   currentDate,
+   setCurrentDate,
+   days,
+   updateJobs,
+   findCommonTasks
+}) => {
    const previousMonth = () => {
       updateJobs({ type: 'reset', payload: '' })
       setCurrentDate((prevDate) => timeService.getPreviousMonth(prevDate))
+      findCommonTasks()
    }
 
    const nextMonth = () => {
       updateJobs({ type: 'reset', payload: '' })
       setCurrentDate((prevDate) => timeService.getNextMonth(prevDate))
+      findCommonTasks()
    }
 
    function getCurrentMonth(): string {
@@ -44,6 +55,8 @@ const TimeHeader: FC<ITimeHeader> = ({ timeService, currentDate, setCurrentDate,
             <button onClick={nextMonth} aria-label='Next Month'>
                &#9654;
             </button>
+            <span className={css.warning_trigger} />
+            <p className={css.warning}>{translate('dashboard.timereport-job-warning-unsafe')}</p>
          </div>
          <ul className={css.calendar}>
             {days.map((d, i) => {

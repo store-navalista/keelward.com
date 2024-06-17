@@ -22,4 +22,9 @@ input.input {
       padding: 12px;
       border-radius: 8px;
    }
+   &:disabled {
+      background-color: #fff;
+      color: #5d5d5d;
+      border: 2px solid var(--second-blue);
+   }
 }

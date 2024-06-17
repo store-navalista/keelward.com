@@ -48,11 +48,15 @@
             width: var(--third-input);
          }
          span {
+            position: absolute;
+            top: -18px;
+            left: 50%;
+            transform: translateX(-50%);
             display: flex;
             flex-direction: column;
             align-items: center;
             font-size: 12px;
-            margin-bottom: 6px;
+            // margin-bottom: 6px;
             color: #636363;
             white-space: nowrap;
          }

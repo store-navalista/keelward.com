@@ -42,8 +42,10 @@ const TimeJob: FC<ITimeJob> = ({ j, days, index, jobs, updateJobs, isCommonTasks
 
    const sum = j.hours_worked.length ? hours_worked.reduce((acc, current) => (current > 0 ? acc + current : acc), 0) : 0
 
+   const margin = index === 0 ? '25px' : index === 0 || (index === 1 && isCommonTasks) ? '30px' : '20px'
+
    return (
-      <div className={css.job} style={{ marginTop: index === 0 ? '25px' : '20px' }}>
+      <div className={css.job} style={{ marginTop: margin }}>
          <div className={css.desc}>
             <button ref={ref} className={css.remove} onClick={() => updateJobs({ type: 'remove', payload: index })} />
             {j.project_number !== '_common_tasks' ? (
@@ -51,11 +53,7 @@ const TimeJob: FC<ITimeJob> = ({ j, days, index, jobs, updateJobs, isCommonTasks
                   const { field, styles, options } = f
 
                   return (
-                     <div
-                        style={{ transform: index === 0 ? 'translateY(-69%)' : 'translateY(-50%)' }}
-                        className={css.inputs}
-                        key={field}
-                     >
+                     <div className={css.inputs} key={field}>
                         {index === 0 || (index === 1 && isCommonTasks) ? (
                            <span>{translate(`dashboard.timereport-job-${field}`)}</span>
                         ) : null}
@@ -71,10 +69,7 @@ const TimeJob: FC<ITimeJob> = ({ j, days, index, jobs, updateJobs, isCommonTasks
                   )
                })
             ) : (
-               <div
-                  style={{ transform: index === 0 ? 'translateY(-69%)' : 'translateY(-50%)' }}
-                  className={css.inputs + ' ' + css.fill}
-               >
+               <div className={css.inputs + ' ' + css.fill}>
                   <span>{translate('dashboard.timereport-job-common-tasks')}</span>
                   <Input
                      type='l'
@@ -90,9 +85,11 @@ const TimeJob: FC<ITimeJob> = ({ j, days, index, jobs, updateJobs, isCommonTasks
             {days.map((_, i) => {
                const serv = new Services(hours_worked[i])
                const WorkedTimeProps = { j, i, days, updateJobs, index, colors: serv.getColors(), setisTimingOpen }
+               let style = serv.getStyle()
+               if (_.day_of) style = { ...style, '--borderColor': serv.getColors()[0] }
 
                return (
-                  <li style={serv.getStyle() as CSSProperties} key={i}>
+                  <li style={style as CSSProperties} key={i}>
                      <button onClick={() => setisTimingOpen(i)}>{hours_worked[i] > 0 ? hours_worked[i] : ''}</button>
                      {isTimingOpen === i ? <WorkedTime {...WorkedTimeProps} /> : null}
                   </li>

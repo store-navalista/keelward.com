@@ -1,7 +1,7 @@
 import { IJob } from '@/constants/jobs'
 import useOutsideClick from '@/hooks/useOutsideClick'
 import translate from '@/i18n/translate'
-import React, { CSSProperties, FC, useLayoutEffect, useRef, useState } from 'react'
+import React, { CSSProperties, FC, useRef } from 'react'
 import TimeService from '../services'
 import css from './TimeJob.module.scss'
 
@@ -40,7 +40,6 @@ const getValue = (v: number) => {
 const WorkedTime: FC<IWorkedTime> = ({ j, i, days, updateJobs, index, setisTimingOpen, colors }) => {
    const ref = useRef(null)
    const { hours_worked } = j
-   const [isoutbox, setIsoutbox] = useState(false)
 
    useOutsideClick(ref, () => setisTimingOpen(undefined))
 
@@ -57,19 +56,10 @@ const WorkedTime: FC<IWorkedTime> = ({ j, i, days, updateJobs, index, setisTimin
       setisTimingOpen(false)
    }
 
-   const isOutBox = () => {
-      const rect = ref.current.getBoundingClientRect()
-      if (rect.right > 1970) setIsoutbox(true)
-   }
-
-   useLayoutEffect(() => {
-      // isOutBox()
-   }, [ref])
-
    const { day, formatDay } = days[i]
 
    return (
-      <div ref={ref} data-isout={isoutbox} className={css.time_used}>
+      <div ref={ref} className={css.time_used}>
          <div className={css.info}>
             <span>{`${formatDay} ${day}`}</span>
          </div>

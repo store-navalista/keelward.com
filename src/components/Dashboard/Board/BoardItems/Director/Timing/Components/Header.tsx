@@ -40,8 +40,18 @@ const Header: FC<HeaderProps> = ({ timeService, currentDate, setCurrentDate, day
                <button onClick={nextMonth} />
             </div>
             {days.map((d) => {
-               const { day } = d
-               return <span key={day}>{day}</span>
+               const { day, day_of } = d
+               return (
+                  <span
+                     key={day}
+                     style={{
+                        backgroundColor: day_of ? 'var(--second-blue)' : '#fff',
+                        color: day_of ? ' #fff' : '#000'
+                     }}
+                  >
+                     {day}
+                  </span>
+               )
             })}
          </div>
          <p>{translate('dashboard.timereport-job-total')}</p>

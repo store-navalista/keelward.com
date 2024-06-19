@@ -69,7 +69,7 @@ export default {
       'dashboard.timereport-job-reset': 'Сбросить данные за месяц',
       'dashboard.timereport-job-clean': 'Сбросить данные за все время',
       'dashboard.timereport-task-send': 'Сообщить о текущей работе',
-      'dashboard.timereport-send': 'Отправить отчет',
+      'dashboard.timereport-send': 'Сохранить',
       'dashboard.timereport-job-placeholders-current': 'Текущая задача',
       'dashboard.timereport-job-errors-empty': 'Это поле не должно быть пустым',
       'dashboard.timereport-job-current-task': 'Отправляет текущую задачу. Можно отправлять не ограниченное количсетво раз.',

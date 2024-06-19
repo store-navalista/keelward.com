@@ -1,11 +1,11 @@
 import PortalModal from '@/components/UI/modals/PortalModal'
 import translate from '@/i18n/translate'
-import React, { CSSProperties, FC, useState } from 'react'
+import React, { CSSProperties, FC } from 'react'
 import css from './index.module.scss'
 import Image from 'next/image'
 
 type ConfirmProps = {
-   apply(): Promise<Record<string, string>>
+   apply(): Promise<Record<string, string>> | void
    cancel(): void
    isLoading: boolean
 }

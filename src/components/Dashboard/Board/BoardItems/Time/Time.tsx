@@ -11,6 +11,7 @@ import TimeHeader from './TimeHeader/TimeHeader'
 import TimeJob from './TimeJob/TimeJob'
 import TimeNavigate from './TimeNavigate/TimeNavigate'
 import TimeService from './services'
+import _ from 'lodash'
 
 interface IJobDataAction {
    type:
@@ -115,6 +116,26 @@ const Time: FC = () => {
       }
    }, sortedData)
 
+   const snapshot = useMemo(() => {
+      if (sortedData?.at(0)) {
+         return _.cloneDeep(
+            sortedData.map((job) => {
+               const { id, ...rest } = job
+               return rest
+            })
+         )
+      } else {
+         if (jobs) {
+            return _.cloneDeep(
+               jobs?.map((job) => {
+                  const { id, ...rest } = job
+                  return rest
+               })
+            )
+         }
+      }
+   }, [sortedData, currentDate])
+
    const findCommonTasks = () => {
       if (jobs?.find((j) => j.project_number === '_common_tasks')) {
          setisCommonTasks(true)
@@ -127,7 +148,17 @@ const Time: FC = () => {
       findCommonTasks()
    }, [currentDate, jobs])
 
-   const timeServiceProps = { timeService, currentDate, setCurrentDate, days, updateJobs, findCommonTasks }
+   const timeServiceProps = {
+      timeService,
+      currentDate,
+      setCurrentDate,
+      days,
+      updateJobs,
+      findCommonTasks,
+      jobs,
+      snapshot,
+      sortedData
+   }
 
    const sendReport = async () => {
       const updateJobsData = { userId: user?.id, period, jobs }

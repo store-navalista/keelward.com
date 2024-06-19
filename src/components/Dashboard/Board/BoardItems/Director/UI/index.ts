@@ -1,5 +1,5 @@
 import Input from './Input'
-import Confirm from './Prompt'
+import Confirm from './Confirm'
 
 export const UI = {
    Input,

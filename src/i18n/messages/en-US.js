@@ -69,7 +69,7 @@ export default {
       'dashboard.timereport-job-reset': 'Reset monthly data',
       'dashboard.timereport-job-clean': 'Reset all time data',
       'dashboard.timereport-task-send': 'Notify about current work',
-      'dashboard.timereport-send': 'Send report',
+      'dashboard.timereport-send': 'Save',
       'dashboard.timereport-job-placeholders-current': 'Current task',
       'dashboard.timereport-job-errors-empty': 'This field must not be empty',
       'dashboard.timereport-job-current-task': 'Sends the current task. You can send an unlimited number of times.',

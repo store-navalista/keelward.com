@@ -79,6 +79,11 @@ export default {
    'dashboard.timereport-workedtime-tooltip-dayof': { defaultMessage: 'Day of' },
    'dashboard.timereport-workedtime-tooltip-sick': { defaultMessage: 'Sick leave' },
    'dashboard.timereport-workedtime-tooltip-vacation': { defaultMessage: 'Vacation' },
+   'dashboard.timereport-workedtime-tooltip-add-comments': { defaultMessage: 'Add comments' },
+   'dashboard.timereport-workedtime-tooltip-remove-comments': { defaultMessage: 'Remove comments' },
+   'dashboard.timereport-workedtime-tooltip-common-turn-on': { defaultMessage: 'Enable' },
+   'dashboard.timereport-workedtime-tooltip-common-turn-off': { defaultMessage: 'Disable' },
+
 
    'dashboard.timereport-job-person': { defaultMessage: 'Person' },
    'dashboard.timereport-job-total': { defaultMessage: 'Total' },

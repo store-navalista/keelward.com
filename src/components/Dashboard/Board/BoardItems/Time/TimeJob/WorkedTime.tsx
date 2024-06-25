@@ -1,9 +1,12 @@
+import { COMMON_CELL } from '@/constants/dashboard'
 import { IJob } from '@/constants/jobs'
 import useOutsideClick from '@/hooks/useOutsideClick'
 import translate from '@/i18n/translate'
-import React, { CSSProperties, FC, useRef } from 'react'
+import React, { CSSProperties, FC, useRef, useState } from 'react'
 import TimeService from '../services'
+import Comments from './Comments'
 import css from './TimeJob.module.scss'
+import Services from './services'
 
 interface ITimeJob {
    j: IJob
@@ -40,6 +43,7 @@ const getValue = (v: number) => {
 const WorkedTime: FC<IWorkedTime> = ({ j, i, days, updateJobs, index, setisTimingOpen, colors }) => {
    const ref = useRef(null)
    const { hours_worked } = j
+   const [isComments, setisComments] = useState(false)
 
    useOutsideClick(ref, () => setisTimingOpen(undefined))
 
@@ -57,6 +61,13 @@ const WorkedTime: FC<IWorkedTime> = ({ j, i, days, updateJobs, index, setisTimin
    }
 
    const { day, formatDay } = days[i]
+
+   const { job_description } = j
+   const serv = new Services({ job_description })
+   const updateCommentsHandler = (val: string) => {
+      const desc_stringify = serv.packComments(val, i)
+      updateJobs({ type: 'job_description', payload: { val: desc_stringify, index } })
+   }
 
    return (
       <div ref={ref} className={css.time_used}>
@@ -95,6 +106,35 @@ const WorkedTime: FC<IWorkedTime> = ({ j, i, days, updateJobs, index, setisTimin
             ))}
          </div>
          <button onClick={() => setisTimingOpen(false)} className={css.apply} />
+         {j.project_number === COMMON_CELL ? (
+            <>
+               <button
+                  style={{
+                     backgroundImage: `url(/assets/images/svg/custom-button-icon-${isComments ? 'minus' : 'plus'}.svg`
+                  }}
+                  onClick={() => setisComments(!isComments)}
+                  className={css.add_comment}
+               >
+                  <span className={css.tooltip}>
+                     {translate('dashboard.timereport-workedtime-tooltip-add-comments')}
+                  </span>
+               </button>
+               {serv.unpackComments()[i] ? (
+                  <button
+                     onClick={() => {
+                        updateCommentsHandler(null)
+                        setisComments(false)
+                     }}
+                     className={css.remove_comment}
+                  >
+                     <span className={css.tooltip}>
+                        {translate('dashboard.timereport-workedtime-tooltip-remove-comments')}
+                     </span>
+                  </button>
+               ) : null}
+            </>
+         ) : null}
+         {isComments ? <Comments i={i} serv={serv} updateCommentsHandler={updateCommentsHandler} /> : null}
       </div>
    )
 }

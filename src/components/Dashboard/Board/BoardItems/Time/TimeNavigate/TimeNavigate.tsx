@@ -6,7 +6,12 @@ import React, { FC, useState } from 'react'
 import { useIntl } from 'react-intl'
 import css from './TimeNavigate.module.scss'
 
-const TimeNavigate: FC<{ updateJobs: any; jobs: any; isCommonTasks: any }> = ({ jobs, updateJobs, isCommonTasks }) => {
+interface ITimeNavigate {
+   updateJobs: any
+   isCommonTasks: boolean
+}
+
+const TimeNavigate: FC<ITimeNavigate> = ({ updateJobs, isCommonTasks }) => {
    const [currentTask, setCurrentTask] = useState({ value: '', time: '' })
    const staticTranslate = (id: string) => useIntl().formatMessage({ id: id, defaultMessage: id })
 

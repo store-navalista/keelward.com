@@ -56,6 +56,15 @@ export const MenuItem: React.FC<MenuItemProps> = React.memo(({ i }) => {
          case 'logout': {
             removeCookie('token')
             removeCookie('user_id')
+
+            const items = { ...dashboarItems }
+
+            for (const key in items) {
+               items[key] = false
+               if (key === 'greating') items[key] = true
+            }
+
+            dispatch(DashboardActions.setDahsboardItems(items))
             break
          }
          case 'return': {

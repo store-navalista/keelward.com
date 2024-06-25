@@ -1,4 +1,4 @@
-import React, { FC, useRef } from 'react'
+import React, { FC, useRef, useState } from 'react'
 import css from '../Timing.module.scss'
 import translate from '@/i18n/translate'
 
@@ -13,6 +13,10 @@ const cells: FiltersType[] = ['project_number', 'ship_name', 'job_description']
 
 const Filters: FC<IFiltersProps> = ({ filters, setActiveFilter }) => {
    const selectsRef = useRef(null)
+
+   // temp
+   const [isCommonFilter, setisCommonFilter] = useState(false)
+   //
 
    const filterHandler = (e: React.ChangeEvent<HTMLSelectElement>, c: FiltersType) => {
       setActiveFilter(null)
@@ -47,6 +51,15 @@ const Filters: FC<IFiltersProps> = ({ filters, setActiveFilter }) => {
                </div>
             )
          })}
+         <div>
+            <span>{translate('dashboard.timereport-job-common-tasks')}</span>
+            <button
+               onClick={() => setisCommonFilter(!isCommonFilter)}
+               className={css.common_filter + `${isCommonFilter ? ' ' + css.turned_on : ''}`}
+            >
+               {translate(`dashboard.timereport-workedtime-tooltip-common-turn-${isCommonFilter ? 'off' : 'on'}`)}
+            </button>
+         </div>
       </div>
    )
 }

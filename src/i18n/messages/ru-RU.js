@@ -82,6 +82,10 @@ export default {
       'dashboard.timereport-workedtime-tooltip-dayof': 'Выходной',
       'dashboard.timereport-workedtime-tooltip-sick': 'Больничный',
       'dashboard.timereport-workedtime-tooltip-vacation': 'Отпуск',
+      'dashboard.timereport-workedtime-tooltip-add-comments': 'Заметки',
+      'dashboard.timereport-workedtime-tooltip-remove-comments': 'Удалить',
+      'dashboard.timereport-workedtime-tooltip-common-turn-on': 'Фильтровать',
+      'dashboard.timereport-workedtime-tooltip-common-turn-off': 'Отменить',
 
       'dashboard.timereport-job-person': 'Сотрудник',
       'dashboard.timereport-job-total': 'Всего',

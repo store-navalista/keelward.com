@@ -29,12 +29,13 @@ const Person: FC<PersonProps> = ({ user, days, isReportExist, filteredJobs, setO
    }
 
    const sum = summedHours.reduce((acc, current) => (current > 0 ? acc + current : acc), 0)
+   console.log(filteredJobs)
 
    return (
       <div className={css.row}>
-         <p style={{ paddingLeft: isReportExist ? '22px' : '5px' }}>
+         <p style={{ paddingLeft: isReportExist && filteredJobs.length ? '22px' : '5px' }}>
             {describe_name}
-            {isReportExist ? (
+            {isReportExist && filteredJobs.length ? (
                <button
                   onClick={expandHandler}
                   style={{

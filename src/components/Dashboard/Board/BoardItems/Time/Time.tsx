@@ -1,9 +1,11 @@
 import Loader from '@/components/UI/loader/Loader'
+import { COMMON_CELL } from '@/constants/dashboard'
 import { IJob } from '@/constants/jobs'
 import { useAppSelector } from '@/hooks/redux'
 import useUserByID from '@/hooks/useUserByID'
 import translate from '@/i18n/translate'
 import { useGetJobsByUserIdAndPeriodQuery, useUpdateJobsByUserIdAndPeriodMutation } from '@/store/reducers/apiReducer'
+import _ from 'lodash'
 import Image from 'next/image'
 import React, { CSSProperties, FC, Fragment, useEffect, useMemo, useReducer, useState } from 'react'
 import css from '../Boards.module.scss'
@@ -11,7 +13,6 @@ import TimeHeader from './TimeHeader/TimeHeader'
 import TimeJob from './TimeJob/TimeJob'
 import TimeNavigate from './TimeNavigate/TimeNavigate'
 import TimeService from './services'
-import _ from 'lodash'
 
 interface IJobDataAction {
    type:
@@ -63,6 +64,7 @@ const Time: FC = () => {
    const [jobs, updateJobs] = useReducer((state: IJob[], action: IJobDataAction): IJob[] => {
       const updateProperty = (property: IJobDataAction['type']) => {
          const { val, index } = action.payload as { val: string | number | number[]; index: number }
+
          let correctVal = val
 
          if (property === 'project_number') {
@@ -95,15 +97,15 @@ const Time: FC = () => {
                : [...state, { ...empty_job, order: state[state.length - 1].order + 1 }]
          }
          case 'add_common': {
-            return [{ ...empty_job, project_number: '_common_tasks', order: -1 }, ...state]
+            return [{ ...empty_job, project_number: COMMON_CELL, order: -1 }, ...state]
          }
          case 'remove': {
-            if (state[action.payload as number].project_number === '_common_tasks') {
+            if (state[action.payload as number].project_number === COMMON_CELL) {
                const modify = state.slice(1)
                return modify
             }
 
-            const filtered = [...state].filter((j) => j.project_number !== '_common_tasks')
+            const filtered = [...state].filter((j) => j.project_number !== COMMON_CELL)
             return filtered.length <= 1 ? state : [...state].filter((_, i) => i !== action.payload)
          }
          case 'reload':
@@ -137,7 +139,7 @@ const Time: FC = () => {
    }, [sortedData, currentDate])
 
    const findCommonTasks = () => {
-      if (jobs?.find((j) => j.project_number === '_common_tasks')) {
+      if (jobs?.find((j) => j.project_number === COMMON_CELL)) {
          setisCommonTasks(true)
       } else {
          setisCommonTasks(false)
@@ -192,7 +194,7 @@ const Time: FC = () => {
                   </Fragment>
                )
             })}
-            <TimeNavigate updateJobs={updateJobs} jobs={jobs} isCommonTasks={isCommonTasks} />
+            <TimeNavigate updateJobs={updateJobs} isCommonTasks={isCommonTasks} />
             <button onClick={sendReport} className={css.send} disabled={updateLoading}>
                {updateLoading ? null : translate('dashboard.timereport-send')}
                <Image

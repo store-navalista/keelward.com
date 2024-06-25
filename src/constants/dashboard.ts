@@ -80,3 +80,5 @@ export const DASHBOARD = {
    nav,
    items
 }
+
+export const COMMON_CELL = '_common_tasks'

@@ -1,9 +1,11 @@
 export default class Services {
    type: number
+   common_description: string
    colors = ['#29abe2', '#9dd251', '#eb5757']
 
-   constructor(type: number) {
+   constructor({ type, job_description }: { type?: number; job_description?: string }) {
       this.type = type
+      this.common_description = job_description
    }
 
    getColors() {
@@ -32,5 +34,54 @@ export default class Services {
                '--borderColor': '#fff'
             }
       }
+   }
+
+   private getModifiedComments() {
+      const pattern = /\[\[(\d+)\]\](.*?)/g
+      if (this.common_description) {
+         const splitArr = this.common_description.split(pattern)
+         return splitArr.filter((element) => element.trim() !== '')
+      } else {
+         return []
+      }
+   }
+
+   unpackComments() {
+      const filteredArr = this.getModifiedComments()
+
+      const indexes = []
+      const values = []
+
+      for (let i = 0; i < filteredArr.length; i++) {
+         if (i % 2 === 0) {
+            indexes.push(filteredArr[i])
+         } else {
+            values.push(filteredArr[i])
+         }
+      }
+
+      const result = Array(31).fill(null)
+
+      indexes.forEach((i, index) => {
+         result[i] = values[index]
+      })
+
+      return result
+   }
+
+   packComments(val: string, i: number) {
+      const comments = this.unpackComments()
+      comments[i] = val ? val : null
+
+      const stringify = comments
+         .map((c, index) => {
+            if (c) {
+               return [`[[${index}]]`, c].join('')
+            }
+         })
+         .filter((c) => c)
+         .join('')
+
+      return stringify
    }
 }

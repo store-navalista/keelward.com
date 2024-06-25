@@ -10,6 +10,7 @@ import Header from './Components/Header'
 import Job from './Components/Job'
 import Person from './Components/Person'
 import css from './Timing.module.scss'
+import { COMMON_CELL } from '@/constants/dashboard'
 
 type Days = { days: ReturnType<TimeService['getDaysOfMonth']> }
 
@@ -61,10 +62,10 @@ const Timing: FC = () => {
 
          users.forEach((user) => {
             user.jobs.forEach((j) => {
-               if (j.report_period !== period) return
-               filters[0].add(j.project_number)
-               filters[1].add(j.ship_name)
-               filters[2].add(j.job_description)
+               if (j.report_period !== period || j.project_number === COMMON_CELL) return
+               if (j.project_number) filters[0].add(j.project_number)
+               if (j.ship_name) filters[1].add(j.ship_name)
+               if (j.job_description) filters[2].add(j.job_description)
             })
          })
       }
@@ -74,6 +75,10 @@ const Timing: FC = () => {
       refetch()
       setActiveFilter(null)
    }, [currentDate])
+
+   useEffect(() => {
+      console.log(openedJobs)
+   }, [openedJobs])
 
    if (isLoading) {
       return <div>Loading...</div>

@@ -81,8 +81,8 @@ export default {
    'dashboard.timereport-workedtime-tooltip-vacation': { defaultMessage: 'Vacation' },
    'dashboard.timereport-workedtime-tooltip-add-comments': { defaultMessage: 'Add comments' },
    'dashboard.timereport-workedtime-tooltip-remove-comments': { defaultMessage: 'Remove comments' },
-   'dashboard.timereport-workedtime-tooltip-common-turn-on': { defaultMessage: 'Enable' },
-   'dashboard.timereport-workedtime-tooltip-common-turn-off': { defaultMessage: 'Disable' },
+   'dashboard.timereport-workedtime-tooltip-common-turn-on': { defaultMessage: 'Filter' },
+   'dashboard.timereport-workedtime-tooltip-common-turn-off': { defaultMessage: 'Cancel' },
 
 
    'dashboard.timereport-job-person': { defaultMessage: 'Person' },

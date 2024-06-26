@@ -29,7 +29,6 @@ const Person: FC<PersonProps> = ({ user, days, isReportExist, filteredJobs, setO
    }
 
    const sum = summedHours.reduce((acc, current) => (current > 0 ? acc + current : acc), 0)
-   console.log(filteredJobs)
 
    return (
       <div className={css.row}>

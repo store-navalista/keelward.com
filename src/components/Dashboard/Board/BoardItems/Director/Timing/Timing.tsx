@@ -76,9 +76,9 @@ const Timing: FC = () => {
       setActiveFilter(null)
    }, [currentDate])
 
-   useEffect(() => {
-      console.log(openedJobs)
-   }, [openedJobs])
+   // useEffect(() => {
+   //    console.log(filteredJobs)
+   // }, [filteredJobs])
 
    if (isLoading) {
       return <div>Loading...</div>
@@ -88,7 +88,7 @@ const Timing: FC = () => {
       <div className={css.wrapper}>
          <h2>{translate('dashboard.timereport-director-timing-title')}</h2>
          <div className={css.timing}>
-            <Filters filters={filters} setActiveFilter={setActiveFilter} />
+            <Filters filters={filters} activeFilter={activeFilter} setActiveFilter={setActiveFilter} />
             <Header {...{ timeService, currentDate, setCurrentDate, days, openedJobs, setOpenedJobs, filters }} />
             {users.map((user) => {
                const { id, jobs } = user

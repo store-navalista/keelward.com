@@ -42,9 +42,6 @@
                option {
                   padding: 2px;
                }
-               &:hover {
-                  transform: scale(1.01);
-               }
             }
             button.common_filter {
                cursor: pointer;
@@ -54,9 +51,6 @@
                border: none;
                box-shadow: var(--shadow-out);
                border-radius: 4px;
-               &:hover {
-                  transform: scale(1.01);
-               }
                &:active {
                   transform: scale(0.99);
                }
@@ -98,6 +92,15 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            div.circle {
+               position: absolute;
+               top: 2px;
+               right: 2px;
+               background-color: green;
+               width: 4px;
+               height: 4px;
+               border-radius: 50%;
+            }
             .nav {
                position: absolute;
                left: 50%;

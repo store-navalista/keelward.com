@@ -2,7 +2,7 @@ import { COMMON_CELL } from '@/constants/dashboard'
 import { IJob } from '@/constants/jobs'
 import useOutsideClick from '@/hooks/useOutsideClick'
 import translate from '@/i18n/translate'
-import React, { CSSProperties, FC, useRef, useState } from 'react'
+import React, { CSSProperties, FC, useEffect, useRef, useState } from 'react'
 import TimeService from '../services'
 import Comments from './Comments'
 import css from './TimeJob.module.scss'
@@ -68,6 +68,10 @@ const WorkedTime: FC<IWorkedTime> = ({ j, i, days, updateJobs, index, setisTimin
       const desc_stringify = serv.packComments(val, i)
       updateJobs({ type: 'job_description', payload: { val: desc_stringify, index } })
    }
+
+   useEffect(() => {
+      if (serv.unpackComments()[i]) setisComments(true)
+   }, [job_description])
 
    return (
       <div ref={ref} className={css.time_used}>

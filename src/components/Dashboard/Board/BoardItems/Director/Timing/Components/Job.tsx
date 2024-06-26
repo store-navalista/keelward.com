@@ -1,4 +1,4 @@
-import React, { CSSProperties, FC } from 'react'
+import React, { CSSProperties, FC, useEffect } from 'react'
 import css from '../Timing.module.scss'
 import { JobProps } from '../Timing'
 import { COMMON_CELL } from '@/constants/dashboard'
@@ -27,8 +27,8 @@ const Job: FC<JobProps> = ({ currentJob, days }) => {
    return (
       <div className={css.row}>
          <p></p>
-         {info.map((p) => (
-            <p key={p}>{p}</p>
+         {info.map((p, i) => (
+            <p key={p + i}>{p}</p>
          ))}
          <div className={css.days}>
             {days.map((d, i) => {
@@ -44,6 +44,7 @@ const Job: FC<JobProps> = ({ currentJob, days }) => {
                            <p>{comments[i]}</p>
                         </div>
                      ) : null}
+                     {haveComment ? <div className={css.circle} /> : null}
                   </span>
                )
             })}

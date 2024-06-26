@@ -1,25 +1,35 @@
-import React, { FC, useRef, useState } from 'react'
+import React, { FC, useEffect, useMemo, useRef } from 'react'
 import css from '../Timing.module.scss'
 import translate from '@/i18n/translate'
+import { COMMON_CELL } from '@/constants/dashboard'
 
 type FiltersType = 'project_number' | 'ship_name' | 'job_description'
 
 interface IFiltersProps {
    filters: Set<string>[]
+   activeFilter: Record<FiltersType, string>
    setActiveFilter: React.Dispatch<React.SetStateAction<{ [key in FiltersType]: string } | null>>
 }
 
 const cells: FiltersType[] = ['project_number', 'ship_name', 'job_description']
 
-const Filters: FC<IFiltersProps> = ({ filters, setActiveFilter }) => {
+const Filters: FC<IFiltersProps> = ({ filters, activeFilter, setActiveFilter }) => {
    const selectsRef = useRef(null)
+   const isCommonFilter = useMemo(() => activeFilter?.project_number === COMMON_CELL, [activeFilter])
 
-   // temp
-   const [isCommonFilter, setisCommonFilter] = useState(false)
-   //
-
-   const filterHandler = (e: React.ChangeEvent<HTMLSelectElement>, c: FiltersType) => {
+   const filterHandler = (e: any, c: FiltersType) => {
       setActiveFilter(null)
+      if (e === COMMON_CELL) {
+         setActiveFilter((prevFilters) => {
+            if (activeFilter?.project_number === COMMON_CELL) {
+               return null
+            }
+
+            return { [c]: e } as typeof prevFilters
+         })
+
+         return
+      }
       setActiveFilter((prevFilters) => {
          const newFilter: { [key in FiltersType]: string } = {
             ...prevFilters,
@@ -33,6 +43,10 @@ const Filters: FC<IFiltersProps> = ({ filters, setActiveFilter }) => {
          return Object.values(newFilter).length ? newFilter : null
       })
    }
+
+   // useEffect(()=> {
+
+   // },[])
 
    return (
       <div ref={selectsRef} className={css.filter}>
@@ -54,7 +68,7 @@ const Filters: FC<IFiltersProps> = ({ filters, setActiveFilter }) => {
          <div>
             <span>{translate('dashboard.timereport-job-common-tasks')}</span>
             <button
-               onClick={() => setisCommonFilter(!isCommonFilter)}
+               onClick={() => filterHandler(COMMON_CELL, 'project_number')}
                className={css.common_filter + `${isCommonFilter ? ' ' + css.turned_on : ''}`}
             >
                {translate(`dashboard.timereport-workedtime-tooltip-common-turn-${isCommonFilter ? 'off' : 'on'}`)}

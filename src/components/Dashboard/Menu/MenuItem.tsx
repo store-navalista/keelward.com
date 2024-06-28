@@ -1,11 +1,8 @@
 import { TID } from '@/constants/dashboard'
-import { useAppDispatch, useAppSelector } from '@/hooks/redux'
+import { useMenuHandler } from '@/hooks/useMenuHandler'
 import translate from '@/i18n/translate'
-import { DashboardActions } from '@/store/reducers/dashboardReducer'
 import { motion } from 'framer-motion'
-import { useRouter } from 'next/router'
 import * as React from 'react'
-import { useCookies } from 'react-cookie'
 import css from './Menu.module.scss'
 
 const variants = {
@@ -34,47 +31,8 @@ interface MenuItemProps {
 }
 
 export const MenuItem: React.FC<MenuItemProps> = React.memo(({ i }) => {
-   const dispatch = useAppDispatch()
-   const dashboarItems = useAppSelector((state) => state.reducer.dashboard.dashboardItems)
    const { id, icon, title } = i
-   const [, , removeCookie] = useCookies()
-   const router = useRouter()
-
-   function setItem() {
-      const items = { ...dashboarItems }
-
-      for (const key in items) {
-         items[key] = false
-         if (key === id) items[key] = true
-      }
-
-      dispatch(DashboardActions.setDahsboardItems(items))
-   }
-
-   const handler = () => {
-      switch (id) {
-         case 'logout': {
-            removeCookie('token')
-            removeCookie('user_id')
-
-            const items = { ...dashboarItems }
-
-            for (const key in items) {
-               items[key] = false
-               if (key === 'greating') items[key] = true
-            }
-
-            dispatch(DashboardActions.setDahsboardItems(items))
-            break
-         }
-         case 'return': {
-            router.push({ pathname: '/' })
-            break
-         }
-         default:
-            setItem()
-      }
-   }
+   const handler = useMenuHandler(id)
 
    return (
       <motion.li onClick={handler} variants={variants} whileHover={{ scale: 1.04 }} whileTap={{ scale: 1 }}>

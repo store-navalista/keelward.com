@@ -1,11 +1,11 @@
 import LanguageSwitcher from '@/components/Header/components/QuickPanel/LanguageSwitcher/LanguageSwitcher'
-import { DASHBOARD } from '@/constants/dashboard'
 import { IUser } from '@/constants/users'
 import translate from '@/i18n/translate'
 import { motion } from 'framer-motion'
 import * as React from 'react'
 import css from './Menu.module.scss'
 import { MenuItem } from './MenuItem'
+import useMenu from '@/hooks/useMenu'
 
 const variants = {
    open: {
@@ -17,14 +17,7 @@ const variants = {
 }
 
 export const Navigation: React.FC<{ isOpen: boolean; user: IUser }> = ({ isOpen, user }) => {
-   const { nav, items } = DASHBOARD
-   const mutateNav = []
-
-   const { describe_role } = user
-
-   nav.forEach((item) => {
-      if (describe_role && items[describe_role].includes(item.id)) mutateNav.push(item)
-   })
+   const mutateNav = useMenu(user)
 
    return (
       <motion.ul style={{ display: isOpen ? 'block' : 'none' }} variants={variants}>

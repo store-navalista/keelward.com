@@ -11,11 +11,13 @@ export type TID =
    | 'logout'
    | 'return'
 
-type TBoardItems = {
+export type TBoardItem = {
    id: TID
    icon: string
    title: string
-}[]
+}
+
+export type TBoardItems = TBoardItem[]
 
 const nav: TBoardItems = [
    {
@@ -76,9 +78,12 @@ const items = {
    Moderator: ['greating', 'ctoProperty', 'CTO', 'employees', 'timing', 'qr', 'radio', 'return', 'logout']
 }
 
+const return_button_accept = ['account', 'employees', 'timing', 'qr', 'CTO', 'time']
+
 export const DASHBOARD = {
    nav,
-   items
+   items,
+   return_button_accept
 }
 
 export const COMMON_CELL = '_common_tasks'

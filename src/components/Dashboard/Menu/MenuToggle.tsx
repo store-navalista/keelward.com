@@ -1,34 +1,20 @@
 import * as React from 'react'
-import { motion } from 'framer-motion'
-import css from './Menu.module.scss'
-
-const Path = (props) => (
-   <motion.path fill='transparent' strokeWidth='3' stroke='hsl(0, 0%, 18%)' strokeLinecap='round' {...props} />
-)
+import css from './MenuToggler.module.scss'
 
 export const MenuToggle: React.FC<{ toggle: () => void }> = ({ toggle }) => (
-   <button className={css.toggle} onClick={toggle}>
-      <svg width='23' height='23' viewBox='0 0 22 19'>
-         <Path
-            variants={{
-               closed: { d: 'M 2 2.5 L 20 2.5' },
-               open: { d: 'M 3 16.5 L 17 2.5' }
-            }}
-         />
-         <Path
-            d='M 2 9.423 L 20 9.423'
-            variants={{
-               closed: { opacity: 1 },
-               open: { opacity: 0 }
-            }}
-            transition={{ duration: 0.1 }}
-         />
-         <Path
-            variants={{
-               closed: { d: 'M 2 16.346 L 20 16.346' },
-               open: { d: 'M 3 2.5 L 17 16.346' }
-            }}
-         />
+   <button className={css.wrapper} onClick={toggle}>
+      <div className={css.toggler}>
+         <input type='checkbox' />
+         <svg>
+            <use href='#menu' />
+            <use href='#menu' />
+         </svg>
+      </div>
+
+      <svg xmlns='http://www.w3.org/2000/svg' style={{ display: 'none' }}>
+         <symbol viewBox='0 0 100 56' id='menu'>
+            <path d='M48.33,45.6H18a14.17,14.17,0,0,1,0-28.34H78.86a17.37,17.37,0,0,1,0,34.74H42.33l-21-21.26L47.75,4' />
+         </symbol>
       </svg>
    </button>
 )

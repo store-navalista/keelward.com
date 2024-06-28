@@ -10,7 +10,7 @@ const BoardViewport: FC<{ isOpen: boolean }> = ({ isOpen }) => {
          setWidthStyle({ '--width': 'calc(100% - 300px)' } as CSSProperties)
       } else {
          const timeoutId = setTimeout(() => {
-            setWidthStyle({ '--width': 'calc(100% - 40px)' } as CSSProperties)
+            setWidthStyle({ '--width': 'calc(100% - 40px' } as CSSProperties)
          }, 700)
 
          return () => clearTimeout(timeoutId)

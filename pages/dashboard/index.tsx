@@ -1,27 +1,24 @@
 import { DashboardTemplate } from '@/components/Dashboard'
 import Loader from '@/components/UI/loader/Loader'
 import useLoading from '@/hooks/useLoading'
-import React, { FC, useEffect } from 'react'
+import { useGetUserQuery } from '@/store/reducers/apiReducer'
 import { useRouter } from 'next/router'
-import { useCookies } from 'react-cookie'
+import React, { FC, useEffect } from 'react'
+import { useCookies, Cookies } from 'react-cookie'
 
 const Dashboard: FC = () => {
    const isLoading = useLoading()
+   const cookies = useCookies(['user_id'])
+   const { data: user, isError } = useGetUserQuery({ userId: new Cookies().get('user_id') })
    const router = useRouter()
-   const [cookies] = useCookies()
+   const user_id = new Cookies().get('user_id')
 
    useEffect(() => {
-      if (!cookies['token'] || !cookies['user_id']) {
-         router.push({
-            pathname: '/'
-         })
-      } else {
-         router.push({
-            pathname: '/dashboard',
-            query: { id: cookies['user_id'] }
-         })
+      if (!user_id || isError) {
+         router.push({ pathname: '/' })
+         return
       }
-   }, [cookies])
+   }, [user, cookies])
 
    if (isLoading) return <Loader />
 

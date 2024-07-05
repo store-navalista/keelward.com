@@ -9,7 +9,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import React, { FC, KeyboardEvent, useEffect, useRef, useState } from 'react'
-import { useCookies } from 'react-cookie'
+import { useCookies, Cookies } from 'react-cookie'
 import css from './Cabinet.module.scss'
 
 const Cabinet: FC = () => {
@@ -23,7 +23,7 @@ const Cabinet: FC = () => {
    const isHovering = useHover(hoverRef)
    const router = useRouter()
    const [cookies, setCookies] = useCookies(['token', 'user_id'])
-   const { data: user } = useGetUserQuery({ userId: cookies['user_id'] })
+   const { data: user } = useGetUserQuery({ userId: new Cookies().get('user_id') })
    const [isHidden, setisHidden] = useState(true)
 
    const handlePressKey = (event: KeyboardEvent) => {
@@ -68,13 +68,6 @@ const Cabinet: FC = () => {
    const logIn = async () => {
       const invalidate = isCustomError()
       if (!invalidate) await login(loginData)
-
-      if (isSuccess) {
-         router.push({
-            pathname: '/dashboard',
-            query: { id: cookies['user_id'] }
-         })
-      }
    }
 
    const routeCabinet = () => {
@@ -85,6 +78,16 @@ const Cabinet: FC = () => {
          })
       }
    }
+
+   useEffect(() => {
+      if (isSuccess && user) {
+         setisOpen(false)
+         router.push({
+            pathname: '/dashboard',
+            query: { id: user.id }
+         })
+      }
+   }, [isSuccess, user])
 
    useEffect(() => {
       if (isError) {
@@ -105,13 +108,6 @@ const Cabinet: FC = () => {
          setCookies('user_id', data.id)
       }
    }, [data])
-
-   useEffect(() => {
-      if (isSuccess) {
-         setisOpen(false)
-         routeCabinet()
-      }
-   }, [isSuccess])
 
    const enterCabinet = () => {
       if (cookies['token'] && cookies['user_id']) {

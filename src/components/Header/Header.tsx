@@ -1,7 +1,7 @@
 import { useGetUserQuery } from '@/store/reducers/apiReducer'
 import { ILayoutComponentProps } from '@/types/layout'
 import React, { FC, useEffect, useState } from 'react'
-import { useCookies } from 'react-cookie'
+import { Cookies, useCookies } from 'react-cookie'
 import css from './Header.module.scss'
 import Cabinet from './components/Cabinet/Cabinet'
 import Logout from './components/Cabinet/Logout'
@@ -14,18 +14,18 @@ import QuickPanel from './components/QuickPanel/QuickPanel'
 const Header: FC<ILayoutComponentProps> = () => {
    const [cookies, , removeCookie] = useCookies(['token', 'user_id'])
    const [isSignin, setisSignin] = useState(false)
-   const { data: user, error } = useGetUserQuery({ userId: cookies['user_id'] })
+   const { data: user, error } = useGetUserQuery({ userId: new Cookies().get('user_id') })
 
    useEffect(() => {
       cookies['token'] && cookies['user_id'] ? setisSignin(true) : setisSignin(false)
    }, [cookies, user])
 
    useEffect(() => {
-      if (cookies['token'] && cookies['user_id'] && error) {
+      if (error) {
          removeCookie('token')
          removeCookie('user_id')
       }
-   }, [user])
+   }, [error])
 
    return (
       <header className={css.wrapper}>

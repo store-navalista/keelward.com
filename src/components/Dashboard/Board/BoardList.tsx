@@ -1,18 +1,18 @@
+import { DASHBOARD } from '@/constants/dashboard'
 import { useAppSelector } from '@/hooks/redux'
+import useActiveID from '@/hooks/useActiveID'
+import { useMenuHandler } from '@/hooks/useMenuHandler'
 import useUserByID from '@/hooks/useUserByID'
+import Image from 'next/image'
 import React, { FC } from 'react'
 import css from './Board.module.scss'
 import Account from './BoardItems/Account'
+import CTOProperty from './BoardItems/CTOProperty/CTOProperty'
 import { Director } from './BoardItems/Director'
-import QR from './BoardItems/QR'
+import Greating from './BoardItems/Greating/Greating'
 import Radio from './BoardItems/Radio'
 import Time from './BoardItems/Time/Time'
-import Greating from './BoardItems/Greating/Greating'
-import CTOProperty from './BoardItems/CTOProperty/CTOProperty'
-import Image from 'next/image'
-import { DASHBOARD } from '@/constants/dashboard'
-import useActiveID from '@/hooks/useActiveID'
-import { useMenuHandler } from '@/hooks/useMenuHandler'
+import QRCodeGenerator from './QRCodeGenerator/QRCodeGenerator'
 
 const BoardList: FC = () => {
    const type = useAppSelector((state) => state.reducer.dashboard.dashboardItems)
@@ -27,7 +27,7 @@ const BoardList: FC = () => {
          {type.ctoProperty ? <CTOProperty /> : null}
          {type.account ? <Account user={user} /> : null}
          {type.time ? <Time /> : null}
-         {type.qr ? <QR /> : null}
+         {type.qr ? <QRCodeGenerator /> : null}
          {type.radio ? <Radio /> : null}
          {type.employees ? <Director.Employees /> : null}
          {type.timing ? <Director.Timing /> : null}

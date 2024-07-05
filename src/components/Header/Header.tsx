@@ -1,22 +1,31 @@
+import { useGetUserQuery } from '@/store/reducers/apiReducer'
 import { ILayoutComponentProps } from '@/types/layout'
 import React, { FC, useEffect, useState } from 'react'
+import { useCookies } from 'react-cookie'
 import css from './Header.module.scss'
 import Cabinet from './components/Cabinet/Cabinet'
+import Logout from './components/Cabinet/Logout'
 import Clock from './components/Clock/Clock'
 import Logo from './components/Logo/Logo'
 import MenuMobile from './components/MenuMobile/MenuMobile'
 import ProgressBar from './components/ProgressBar/ProgressBar'
 import QuickPanel from './components/QuickPanel/QuickPanel'
-import { useCookies } from 'react-cookie'
-import Logout from './components/Cabinet/Logout'
 
 const Header: FC<ILayoutComponentProps> = () => {
    const [cookies, , removeCookie] = useCookies(['token', 'user_id'])
    const [isSignin, setisSignin] = useState(false)
+   const { data: user, error } = useGetUserQuery({ userId: cookies['user_id'] })
 
    useEffect(() => {
       cookies['token'] && cookies['user_id'] ? setisSignin(true) : setisSignin(false)
-   }, [cookies])
+   }, [cookies, user])
+
+   useEffect(() => {
+      if (cookies['token'] && cookies['user_id'] && error) {
+         removeCookie('token')
+         removeCookie('user_id')
+      }
+   }, [user])
 
    return (
       <header className={css.wrapper}>

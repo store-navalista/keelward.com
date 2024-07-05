@@ -94,7 +94,7 @@ const Time: FC = () => {
          case 'add': {
             return !state
                ? [{ ...empty_job, order: 0 }]
-               : [...state, { ...empty_job, order: state[state.length - 1].order + 1 }]
+               : [...state, { ...empty_job, order: state[state.length - 1]?.order + 1 }]
          }
          case 'add_common': {
             return [{ ...empty_job, project_number: COMMON_CELL, order: -1 }, ...state]

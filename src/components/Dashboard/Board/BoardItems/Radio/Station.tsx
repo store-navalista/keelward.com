@@ -33,7 +33,7 @@ const Station: FC<{ s: IStation }> = ({ s }) => {
          <div className={css.image_wrapper}>
             <Image src={`/assets/images/radio/stations/${id}/avatar.jpg`} alt='station avatar' fill />
          </div>
-         <div style={{ bottom: isHover ? '-40px' : '5px' }} className={css.buttons}>
+         <div className={css.buttons}>
             <Button isEnable={isCurrentStation} handle={handlePlay} />
          </div>
       </div>

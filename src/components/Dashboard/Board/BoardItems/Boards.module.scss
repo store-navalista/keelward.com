@@ -206,14 +206,23 @@
          }
          .buttons {
             position: absolute;
-            bottom: 5px;
+            top: 50%;
             left: 50%;
-            z-index: 0;
-            transform: translateX(-50%);
+            transform: translate(-50%, -50%);
+            z-index: 2;
             display: flex;
             gap: 10px;
-            transition: bottom 0.3s;
             padding: 5px;
+            & > button {
+               opacity: 0;
+               transition: opacity 0.3s;
+               width: 35px;
+               height: 35px;
+            }
+         }
+         &:hover .buttons button {
+            box-shadow: 0 0 14px #fff;
+            opacity: 1;
          }
       }
    }

@@ -9,9 +9,17 @@ const GreatingButton: FC<{ b: TBoardItem; i: number }> = ({ b, i }) => {
    const { id, icon, title } = b
    const handler = useMenuHandler(id)
 
+   const position = () => {
+      if (i < 6) {
+         return { left: `${30 + 68 * i}px` }
+      } else if (i >= 6 && i < 12) {
+         return { left: 'auto', right: `${-80}px`, top: '35px' }
+      }
+   }
+
    return (
       <>
-         <button onClick={handler} style={{ left: `${30 + 68 * i}px` }} className={css.quick_btn}>
+         <button onClick={handler} style={position()} className={css.quick_btn}>
             <div>
                <Image src={`/assets/images/svg/${icon}`} alt='icon service' fill />
             </div>

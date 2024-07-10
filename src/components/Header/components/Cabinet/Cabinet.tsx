@@ -22,9 +22,10 @@ const Cabinet: FC = () => {
    const hoverRef = useRef(null)
    const isHovering = useHover(hoverRef)
    const router = useRouter()
-   const [cookies, setCookies] = useCookies(['token', 'user_id'])
+   const [cookies, setCookies] = useCookies(['token', 'user_id', 'saved_username', 'saved_password'])
    const { data: user } = useGetUserQuery({ userId: new Cookies().get('user_id') })
    const [isHidden, setisHidden] = useState(true)
+   const [isChecked, setIsChecked] = useState(false)
 
    const handlePressKey = (event: KeyboardEvent) => {
       if (event.key === 'Enter') {
@@ -44,7 +45,10 @@ const Cabinet: FC = () => {
    }, [isOpen, handlePressKey])
 
    function exit() {
-      setLoginData({ username: '', password: '' })
+      if (!cookies['saved_username'] && !cookies['saved_password']) {
+         setLoginData({ username: '', password: '' })
+         setIsChecked(false)
+      }
       setI18n_error('')
       if (!isLoading) setisOpen(false)
    }
@@ -107,7 +111,23 @@ const Cabinet: FC = () => {
          setCookies('token', data.token)
          setCookies('user_id', data.id)
       }
-   }, [data])
+      if (isChecked) {
+         setCookies('saved_username', loginData.username, { path: '/', maxAge: 3600 * 24 * 30 }) // 30 days
+         setCookies('saved_password', loginData.password, { path: '/', maxAge: 3600 * 24 * 30 }) // 30 days
+      } else {
+         setCookies('saved_username', '', { path: '/', expires: new Date(0) })
+         setCookies('saved_password', '', { path: '/', expires: new Date(0) })
+      }
+   }, [data, isChecked])
+
+   useEffect(() => {
+      const savedUsername = cookies['saved_username']
+      const savedPassword = cookies['saved_password']
+      if (savedUsername && savedPassword) {
+         setLoginData({ username: savedUsername, password: savedPassword })
+         setIsChecked(true)
+      }
+   }, [])
 
    const enterCabinet = () => {
       if (cookies['token'] && cookies['user_id']) {
@@ -181,6 +201,15 @@ const Cabinet: FC = () => {
                            <button disabled={isLoading} className={css.close} onClick={exit}>
                               &#215;
                            </button>
+                           <div className={css.checkbox}>
+                              <input
+                                 id='save_me'
+                                 type='checkbox'
+                                 checked={isChecked}
+                                 onChange={() => setIsChecked(!isChecked)}
+                              />
+                              <label htmlFor='save_me'>Save me</label>
+                           </div>
                            {i18n_error ? <p className={css.message}>{translate(i18n_error)}</p> : null}
                         </div>
                      </div>

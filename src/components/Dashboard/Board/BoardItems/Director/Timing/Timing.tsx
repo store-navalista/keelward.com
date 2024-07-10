@@ -76,10 +76,6 @@ const Timing: FC = () => {
       setActiveFilter(null)
    }, [currentDate])
 
-   // useEffect(() => {
-   //    console.log(filteredJobs)
-   // }, [filteredJobs])
-
    if (isLoading) {
       return <div>Loading...</div>
    }

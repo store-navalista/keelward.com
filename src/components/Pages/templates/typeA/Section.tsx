@@ -8,8 +8,6 @@ export const Section: FC<{ content: BlockType }> = ({ content }) => {
    const { title, proverb, description, img, type } = content
    const [isLoaded, setisLoaded] = useState(false)
 
-   console.log(content)
-
    return (
       <section className={css.block}>
          <div className={css.text}>

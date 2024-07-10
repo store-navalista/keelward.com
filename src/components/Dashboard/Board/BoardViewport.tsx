@@ -9,17 +9,13 @@ const BoardViewport: FC<{ isOpen: boolean }> = ({ isOpen }) => {
       if (isOpen) {
          setWidthStyle({ '--width': 'calc(100% - 300px)' } as CSSProperties)
       } else {
-         const timeoutId = setTimeout(() => {
-            setWidthStyle({ '--width': 'calc(100% - 40px' } as CSSProperties)
-         }, 700)
-
-         return () => clearTimeout(timeoutId)
+         setWidthStyle({ '--width': 'calc(100% - 40px' } as CSSProperties)
       }
    }, [isOpen])
 
    return (
       <div style={{ ...widthStyle } as CSSProperties} className={css.viewport}>
-         <BoardList />
+         <BoardList isOpen={isOpen} />
       </div>
    )
 }

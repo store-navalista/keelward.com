@@ -25,6 +25,7 @@ export default {
       'menu.title-chapter_5': '3D Сканирование / Гражданское проектирование',
       'tooltip.header-menu': 'Меню',
       'tooltip.header-cabinet': 'Кабинет',
+      'tooltip.header-save-me': 'Запомни меня',
       'tooltip.header-logout': 'Выйти',
       'tooltip.header-timemen': 'Тайм менеджмент',
       'tooltip.header-careers': 'Карьера',

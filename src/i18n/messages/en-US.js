@@ -25,6 +25,7 @@ export default {
       'menu.title-chapter_5': '3D Scan / Civil eng.',
       'tooltip.header-menu': 'Menu',
       'tooltip.header-cabinet': 'Cabinet',
+      'tooltip.header-save-me': 'Remember me',
       'tooltip.header-logout': 'Logout',
       'tooltip.header-timemen': 'Time Management',
       'tooltip.header-careers': 'Careers',

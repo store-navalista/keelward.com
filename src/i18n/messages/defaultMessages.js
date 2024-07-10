@@ -22,6 +22,7 @@ export default {
    'services.title-chapter_5': { defaultMessage: '3D Scanning / Civil engineering' },
    'tooltip.header-menu': { defaultMessage: 'Menu' },
    'tooltip.header-cabinet': { defaultMessage: 'Cabinet' },
+   'tooltip.header-save-me': { defaultMessage: 'Remember me' },
    'tooltip.header-logout': { defaultMessage: 'Logout' },
    'tooltip.header-timemen': { defaultMessage: 'Time Management' },
    'tooltip.header-careers': { defaultMessage: 'Careers' },

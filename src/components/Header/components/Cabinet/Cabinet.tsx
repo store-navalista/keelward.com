@@ -208,7 +208,7 @@ const Cabinet: FC = () => {
                                  checked={isChecked}
                                  onChange={() => setIsChecked(!isChecked)}
                               />
-                              <label htmlFor='save_me'>Save me</label>
+                              <label htmlFor='save_me'>{translate('tooltip.header-save-me')}</label>
                            </div>
                            {i18n_error ? <p className={css.message}>{translate(i18n_error)}</p> : null}
                         </div>

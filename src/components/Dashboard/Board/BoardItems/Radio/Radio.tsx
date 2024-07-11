@@ -8,8 +8,32 @@ import Station from './Station'
 const Radio: FC = () => {
    const radioData = useAppSelector((state) => state.reducer.radio)
    const dispatch = useAppDispatch()
-   const { artist, title } = radioData.description
    const currentStation = STATIONS.filter((s) => s.id === radioData.current.id)[0]
+   const aside_station = currentStation?.meta_type && radioData.description[0]
+
+   let metadata = radioData.description
+
+   const get_meta = (type: any) => {
+      switch (type) {
+         case 'kiss_fm_deep': {
+            if (aside_station) {
+               return {
+                  artist: radioData.description[0][currentStation?.meta_type[1][0]],
+                  title: radioData.description[0][currentStation?.meta_type[1][1]]
+               }
+            }
+            return { artist: 'unknown', title: 'unknown' }
+         }
+         default:
+            return radioData.description
+      }
+   }
+
+   if (aside_station) {
+      metadata = get_meta(currentStation?.meta_type[0])
+   }
+
+   const { artist, title } = metadata
 
    const fetchData = useCallback(async () => {
       try {

@@ -3,6 +3,7 @@ export interface IStation {
    stream: string
    title: string
    meta: string
+   meta_type?: any
 }
 
 const STATION_URL = 'https://stream.pcradio.ru/'
@@ -31,7 +32,7 @@ export const STATIONS: IStation[] = [
       id: 'record_trnsm-med',
       stream: STATION_URL + 'record_trnsm-med',
       title: 'Record Trancemission',
-      meta: META_URL + 'ecord_trnsm_current.json'
+      meta: META_URL + 'record_trnsm_current.json'
    },
    {
       id: 'rcm_deep_fm-med',
@@ -104,5 +105,24 @@ export const STATIONS: IStation[] = [
       stream: STATION_URL + 'vcr_live-med',
       title: 'Venice Classic Radio Live',
       meta: META_URL + 'vcr_live_current.json'
+   },
+   {
+      id: 'KissFM_Deep',
+      stream: 'https://online.kissfm.ua/KissFM_Deep',
+      title: 'KissFM Deep',
+      meta: 'https://o.tavrmedia.ua/kissdeep',
+      meta_type: ['kiss_fm_deep', ['singer', 'song']]
+   },
+   {
+      id: 'banana_street-med',
+      stream: STATION_URL + 'banana_street-med',
+      title: 'Bananastreet',
+      meta: META_URL + 'banana_street_current.json'
+   },
+   {
+      id: 'badbeat_16-med',
+      stream: STATION_URL + 'badbeat_16-med',
+      title: 'Bad Beat Radio',
+      meta: META_URL + 'badbeat_16_current.json'
    }
 ]

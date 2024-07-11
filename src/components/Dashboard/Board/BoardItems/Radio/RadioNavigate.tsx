@@ -60,7 +60,7 @@ const RadioNavigate: FC<RadioNavigateProps> = ({ isOpen, notNullVolume, setNotNu
    }
 
    return (
-      <div style={{ left: !isOpen ? '15px' : '306px' }} className={css.radio_nav}>
+      <div style={{ left: !isOpen ? '18px' : '252px' }} className={css.radio_nav}>
          <Button
             isEnable={radioData.isPlaying}
             handle={() => dispatch(RadioActions.playToggle(!radioData.isPlaying))}

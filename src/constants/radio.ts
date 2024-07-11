@@ -16,6 +16,12 @@ export const STATIONS: IStation[] = [
       meta: META_URL + 'bassdrive_current.json'
    },
    {
+      id: 'one_amsterdam-med',
+      stream: STATION_URL + 'one_amsterdam-med',
+      title: '1.FM Amsterdam Trance',
+      meta: META_URL + 'one_amsterdam_current.json'
+   },
+   {
       id: 'frisky_radio-med',
       stream: STATION_URL + 'frisky_radio-med',
       title: 'Frisky Radio',
@@ -38,6 +44,12 @@ export const STATIONS: IStation[] = [
       stream: STATION_URL + 'different_drumz-med',
       title: 'Different Drumz DnB Radio',
       meta: META_URL + 'different_drumz_current.json'
+   },
+   {
+      id: 'schizoid_psytrance-med',
+      stream: STATION_URL + 'schizoid_psytrance-med',
+      title: 'Schizoid Psychedelic Trance',
+      meta: META_URL + 'schizoid_psytrance_current.json'
    },
    {
       id: 'smoothjazz247-med',
@@ -80,5 +92,17 @@ export const STATIONS: IStation[] = [
       stream: STATION_URL + 'record_rock-med',
       title: 'Record Rock',
       meta: META_URL + 'record_rock_current.json'
+   },
+   {
+      id: 'rockfm_moscow-med',
+      stream: STATION_URL + 'rockfm_moscow-med',
+      title: 'Rock FM 95.2',
+      meta: META_URL + 'rockfm_moscow_current.json'
+   },
+   {
+      id: 'vcr_live-med',
+      stream: STATION_URL + 'vcr_live-med',
+      title: 'Venice Classic Radio Live',
+      meta: META_URL + 'vcr_live_current.json'
    }
 ]

@@ -37,6 +37,7 @@ export default {
       'auth-username': 'მომხმარებლის სახელი',
       'auth-password': 'პაროლი',
       'page-ABOUT.title': 'Ჩვენს შესახებ',
-      'page-TOWAGE.title': 'ბუქსირება და გადასასვლელი'
+      'page-TOWAGE.title': 'ბუქსირება და გადასასვლელი',
+      'page-TONNAGE.title': 'ტონაჟის გაანგარიშება',
    }
 }

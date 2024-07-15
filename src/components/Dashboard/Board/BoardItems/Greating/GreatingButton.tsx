@@ -13,7 +13,7 @@ const GreatingButton: FC<{ b: TBoardItem; i: number }> = ({ b, i }) => {
       if (i < 6) {
          return { left: `${30 + 68 * i}px` }
       } else if (i >= 6 && i < 12) {
-         return { left: 'auto', right: `${-80}px`, top: '35px' }
+         return { left: 'auto', right: `${-80}px`, top: `${35 + 65 * (i - 6)}px` }
       }
    }
 

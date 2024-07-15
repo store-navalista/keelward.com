@@ -38,6 +38,7 @@ export default {
    'auth-password': { defaultMessage: 'Password' },
    'page-ABOUT.title': { defaultMessage: 'About us' },
    'page-TOWAGE.title': { defaultMessage: 'Towage & Passage' },
+   'page-TONNAGE.title': { defaultMessage: 'Tonnage calculation' },
 
    'dashboard.nav-info': { defaultMessage: 'Account Info' },
    'dashboard.nav-title': { defaultMessage: 'Menu' },
@@ -50,6 +51,7 @@ export default {
    'dashboard.nav-ctoProperty': { defaultMessage: 'Property CTO' },
    'dashboard.nav-return': { defaultMessage: 'Return to site' },
    'dashboard.nav-greating': { defaultMessage: 'Greating' },
+   'dashboard.nav-charts': { defaultMessage: 'Charts' },
 
    'dashboard.nav-author': { defaultMessage: 'Made by Sergey Otinov' },
 

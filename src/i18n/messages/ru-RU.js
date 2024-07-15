@@ -41,6 +41,7 @@ export default {
       'auth-password': 'Пароль',
       'page-ABOUT.title': 'О нас',
       'page-TOWAGE.title': 'Буксировка судов и объектов',
+      'page-TONNAGE.title': 'Расчет вместимости',
 
       'dashboard.nav-info': 'Информация',
       'dashboard.nav-title': 'Меню',
@@ -53,6 +54,7 @@ export default {
       'dashboard.nav-ctoProperty': 'CTO данные',
       'dashboard.nav-return': 'Вернуться на сайт',
       'dashboard.nav-greating': 'Приветствие',
+      'dashboard.nav-charts': 'Графики',
 
       'dashboard.nav-author': 'Автор: Сергей Отинов',
 

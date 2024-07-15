@@ -98,7 +98,11 @@ export const SERVICES: IServices[] = [
    {
       TONNAGE: {
          path: 'tonnage-calculation',
-         image: 'tonnage.jpg'
+         image: 'tonnage.jpg',
+         MD: {
+            text: ['block_1'],
+            image: '/tonnage-calculation/title.jpg'
+         }
       }
    },
    {

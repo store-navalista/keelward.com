@@ -41,6 +41,7 @@ export default {
       'auth-password': 'Password',
       'page-ABOUT.title': 'About us',
       'page-TOWAGE.title': 'Towage & Passage',
+      'page-TONNAGE.title': 'Tonnage calculation',
 
       'dashboard.nav-info': 'Account Info',
       'dashboard.nav-title': 'Menu',
@@ -53,6 +54,7 @@ export default {
       'dashboard.nav-ctoProperty': 'Property CTO',
       'dashboard.nav-return': 'Return to site',
       'dashboard.nav-greating': 'Greating',
+      'dashboard.nav-charts': 'Charts',
 
       'dashboard.nav-author': 'Made by Sergey Otinov',
 

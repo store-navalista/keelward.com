@@ -15,7 +15,8 @@ const initialState: DashboardState = {
       qr: false,
       radio: false,
       employees: false,
-      timing: false
+      timing: false,
+      charts: false
    }
 }
 

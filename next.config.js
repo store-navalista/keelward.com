@@ -6,5 +6,6 @@ module.exports = {
       })
 
       return config
-   }
+   },
+   transpilePackages: ['@mui/x-charts']
 }

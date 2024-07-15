@@ -4,30 +4,6 @@
    justify-content: center;
    width: 100%;
    height: 100%;
-   button.to_main {
-      cursor: pointer;
-      position: absolute;
-      top: 14px;
-      left: 14px;
-      width: 30px;
-      aspect-ratio: 1;
-      background-color: #fff;
-      border: none;
-      border-radius: 50%;
-      padding: 5px 3px 3px 4px;
-      transition: box-shadow 0.3s;
-      border: 2px solid #fff;
-      box-shadow: var(--shadow-aside), var(--shadow-in);
-      z-index: 2;
-      &:hover {
-         box-shadow: var(--shadow-out), var(--shadow-in);
-      }
-      & > div {
-         position: relative;
-         width: 100%;
-         height: 100%;
-      }
-   }
    .viewport {
       box-sizing: border-box;
       margin-left: auto;

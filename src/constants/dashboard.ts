@@ -10,6 +10,7 @@ export type TID =
    | 'CTO'
    | 'logout'
    | 'return'
+   | 'charts'
 
 export type TBoardItem = {
    id: TID
@@ -66,6 +67,11 @@ const nav: TBoardItems = [
       title: 'dashboard.nav-timing'
    },
    {
+      id: 'charts',
+      icon: 'dashboard-nav-charts.svg',
+      title: 'dashboard.nav-charts'
+   },
+   {
       id: 'logout',
       icon: 'dashboard-nav-logout.svg',
       title: 'dashboard.nav-logout'
@@ -73,17 +79,14 @@ const nav: TBoardItems = [
 ]
 
 const items = {
-   CTO: ['greating', 'account', 'employees', 'timing', 'qr', 'radio', 'return', 'logout'],
-   Employee: ['greating', 'account', 'time', 'qr', 'radio', 'return', 'logout'],
-   Moderator: ['greating', 'ctoProperty', 'CTO', 'employees', 'timing', 'qr', 'radio', 'return', 'logout']
+   CTO: ['greating', 'account', 'employees', 'timing', 'qr', 'radio', 'charts', 'charts', 'return', 'logout'],
+   Employee: ['greating', 'account', 'time', 'qr', 'radio', 'return', 'charts', 'logout'],
+   Moderator: ['greating', 'ctoProperty', 'CTO', 'employees', 'timing', 'qr', 'radio', 'charts', 'return', 'logout']
 }
-
-const return_button_accept = ['account', 'employees', 'timing', 'qr', 'CTO', 'time']
 
 export const DASHBOARD = {
    nav,
-   items,
-   return_button_accept
+   items
 }
 
 export const COMMON_CELL = '_common_tasks'

@@ -64,6 +64,15 @@
             font-size: 18px;
          }
       }
+      h3 {
+         font-size: 24px;
+         text-align: center;
+         font-style: italic;
+         @media (max-width: 870px) {
+            text-align: center;
+            font-size: 22px;
+         }
+      }
       p {
          text-indent: 8px;
          strong {

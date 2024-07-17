@@ -16,7 +16,8 @@ const initialState: DashboardState = {
       radio: false,
       employees: false,
       timing: false,
-      charts: false
+      charts: false,
+      holidayCalendar: false
    }
 }
 

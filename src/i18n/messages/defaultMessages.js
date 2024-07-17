@@ -52,6 +52,7 @@ export default {
    'dashboard.nav-return': { defaultMessage: 'Return to site' },
    'dashboard.nav-greating': { defaultMessage: 'Greating' },
    'dashboard.nav-charts': { defaultMessage: 'Charts' },
+   'dashboard.nav-holidayCalendar': { defaultMessage: 'Calendar' },
 
    'dashboard.nav-author': { defaultMessage: 'Made by Sergey Otinov' },
 

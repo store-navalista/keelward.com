@@ -55,6 +55,7 @@ export default {
       'dashboard.nav-return': 'Return to site',
       'dashboard.nav-greating': 'Greating',
       'dashboard.nav-charts': 'Charts',
+      'dashboard.nav-holidayCalendar': 'Calendar',
 
       'dashboard.nav-author': 'Made by Sergey Otinov',
 

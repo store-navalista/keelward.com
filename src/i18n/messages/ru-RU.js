@@ -55,6 +55,7 @@ export default {
       'dashboard.nav-return': 'Вернуться на сайт',
       'dashboard.nav-greating': 'Приветствие',
       'dashboard.nav-charts': 'Графики',
+      'dashboard.nav-holidayCalendar': 'Календарь',
 
       'dashboard.nav-author': 'Автор: Сергей Отинов',
 

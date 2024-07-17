@@ -11,6 +11,7 @@ export type TID =
    | 'logout'
    | 'return'
    | 'charts'
+   | 'holidayCalendar'
 
 export type TBoardItem = {
    id: TID
@@ -72,6 +73,11 @@ const nav: TBoardItems = [
       title: 'dashboard.nav-charts'
    },
    {
+      id: 'holidayCalendar',
+      icon: 'dashboard-nav-holidayCalendar.svg',
+      title: 'dashboard.nav-holidayCalendar'
+   },
+   {
       id: 'logout',
       icon: 'dashboard-nav-logout.svg',
       title: 'dashboard.nav-logout'
@@ -79,14 +85,43 @@ const nav: TBoardItems = [
 ]
 
 const items = {
-   CTO: ['greating', 'account', 'employees', 'timing', 'qr', 'radio', 'charts', 'charts', 'return', 'logout'],
-   Employee: ['greating', 'account', 'time', 'qr', 'radio', 'return', 'charts', 'logout'],
-   Moderator: ['greating', 'ctoProperty', 'CTO', 'employees', 'timing', 'qr', 'radio', 'charts', 'return', 'logout']
+   CTO: [
+      'greating',
+      'account',
+      'employees',
+      'timing',
+      'qr',
+      'radio',
+      'charts',
+      'charts',
+      'return',
+      'holidayCalendar',
+      'logout'
+   ],
+   Employee: ['greating', 'account', 'time', 'qr', 'radio', 'return', 'holidayCalendar', 'logout'],
+   Moderator: [
+      'greating',
+      'ctoProperty',
+      'CTO',
+      'employees',
+      'timing',
+      'qr',
+      'radio',
+      'charts',
+      'return',
+      'holidayCalendar',
+      'logout'
+   ]
 }
 
 export const DASHBOARD = {
    nav,
    items
+}
+
+export const week_days = {
+   en: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+   ru: ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье']
 }
 
 export const COMMON_CELL = '_common_tasks'

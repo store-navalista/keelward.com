@@ -39,9 +39,9 @@ type TChapters = { [key: string]: TServices[] | TPages[] }[]
 export const CHAPTERS: TChapters = [
    { chapter_1: ['SD', 'BWTS', 'TOWAGE', 'BOOKLETS', 'TONNAGE', 'CARGO', 'MACHINERY', 'SCANSURV', 'ERS'] },
    { chapter_2: ['REPAIR', 'UTM'] },
-   { chapter_3: ['IHM', 'CONDSURV', 'EEXI'] },
-   { chapter_4: ['TECHADV', 'LEGALADV', 'SHIPREG'] },
-   { chapter_5: ['SCANSURVCIV'] }
+   { chapter_3: ['IHM', 'CONDSURV', 'EEXI'] }
+   // { chapter_4: ['TECHADV', 'LEGALADV', 'SHIPREG'] },
+   // { chapter_5: ['SCANSURVCIV'] }
 ]
 
 export const MENU = [

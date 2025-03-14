@@ -141,7 +141,7 @@ const Dropdown: FC<any> = ({ isOpen, toggle }) => {
    }, [isOpen])
 
    useOverflow(isOpen && isMobile)
-
+   // dasdasd
    return isOpen ? (
       <>
          <AnimatePresence mode='wait'>
@@ -168,7 +168,7 @@ const Dropdown: FC<any> = ({ isOpen, toggle }) => {
                      <Body lang={lang} activeTab={activeTab} toggle={toggle} />
                      <LanguageSwitcher type='mobile' />
                      <Tabs toggle={toggle} activeTab={activeTab} setActiveTab={setActiveTab} />
-                     <Social />
+                     {/* <Social /> */}
                   </div>
                </motion.div>
             )}

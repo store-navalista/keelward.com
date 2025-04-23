@@ -9,7 +9,7 @@ interface IProvider {
 }
 
 const Provider = ({ children, locale }: IProvider) => {
-   const unicodeLang = LOCALES[locale === 'ge' ? 'ka' : locale] || navigator.language
+   const unicodeLang = LOCALES[locale === 'ge' ? 'ka' : locale] || (typeof navigator !== 'undefined' ? navigator.language : 'en')
 
    return (
       <IntlProvider

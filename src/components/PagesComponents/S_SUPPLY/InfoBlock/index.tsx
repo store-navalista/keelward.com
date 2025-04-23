@@ -1,5 +1,4 @@
 import React from 'react'
-// import { Heading, InfoBlock, RightBlock, BottomBlock } from './components'
 import css from './index.module.css'
 import { MDXRemote } from 'next-mdx-remote'
 import Image from 'next/image'
@@ -13,10 +12,13 @@ export default function InfoBlock({ content }: any) {
       threshold: 0.2
    })
 
+   console.log(inView)
+
    return (
       <div className={css.wrapper}>
          <div className={css.container}>
             <motion.div
+               ref={ref}
                initial={{ opacity: 0, x: -100 }}
                animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }}
                transition={{ duration: 0.5, ease: 'easeOut' }}
@@ -25,7 +27,6 @@ export default function InfoBlock({ content }: any) {
                <MDXRemote {...content} />
             </motion.div>
             <motion.div
-               ref={ref}
                initial={{ opacity: 0, x: 100 }}
                animate={{ opacity: 1, x: 0 }}
                transition={{ duration: 0.5, ease: 'easeOut' }}

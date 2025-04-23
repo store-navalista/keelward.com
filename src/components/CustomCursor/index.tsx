@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from 'react'
 import css from './index.module.css'
 
 const CustomCursor = () => {
-   const isHovered = useAppSelector((state) => state.reducer.content.cursorIsHovered)
+   const isHovered = useAppSelector((state) => state.content.cursorIsHovered)
    const cursorRef = useRef<HTMLDivElement | null>(null)
 
    useEffect(() => {

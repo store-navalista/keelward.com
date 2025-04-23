@@ -4,7 +4,7 @@ import css from '../Header.module.css'
 import { useAppSelector } from '@/hooks/redux'
 
 const Logo: FC<{ scrollStep: number }> = ({ scrollStep }) => {
-   const isLaptop = useAppSelector((state) => state.reducer.content.mediaQuery.isLaptop)
+   const isLaptop = useAppSelector((state) => state.content.mediaQuery.isLaptop)
    const logoHeight = scrollStep > 0 || isLaptop ? '54px' : '80px'
 
    return (

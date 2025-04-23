@@ -7,7 +7,7 @@ import { useAppSelector } from '@/hooks/redux'
 import { Menu } from '../Menu/Menu'
 
 const Header: FC<{ scrollStep: number }> = ({ scrollStep }) => {
-   const currentMQ = useAppSelector((state) => state.reducer.content.mediaQuery)
+   const currentMQ = useAppSelector((state) => state.content.mediaQuery)
 
    return (
       <header className={css.wrapper}>

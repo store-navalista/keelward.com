@@ -24,7 +24,7 @@ interface MasonryProps {
 }
 
 const Masonry: React.FC<MasonryProps> = ({ data, zoomHandler }) => {
-   const isMobile = useAppSelector((state) => state.reducer.content.mediaQuery.isMobile)
+   const isMobile = useAppSelector((state) => state.content.mediaQuery.isMobile)
    const [columns, setColumns] = useState<number>(2)
    const sortedData = useMemo(() => {
       if (isMobile) {

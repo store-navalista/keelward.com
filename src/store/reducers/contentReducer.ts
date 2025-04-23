@@ -5,19 +5,17 @@ interface IMediaQuery {
    isLaptop: boolean | undefined
 }
 
-interface IStateProps {
+export interface ContentState {
    cursorIsHovered: boolean
    hoveredLink: string
-   currentPage: string
    currentLang: string
    prefix: string
    mediaQuery: IMediaQuery
 }
 
-const initialState: IStateProps = {
+export const initialState: ContentState = {
    cursorIsHovered: true,
    hoveredLink: 'HOME',
-   currentPage: 'HOME',
    currentLang: 'en',
    prefix: '',
    mediaQuery: {
@@ -34,9 +32,6 @@ export const ContentSlice = createSlice({
          const lang = action.payload.substring(0, 2)
          state.currentLang = lang
          state.prefix = `/${lang}`
-      },
-      setID(state, action: PayloadAction<string>) {
-         state.currentPage = action.payload
       },
       setMediaQuery(state, action: PayloadAction<IMediaQuery>) {
          state.mediaQuery = { ...action.payload }

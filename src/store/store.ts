@@ -1,13 +1,17 @@
-import { configureStore } from '@reduxjs/toolkit'
-import { setupListeners } from '@reduxjs/toolkit/query/react'
-import { reducer } from './reducers'
+import { configureStore, PreloadedState } from '@reduxjs/toolkit'
+import contentReducer, { ContentState } from './reducers/contentReducer'
 
-const store = configureStore({
-   reducer: {
-      reducer
-   }
-})
+export const makeStore = (preloadedState?: PreloadedState<RootState>) =>
+   configureStore({
+      reducer: {
+         content: contentReducer
+      },
+      preloadedState
+   })
 
-setupListeners(store.dispatch)
+export type RootState = {
+   content: ContentState
+}
 
-export default store
+export type AppStore = ReturnType<typeof makeStore>
+export type AppDispatch = AppStore['dispatch']

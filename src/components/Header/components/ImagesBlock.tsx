@@ -6,7 +6,7 @@ import css from '../Header.module.css'
 const images = ['HOME', 'S_SUPPLY', 'ABOUT_US', 'RIDING_TEAMS', 'SHIP_REPAIR', 'UTM']
 
 const ImagesBlock: FC = () => {
-   const hoveredLink = useAppSelector((state) => state.reducer.content.hoveredLink)
+   const hoveredLink = useAppSelector((state) => state.content.hoveredLink)
    const height = 260
 
    return (

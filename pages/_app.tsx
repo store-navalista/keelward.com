@@ -31,16 +31,6 @@ function AppWrapper({ Component, pageProps }: IAppWrapperProps) {
 }
 
 const MyApp = ({ Component, pageProps }: IAppWrapperProps) => {
-   const [isHydrated, setIsHydrated] = useState(false)
-
-   useEffect(() => {
-      setIsHydrated(true)
-   }, [])
-
-   if (!isHydrated) {
-      return null
-   }
-
    return (
       <Provider store={store}>
          <CookiesProvider>

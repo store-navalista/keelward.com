@@ -7,5 +7,10 @@ module.exports = {
 
       return config
    },
+   i18n: {
+      locales: ['en', 'ru', 'tr', 'ge'],
+      defaultLocale: 'en',
+      localeDetection: false
+   },
    transpilePackages: ['@mui/x-charts']
 }

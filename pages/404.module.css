@@ -1,0 +1,4 @@
+.error_wrapper {
+   position: relative;
+   height: calc(100svh - var(--header-height));
+}

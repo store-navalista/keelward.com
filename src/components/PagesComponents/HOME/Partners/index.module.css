@@ -1,0 +1,96 @@
+.partners {
+   position: relative;
+   width: 100%;
+   .chains {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 100px;
+   }
+   & :where(.upper, .lower) {
+      --speed: 26s;
+      width: 100%;
+      height: 12px;
+      background-image: url(/assets/images/svg/chain.svg);
+      background-size: contain;
+      opacity: 0.5;
+      background-repeat: repeat-x;
+   }
+   .upper {
+      animation: moveLeft var(--speed) linear infinite;
+   }
+
+   .lower {
+      animation: moveRight var(--speed) linear infinite;
+   }
+
+   .text_wrapper {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 24px 0;
+      .marquee {
+         display: flex;
+         overflow: hidden;
+         white-space: nowrap;
+         position: relative;
+      }
+
+      .track {
+         display: flex;
+         animation: marquee 1400s linear infinite;
+         white-space: pre;
+         .text_upper {
+            font-size: 32px;
+         }
+         .text_lower {
+            text-wrap: nowrap;
+         }
+      }
+
+      .marqueeReverse .track {
+         animation: marqueeReverse 25s linear infinite;
+      }
+   }
+}
+
+@keyframes moveRight {
+   from {
+      background-position: 0 0;
+   }
+   to {
+      background-position: 100% 0;
+   }
+}
+
+@keyframes moveLeft {
+   from {
+      background-position: 100% 0;
+   }
+   to {
+      background-position: 0 0;
+   }
+}
+
+@keyframes marquee {
+   from {
+      transform: translateX(0);
+   }
+   to {
+      transform: translateX(-100%);
+   }
+}
+
+@keyframes marqueeReverse {
+   from {
+      transform: translateX(-100%);
+   }
+   to {
+      transform: translateX(0);
+   }
+}

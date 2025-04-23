@@ -1,0 +1,200 @@
+{
+   "HOME": {
+      "en": {
+         "pageTitle": "Marine Technical Services",
+         "description": "Comprehensive marine technical services, including ship repair, riding teams, and ultrasonic thickness measurements (UTM) for vessel maintenance and safety."
+      },
+      "ru": {
+         "pageTitle": "Морские технические услуги",
+         "description": "Комплексные морские технические услуги, включая ремонт судов, команды для работы на ходу и ультразвуковые измерения толщины (UTM) для обслуживания и безопасности судов."
+      },
+      "tr": {
+         "pageTitle": "Deniz Teknik Hizmetleri",
+         "description": "Gemi bakımı ve güvenliği için gemi onarımı, seyir ekipleri ve ultrasonik kalınlık ölçümleri (UTM) dahil kapsamlı deniz teknik hizmetleri."
+      },
+      "ge": {
+         "pageTitle": "მეზღვაური ტექნიკური სერვისები",
+         "description": "სრული მეზღვაური ტექნიკური სერვისები, მათ შორის გემის შეკეთება, მეზღვაური გუნდები და ულტრაბგერითი სისქის გაზომვები (UTM) გემის მოვლისა და უსაფრთხოებისთვის."
+      }
+   },
+   "SHIP_REPAIR": {
+      "en": {
+         "pageTitle": "Ship repair services",
+         "description": "Comprehensive ship repair services including hull, machinery, electrical systems and equipment maintenance. Ensuring safety and efficiency for your fleet."
+      },
+      "ru": {
+         "pageTitle": "Услуги по ремонту судов",
+         "description": "Комплексные услуги по ремонту судов, включая обслуживание корпуса, машин, электрических систем и оборудования. Обеспечение безопасности и эффективности вашего флота."
+      },
+      "tr": {
+         "pageTitle": "Gemi onarım hizmetleri",
+         "description": "Gemi gövdesi, makineler, elektrik sistemleri ve ekipman bakımı dahil kapsamlı gemi onarım hizmetleri. Filonuzun güvenliğini ve verimliliğini sağlamak."
+      },
+      "ge": {
+         "pageTitle": "გემის შეკეთების სერვისები",
+         "description": "სრული გემის შეკეთების სერვისები, მათ შორის კორპუსის, მანქანების, ელექტრო სისტემებისა და აღჭურვილობის მოვლა. თქვენი ფლოტის უსაფრთხოებისა და ეფექტურობის უზრუნველყოფა."
+      }
+   },
+   "RIDING_TEAMS": {
+      "en": {
+         "pageTitle": "Boat crew services",
+         "description": "Skilled boat crew services including maintenance, repair and supply of essential equipment. Ensuring safety and efficiency for your fleet."
+      },
+      "ru": {
+         "pageTitle": "Услуги экипажа судна",
+         "description": "Квалифицированные услуги экипажа судна, включая обслуживание, ремонт и поставку необходимого оборудования. Обеспечение безопасности и эффективности вашего флота."
+      },
+      "tr": {
+         "pageTitle": "Tekne mürettebatı hizmetleri",
+         "description": "Bakım, onarım ve gerekli ekipmanların temini dahil yetenekli tekne mürettebatı hizmetleri. Filonuzun güvenliğini ve verimliliğini sağlamak."
+      },
+      "ge": {
+         "pageTitle": "ნავის ეკიპაჟის სერვისები",
+         "description": "კვალიფიციური ნავის ეკიპაჟის სერვისები, მათ შორის მოვლა, შეკეთება და აუცილებელი აღჭურვილობის მიწოდება. თქვენი ფლოტის უსაფრთხოებისა და ეფექტურობის უზრუნველყოფა."
+      }
+   },
+   "UTM": {
+      "en": {
+         "pageTitle": "Ultrasonic Thickness Gauges",
+         "description": "Accurate ultrasonic thickness measurements for hull integrity and compliance. Ensuring safety and efficiency for your fleet."
+      },
+      "ru": {
+         "pageTitle": "Ультразвуковые толщиномеры",
+         "description": "Точные ультразвуковые измерения толщины для целостности корпуса и соответствия требованиям. Обеспечение безопасности и эффективности вашего флота."
+      },
+      "tr": {
+         "pageTitle": "Ultrasonik Kalınlık Ölçerler",
+         "description": "Gövde bütünlüğü ve uyumluluğu için doğru ultrasonik kalınlık ölçümleri. Filonuzun güvenliğini ve verimliliğini sağlamak."
+      },
+      "ge": {
+         "pageTitle": "ულტრაბგერითი სისქის გაზომვები",
+         "description": "ზუსტი ულტრაბგერითი სისქის გაზომვები კორპუსის მთლიანობისა და შესაბამისობისთვის. თქვენი ფლოტის უსაფრთხოებისა და ეფექტურობის უზრუნველყოფა."
+      }
+   },
+   "MT_SERVICES": {
+      "en": {
+         "pageTitle": "Marine Technical Services",
+         "description": "Comprehensive marine technical services including ship repair, boat crew services and ultrasonic thickness gauges (UTM). Ensuring safety, compliance and efficiency for your fleet."
+      },
+      "ru": {
+         "pageTitle": "Морские технические услуги",
+         "description": "Комплексные морские технические услуги, включая ремонт судов, услуги экипажа судна и ультразвуковые толщиномеры (UTM). Обеспечение безопасности, соответствия и эффективности вашего флота."
+      },
+      "tr": {
+         "pageTitle": "Deniz Teknik Hizmetleri",
+         "description": "Gemi onarımı, tekne mürettebatı hizmetleri ve ultrasonik kalınlık ölçerler (UTM) dahil kapsamlı deniz teknik hizmetleri. Filonuzun güvenliğini, uyumluluğunu ve verimliliğini sağlamak."
+      },
+      "ge": {
+         "pageTitle": "მეზღვაური ტექნიკური სერვისები",
+         "description": "სრული მეზღვაური ტექნიკური სერვისები, მათ შორის გემის შეკეთება, ნავის ეკიპაჟის სერვისები და ულტრაბგერითი სისქის გაზომვები (UTM). თქვენი ფლოტის უსაფრთხოებისა, შესაბამისობისა და ეფექტურობის უზრუნველყოფა."
+      }
+   },
+   "S_SUPPLY": {
+      "en": {
+         "pageTitle": "Ship supply services",
+         "description": "Reliable ship supply services including provisions, spare parts and essential equipment for ships worldwide. Ensuring quality and timely delivery in every port."
+      },
+      "ru": {
+         "pageTitle": "Услуги по снабжению судов",
+         "description": "Надежные услуги по снабжению судов, включая провизию, запасные части и необходимое оборудование для судов по всему миру. Обеспечение качества и своевременной доставки в каждом порту."
+      },
+      "tr": {
+         "pageTitle": "Gemi tedarik hizmetleri",
+         "description": "Dünya çapında gemiler için erzak, yedek parça ve gerekli ekipmanlar dahil güvenilir gemi tedarik hizmetleri. Her limanda kalite ve zamanında teslimat sağlamak."
+      },
+      "ge": {
+         "pageTitle": "გემის მომარაგების სერვისები",
+         "description": "სანდო გემის მომარაგების სერვისები, მათ შორის პროვიზია, სათადარიგო ნაწილები და აუცილებელი აღჭურვილობა გემებისთვის მთელ მსოფლიოში. ხარისხისა და დროული მიწოდების უზრუნველყოფა ყველა პორტში."
+      }
+   },
+   "LIVE_STOCK": {
+      "en": {
+         "pageTitle": "Live Stock",
+         "description": "Browse our live stock catalog for Marine Technical Services and Ship Supply. Explore a wide range of provisions, spare parts, and equipment available for vessels worldwide."
+      },
+      "ru": {
+         "pageTitle": "Магазин",
+         "description": "Просмотрите наш каталог товаров для снабжения судов. Исследуйте широкий ассортимент провизии, запасных частей и оборудования, доступных для судов по всему миру."
+      },
+      "tr": {
+         "pageTitle": "Canlı Stok",
+         "description": "Deniz Teknik Hizmetleri ve Gemi Tedariki için canlı stok kataloğumuzu inceleyin. Dünya çapında gemiler için mevcut geniş bir erzak, yedek parça ve ekipman yelpazesini keşfedin."
+      },
+      "ge": {
+         "pageTitle": "ცოცხალი მარაგი",
+         "description": "დაათვალიერეთ ჩვენი ცოცხალი მარაგის კატალოგი მეზღვაური ტექნიკური სერვისებისა და გემის მომარაგებისთვის. გამოიკვლიეთ ფართო სპექტრი პროვიზიების, სათადარიგო ნაწილებისა და აღჭურვილობის, რომელიც ხელმისაწვდომია გემებისთვის მთელ მსოფლიოში."
+      }
+   },
+   "CONTACTS": {
+      "en": {
+         "pageTitle": "Contact Us",
+         "description": "Get in touch with Keelward for expert marine services, inquiries, and support. Our team is ready to assist you with all your maritime needs."
+      },
+      "ru": {
+         "pageTitle": "Свяжитесь с нами",
+         "description": "Свяжитесь с нами для получения экспертных морских услуг, запросов и поддержки. Наша команда готова помочь вам со всеми вашими морскими потребностями."
+      },
+      "tr": {
+         "pageTitle": "Bize Ulaşın",
+         "description": "Uzman deniz hizmetleri, talepler ve destek için Keelward ile iletişime geçin. Ekibimiz tüm denizcilik ihtiyaçlarınızda size yardımcı olmaya hazır."
+      },
+      "ge": {
+         "pageTitle": "დაგვიკავშირდით",
+         "description": "დაუკავშირდით Keelward-ს ექსპერტული მეზღვაური სერვისებისთვის, მოთხოვნებისთვის და მხარდაჭერისთვის. ჩვენი გუნდი მზად არის დაგეხმაროთ ყველა თქვენს საზღვაო საჭიროებაში."
+      }
+   },
+   "NEWS": {
+      "en": {
+         "pageTitle": "News",
+         "description": "Stay updated with the latest news and events from Keelward. Explore our blog for insights, updates, and maritime industry news."
+      },
+      "ru": {
+         "pageTitle": "Новости",
+         "description": "Будьте в курсе последних новостей и событий от Keelward. Изучите наш блог для получения информации, обновлений и новостей морской индустрии."
+      },
+      "tr": {
+         "pageTitle": "Haberler",
+         "description": "Keelward'dan en son haberler ve etkinliklerle güncel kalın. İçgörüler, güncellemeler ve denizcilik sektörü haberleri için blogumuzu keşfedin."
+      },
+      "ge": {
+         "pageTitle": "ახალი ამბები",
+         "description": "იყავით განახლებული Keelward-ის უახლესი ახალი ამბებითა და ღონისძიებებით. გამოიკვლიეთ ჩვენი ბლოგი ინფორმაციის, განახლებებისა და საზღვაო ინდუსტრიის ახალი ამბებისთვის."
+      }
+   },
+   "PRIVACY_POLICY": {
+      "en": {
+         "pageTitle": "Privacy Policy",
+         "description": "Keelward is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and protect your personal information when you visit our website."
+      },
+      "ru": {
+         "pageTitle": "Политика конфиденциальности",
+         "description": "Keelward стремится защищать вашу конфиденциальность. Эта Политика конфиденциальности объясняет, как мы собираем, используем и защищаем вашу личную информацию, когда вы посещаете наш веб-сайт."
+      },
+      "tr": {
+         "pageTitle": "Gizlilik Politikası",
+         "description": "Keelward, gizliliğinizi korumaya kararlıdır. Bu Gizlilik Politikası, web sitemizi ziyaret ettiğinizde kişisel bilgilerinizi nasıl topladığımızı, kullandığımızı ve koruduğumuzu açıklar."
+      },
+      "ge": {
+         "pageTitle": "კონფიდენციალურობის პოლიტიკა",
+         "description": "Keelward ვალდებულია დაიცვას თქვენი კონფიდენციალურობა. ეს კონფიდენციალურობის პოლიტიკა განმარტავს, როგორ ვაგროვებთ, ვიყენებთ და ვიცავთ თქვენს პირად ინფორმაციას, როდესაც ეწვევით ჩვენს ვებსაიტს."
+      }
+   },
+   "ABOUT_US": {
+      "en": {
+         "pageTitle": "Marine Technical Services, UTM Inspections & Ship Supply",
+         "description": "Keelward offers expert marine services, including ship repair, riding teams, ultrasonic measurements (UTM), and global ship supply. Ensuring safety, compliance, and efficiency for your fleet."
+      },
+      "ru": {
+         "pageTitle": "Морские технические услуги, UTM инспекции и снабжение судов",
+         "description": "Keelward предлагает экспертные морские услуги, включая ремонт судов, команды для работы на ходу, ультразвуковые измерения (UTM) и глобальное снабжение судов. Обеспечение безопасности, соответствия и эффективности вашего флота."
+      },
+      "tr": {
+         "pageTitle": "Deniz Teknik Hizmetleri, UTM Denetimleri ve Gemi Tedariki",
+         "description": "Keelward, gemi onarımı, seyir ekipleri, ultrasonik ölçümler (UTM) ve küresel gemi tedariki dahil uzman deniz hizmetleri sunar. Filonuzun güvenliğini, uyumluluğunu ve verimliliğini sağlamak."
+      },
+      "ge": {
+         "pageTitle": "მეზღვაური ტექნიკური სერვისები, UTM ინსპექციები და გემის მომარაგება",
+         "description": "Keelward გთავაზობთ ექსპერტულ მეზღვაური სერვისებს, მათ შორის გემის შეკეთებას, მეზღვაური გუნდებს, ულტრაბგერითი გაზომვებს (UTM) და გლობალურ გემის მომარაგებას. თქვენი ფლოტის უსაფრთხოებისა, შესაბამისობისა და ეფექტურობის უზრუნველყოფა."
+      }
+   }
+}

@@ -1,26 +1,44 @@
-import { useEffect, useState, MutableRefObject } from "react";
+import { useEffect, useState, MutableRefObject } from 'react'
+import { useAppDispatch } from './redux'
+import { ContentActions } from '@/store/reducers/contentReducer'
 
-export default function useHover(ref: MutableRefObject<HTMLElement>) {
-	const [isHovering, setHovering] = useState(false);
+type UseHoverProps = {
+   ref: MutableRefObject<HTMLElement>
+   isGlobal?: boolean
+   hoveredLink?: string
+}
 
-	const on = () => setHovering(true);
-	const off = () => setHovering(false);
+export default function useHover({ ref, isGlobal = false, hoveredLink = undefined }: UseHoverProps) {
+   const [isHovering, setHovering] = useState(false)
+   const dispatch = useAppDispatch()
 
-	useEffect(() => {
-		if (!ref.current) return
+   useEffect(() => {
+      if (isGlobal) {
+         dispatch(ContentActions.setIsHovered(isHovering))
+      }
+      if (hoveredLink) {
+         dispatch(ContentActions.setHoveredLink(hoveredLink))
+      }
+   }, [isHovering])
 
-		const node = ref.current
+   const on = () => setHovering(true)
+   const off = () => setHovering(false)
 
-		node.addEventListener("mouseenter", on);
-		node.addEventListener("mousemove", on);
-		node.addEventListener("mouseleave", off);
+   useEffect(() => {
+      if (!ref.current) return
 
-		return () => {
-			node.removeEventListener("mouseenter", on);
-			node.removeEventListener("mousemove", on);
-			node.removeEventListener("mouseleave", off);
-		}
-	})
+      const node = ref.current
 
-	return isHovering;
+      node.addEventListener('mouseenter', on)
+      node.addEventListener('mousemove', on)
+      node.addEventListener('mouseleave', off)
+
+      return () => {
+         node.removeEventListener('mouseenter', on)
+         node.removeEventListener('mousemove', on)
+         node.removeEventListener('mouseleave', off)
+      }
+   })
+
+   return isHovering
 }

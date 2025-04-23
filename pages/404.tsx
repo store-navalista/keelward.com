@@ -1,20 +1,15 @@
-import translate from '@/i18n/translate'
-import Link from 'next/link'
+import { ErrorScreen } from '@/components/Error/ErrorScreen'
 import React from 'react'
-import css from './404.module.scss'
-import { ContentActions } from '@/store/reducers/contentReducer'
-import { useAppDispatch } from '@/hooks/redux'
+import css from './404.module.css'
 
-export default function Custom404() {
-   const dispatch = useAppDispatch()
-
+function Custom404() {
    return (
-      <div className={css.not_page}>
-         <h1>{translate('404')}</h1>
-         <span />
-         <Link href='/' onClick={() => dispatch(ContentActions.setID('HOME'))}>
-            {translate('404.button')}
-         </Link>
-      </div>
+      <>
+         <div className={css.error_wrapper}>
+            <ErrorScreen type='404' />
+         </div>
+      </>
    )
 }
+
+export default Custom404

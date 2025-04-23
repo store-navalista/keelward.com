@@ -1,7 +1,5 @@
-import React, { Fragment, useEffect } from 'react'
-import { Cookies } from 'react-cookie'
+import React, { Fragment } from 'react'
 import { IntlProvider } from 'react-intl'
-import { useAppSelector } from '../hooks/redux'
 import { LOCALES } from './locales'
 import messages from './messages'
 
@@ -11,14 +9,14 @@ interface IProvider {
 }
 
 const Provider = ({ children, locale }: IProvider) => {
-   const language = useAppSelector((state) => state.reducer.content.currentLang)
-   const cookies = new Cookies().get('language')
-   locale = LOCALES[language] || LOCALES.ENGLISH
-   useEffect(() => {
-      if (cookies) locale = LOCALES[cookies]
-   }, [])
+   const unicodeLang = LOCALES[locale === 'ge' ? 'ka' : locale] || navigator.language
+
    return (
-      <IntlProvider locale={locale || navigator.language} textComponent={Fragment} messages={messages[locale]}>
+      <IntlProvider
+         locale={unicodeLang || navigator.language}
+         textComponent={Fragment}
+         messages={messages[unicodeLang]}
+      >
          {children}
       </IntlProvider>
    )

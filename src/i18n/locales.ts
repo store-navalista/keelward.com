@@ -1,5 +1,6 @@
 export const LOCALES = {
-   ENGLISH: 'en-us',
-   RUSSIAN: 'ru-ru',
-   GEORGIAN: 'ge-ge'
+   en: 'en-US',
+   ru: 'ru-RU',
+   ka: 'ka-GE',
+   tr: 'tr-TR'
 }

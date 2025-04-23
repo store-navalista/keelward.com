@@ -1,49 +1,55 @@
-import { useAppSelector } from '@/hooks/redux'
-import React, { FC, ReactNode, useEffect, useState } from 'react'
-import { ErrorBoundary } from 'react-error-boundary'
-import { ErrorBoundaryComponent } from './Error/Error'
+import { Map } from '@/components/Map'
+import { AnimatePresence, motion } from 'framer-motion'
+import dynamic from 'next/dynamic'
+import { useRouter } from 'next/router'
+import React, { FC, ReactNode, useCallback, useEffect, useState } from 'react'
 import Footer from './Footer/Footer'
 import Header from './Header/Header'
-import st from './Main.layout.module.scss'
-import Seo from './seo'
-import { PagesData as SEO } from '@/i18n/pages/locales'
-import { Map } from './Pages/map/Map'
-import { useCookies } from 'react-cookie'
-import { useRouter } from 'next/router'
-import useUserByID from '@/hooks/useUserByID'
+import css from './Main.layout.module.css'
+import { WhyChooseUs } from './WhyChooseUs/WhyChooseUs'
+
+const fadeVariants = {
+   hidden: { opacity: 0 },
+   visible: { opacity: 1 },
+   exit: { opacity: 0 }
+}
+
+const Partners = dynamic(() => import('./PagesComponents/HOME/Partners'), { ssr: false })
 
 const MainLayout: FC<{ children: ReactNode }> = ({ children }) => {
-   const isLaptop = useAppSelector((state) => state.reducer.content.mediaQuery.isLaptop)
-   const i18n = useAppSelector((state) => state.reducer.content.i18n)
-   const id = useAppSelector((state) => state.reducer.content._id)
-   const [scrollStep, setcrollStep] = useState(0)
+   const [scrollStep, setScrollStep] = useState(0)
+   const location = useRouter()
 
-   const scroll = () => {
-      setcrollStep(window.pageYOffset)
-   }
+   const scroll = useCallback(() => {
+      setScrollStep(window.pageYOffset)
+   }, [])
 
    useEffect(() => {
       window.addEventListener('scroll', scroll)
-   })
-
-   let pages = {}
-
-   for (const key in SEO[i18n]) {
-      if (typeof SEO[i18n][key] === 'object') {
-         pages = { ...pages, ...SEO[i18n][key] }
-      }
-   }
+      return () => window.removeEventListener('scroll', scroll)
+   }, [scroll])
 
    return (
-      <ErrorBoundary fallbackRender={ErrorBoundaryComponent}>
-         <Seo {...pages[id].seo} />
-         <main className={st.wrapper}>
-            <Header scrollStep={scrollStep} />
-            {children}
-            <Map />
-            <Footer scrollStep={scrollStep} isLaptop={isLaptop} />
-         </main>
-      </ErrorBoundary>
+      <main className={css.wrapper}>
+         <Header scrollStep={scrollStep} />
+         <AnimatePresence mode='wait'>
+            <motion.div
+               key={location.pathname}
+               variants={fadeVariants}
+               initial='hidden'
+               animate='visible'
+               exit='exit'
+               transition={{ duration: 0.5 }}
+               className={css.body}
+            >
+               {children}
+            </motion.div>
+         </AnimatePresence>
+         <WhyChooseUs />
+         <Partners />
+         <Map />
+         <Footer />
+      </main>
    )
 }
 

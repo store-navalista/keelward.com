@@ -1,42 +1,45 @@
-import MainBlock from '@/components/Pages/main-block/MainBlock'
-import Services from '@/components/Pages/service-block/Services'
-import Loader from '@/components/UI/loader/Loader'
-import SwiperCerts from '@/components/UI/swiper-certs/SwiperCerts'
-import { CERTIFICATES } from '@/constants/certificates'
-import { CHAPTERS } from '@/constants/pages'
-import { useAppSelector } from '@/hooks/redux'
-import { PagesData as content } from '@/i18n/pages/locales'
+import CertificatesBlock from '@/components/PagesComponents/HOME/CertificatesBlock'
+import MainSlider from '@/components/PagesComponents/HOME/MainSlider'
+import ServicesBlock from '@/components/PagesComponents/HOME/ServicesBlock'
+import StoreBlock from '@/components/PagesComponents/HOME/StoreBlock'
+import SwiperBottomBlock from '@/components/PagesComponents/HOME/SwiperBottomBlock'
+import Seo from '@/components/seo'
+import { PageProps } from '@/constants/types'
+import { data_collector } from '@/services/data_collector'
 import { GetServerSideProps, NextPage } from 'next'
-import React, { useEffect, useState } from 'react'
+import { serialize } from 'next-mdx-remote/serialize'
+import React from 'react'
+import css from './index.module.css'
 
-const Home: NextPage = ({ content }: any) => {
-   const lang = useAppSelector((state) => state.reducer.content.i18n)
-   const [isLoading, setLoading] = useState(true)
-   const { services, pages } = content[lang]
-   const chapters = CHAPTERS.map((c) => Object.keys(c)[0])
-   const certs = Object.values(CERTIFICATES).flatMap((c) => Object.values(c).flatMap((c) => c))
-
-   useEffect(() => {
-      setLoading(false)
-   })
-
-   if (isLoading) return <Loader />
-
+const Home: NextPage = ({ seo }: PageProps) => {
    return (
       <>
-         <MainBlock content={services} />
-         <Services chapters={chapters} services={services} />
-         {/* <SwiperCerts certs={certs} /> */}
+         <Seo {...seo} />
+         <div className={css.wrapper}>
+            <section className={css.slider_section}>
+               <MainSlider />
+               <SwiperBottomBlock />
+            </section>
+            <ServicesBlock />
+            <StoreBlock />
+            <CertificatesBlock />
+         </div>
       </>
    )
 }
 
 export default Home
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
+   const page_id = 'HOME'
+   const collection = await data_collector(page_id, locale, serialize)
+   const data = {
+      seo: collection?.seo || {},
+      content: collection?.content || {},
+      locale
+   }
+
    return {
-      props: {
-         content
-      }
+      props: { ...data }
    }
 }

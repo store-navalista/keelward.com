@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import Head from 'next/head'
 
 interface ISeo {
-   siteTitle: string
+   siteTitle?: string
    pageTitle: string
    description: string
 }
@@ -10,7 +10,7 @@ interface ISeo {
 const Seo: FC<ISeo> = ({ description = 'Error', pageTitle = 'Error Page', siteTitle = 'Keelward' }) => {
    return (
       <Head>
-         <title>{siteTitle ? `${siteTitle} | ${pageTitle}` : 'Keelward | Error'}</title>
+         <title>{siteTitle ? `${pageTitle} ◉︎ ${siteTitle}` : 'Keelward | Error'}</title>
          <meta charSet='utf-8' />
          <meta name='viewport' content='width=device-width, initial-scale=1.0' />
          <meta name='description' content={description} />

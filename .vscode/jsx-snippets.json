@@ -1,0 +1,10 @@
+{
+   "jsx": {
+      "abbreviations": {
+         "div": "div[className={css.${class}}]"
+      },
+      "snippets": {
+         "div": "<div className={css.${class}}>${child}</div>"
+      }
+   }
+}

@@ -1,0 +1,58 @@
+.cn {
+   box-sizing: border-box;
+   position: fixed;
+   z-index: 9998;
+   bottom: 0;
+   background-color: var(--color-blue);
+   backdrop-filter: blur(6px);
+   color: #fff;
+   padding: 15px 30px;
+   width: 100%;
+   border-top: 2px solid #fff;
+   & > div {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      width: 100%;
+      line-height: 1.3;
+      text-align: center;
+      .link {
+         box-sizing: border-box;
+         padding: 2px 12px;
+         border: 2px solid #fff;
+         background-color: #fff;
+         border-radius: 4px;
+         color: var(--color-blue);
+         font-weight: 600;
+         height: 30px;
+         text-decoration: none;
+         font-size: 16px;
+         transition: background-color 0.3s, color 0.3s;
+         &:hover {
+            background-color: var(--color-blue);
+            color: #fff;
+         }
+      }
+      button.close {
+         position: absolute;
+         right: -20px;
+         bottom: 50%;
+         transform: translateY(50%);
+         box-sizing: border-box;
+         background-color: transparent;
+         color: #ffffff;
+         width: 32px;
+         padding: 0;
+         aspect-ratio: 1;
+         border: 1px solid #ffffff00;
+         border-radius: 4px;
+         transition: border-color 0.3s;
+         &:hover {
+            border-color: #fff;
+         }
+      }
+   }
+}

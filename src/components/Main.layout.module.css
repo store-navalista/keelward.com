@@ -1,0 +1,7 @@
+.wrapper {
+   .body {
+      width: 100%;
+      margin-top: var(--header-height);
+      overflow: hidden;
+   }
+}

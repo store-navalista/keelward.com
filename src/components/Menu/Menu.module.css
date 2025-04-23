@@ -1,0 +1,94 @@
+nav.wrapper {
+   top: var(--header-height);
+   left: 0;
+   width: 100%;
+   height: var(--full-height);
+   background-color: #f5f5f5;
+   position: fixed;
+   padding: 30px 10px 10px;
+   display: flex;
+   flex-direction: column;
+   gap: 12px;
+   & > ul {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding: 24px 12px 12px;
+      & > li {
+         display: flex;
+         align-items: center;
+         gap: 2px;
+         line-height: 1.2;
+         & > a {
+            color: #1d1d1d;
+            text-decoration: none;
+            font-size: 20px;
+            transition: color 0.3s;
+            &:hover {
+               color: var(--color-red);
+            }
+         }
+      }
+   }
+   .lang {
+      display: flex;
+      gap: 16px;
+      margin: 0 auto;
+      margin-top: 12px;
+      .lang_item {
+         position: relative;
+         height: 32px;
+         aspect-ratio: 1;
+         outline-offset: 2px;
+         border-radius: 50%;
+         &[data-active='true'] {
+            outline: 2px solid var(--color-blue);
+         }
+      }
+   }
+}
+.options {
+   & > ul {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 12px 0 0 24px;
+      &::before {
+         position: absolute;
+         top: 0;
+         left: -4px;
+         content: '';
+         width: 1px;
+         height: 100%;
+         background-color: var(--color-blue);
+      }
+      & > li {
+         display: flex;
+         align-items: center;
+         gap: 4px;
+         font-size: 18px;
+         & > a {
+            color: #1d1d1d;
+            text-decoration: none;
+            font-size: 20px;
+            transition: color 0.3s;
+            &:hover {
+               color: var(--color-red);
+            }
+         }
+      }
+   }
+   button.gear_button {
+      border: none;
+      background-color: transparent;
+      display: flex;
+      gap: 4px;
+      align-items: center;
+      font-size: 20px;
+      font-family: var(--font-g-regular);
+      & > * {
+         margin-top: 2px;
+      }
+   }
+}

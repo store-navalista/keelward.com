@@ -1,0 +1,66 @@
+.wrapper {
+   position: fixed;
+   box-sizing: border-box;
+   width: 100%;
+   top: 0;
+   z-index: 10;
+   padding: 8px 20px;
+   box-shadow: var(--shadow-first);
+   background-color: #ffffff;
+   .menu {
+      position: relative;
+   }
+   .header_wrapper {
+      max-width: var(--max-width-hf);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .logo {
+         position: relative;
+         height: var(--logo-height);
+         aspect-ratio: 1;
+         transition: height 0.3s;
+      }
+      .navigation {
+         display: flex;
+         align-items: center;
+         gap: 28px;
+         .nav_button {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 2px;
+         }
+         .nav_link {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            .gear {
+               position: absolute;
+               left: -14px;
+               opacity: 0;
+               transition: opacity 0.3s;
+            }
+         }
+      }
+      .navigation a {
+         --line-color: #fff;
+         position: relative;
+         display: block;
+         text-decoration: none;
+         color: #1d1d1d;
+         text-transform: uppercase;
+      }
+      .navigation :where(a, button) {
+         transition: font-weight 0.3s;
+         text-transform: uppercase;
+      }
+   }
+}
+
+@media screen and (max-width: 670px) {
+   .wrapper {
+      padding: 10px 20px;
+   }
+}

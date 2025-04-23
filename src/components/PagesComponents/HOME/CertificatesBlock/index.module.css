@@ -1,0 +1,59 @@
+.cert {
+   position: relative;
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   margin-bottom: 250px;
+   @media (max-width: 530px) {
+      margin-bottom: 100px;
+   }
+   .substrate {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-image: url(/assets/images/svg/template-bg.svg);
+      background-position: center;
+      background-size: cover;
+   }
+   .content {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      z-index: 2;
+      @media (max-width: 1100px) {
+         flex-direction: column;
+      }
+      .card {
+         border: 3px solid var(--color-blue);
+         position: relative;
+         height: 500px;
+         aspect-ratio: 0.71;
+         translate: 0 150px;
+         border-radius: 8px;
+         overflow: hidden;
+         @media (max-width: 1100px) {
+            translate: 0 100px;
+         }
+         @media (max-width: 760px) {
+            height: 400px;
+            translate: 0 50px;
+         }
+      }
+      h3 {
+         text-align: left;
+         font-size: 32px;
+         font-family: var(--font-g-semibold);
+         color: #fff;
+         max-width: 600px;
+         line-height: 1.3;
+         @media (max-width: 1100px) {
+            padding-top: 52px;
+            text-align: center;
+         }
+         @media (max-width: 760px) {
+            font-size: 24px;
+         }
+      }
+   }
+}

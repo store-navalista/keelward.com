@@ -1,0 +1,20 @@
+[
+   {
+      "id": 1,
+      "title": "October book fair",
+      "description": "This is the most important event of the literary market. The festival takes place on the territory of the cluster Star in the second pavilion",
+      "date": "03.10.2021"
+   },
+   {
+      "id": 2,
+      "title": "Dutch story of wooden house",
+      "description": "The film is about a small village of carvers on the north of Viborg. There are great set design scenes and the film is full of delightful applied art objects.",
+      "date": "02.10.2021"
+   },
+   {
+      "id": 3,
+      "title": "September market",
+      "description": "Wow! Amanda Steiner ceramics on September market. Also, meet talented young creators in the jewelry section and check some handmade cosmetics.",
+      "date": "01.10.2021"
+   }
+]

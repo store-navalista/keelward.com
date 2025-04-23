@@ -1,7 +1,13 @@
-import { TServices } from './pages'
+import { MDXRemoteSerializeResult } from 'next-mdx-remote'
 
-export type TServicesObjectProps = {
-   [key in TServices]: {
-      [key: string]: string
+export interface PageProps {
+   seo: {
+      pageTitle: string
+      description: string
    }
+   content?: MDXRemoteSerializeResult
+}
+
+export interface GoodsProps {
+   id: number
 }

@@ -1,0 +1,30 @@
+.wrapper {
+   box-sizing: border-box;
+   background-color: #fff;
+   height: 700px;
+   margin: 50px 25px;
+   border-radius: 14px;
+   overflow: hidden;
+   border: 2px solid #fff;
+   box-shadow: var(--shadow-first);
+   @media (max-width: 700px) {
+      height: 350px;
+   }
+}
+
+.marker {
+   border-radius: 50%;
+   width: 36px;
+   height: 36px;
+   background-color: #ffffff;
+   border: 2px solid var(--color-blue);
+   box-shadow: var(--shadow-first);
+   span {
+      display: block;
+      width: inherit;
+      height: inherit;
+      background-position: center;
+      background-size: cover;
+      background-image: url(/assets/images/svg/logo.svg);
+   }
+}

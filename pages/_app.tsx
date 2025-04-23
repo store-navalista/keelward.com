@@ -11,13 +11,14 @@ import { useMediaQuery } from 'react-responsive'
 import '../styles/globals.css'
 import CustomCursor from '@/components/CustomCursor'
 import CookieNotice from '@/components/CookieNotice'
+import { isMobile as isMobileDetect } from 'react-device-detect'
 
 type IAppWrapperProps = Pick<AppProps, 'Component' | 'pageProps'>
 
 function AppWrapper({ Component, pageProps }: IAppWrapperProps) {
    const currentMQ = useAppSelector((state) => state.reducer.content.mediaQuery)
-   const isLaptop = useMediaQuery({ query: '(max-width: 1024px)' })
-   const isMobile = useMediaQuery({ query: '(max-width: 670px)' })
+   const isLaptop = useMediaQuery({ query: '(max-width: 1024px)' }) || isMobileDetect
+   const isMobile = useMediaQuery({ query: '(max-width: 670px)' }) || isMobileDetect
    const dispatch = useAppDispatch()
    const [showCookieNotice, setShowCookieNotice] = useState(false)
    const [cookie] = useCookies(['cookie_notice_accepted'])

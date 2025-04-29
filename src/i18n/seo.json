@@ -1,19 +1,19 @@
 {
    "HOME": {
       "en": {
-         "pageTitle": "Marine Technical Services",
+         "pageTitle": "Home",
          "description": "Comprehensive marine technical services, including ship repair, riding teams, and ultrasonic thickness measurements (UTM) for vessel maintenance and safety."
       },
       "ru": {
-         "pageTitle": "Морские технические услуги",
+         "pageTitle": "Главная",
          "description": "Комплексные морские технические услуги, включая ремонт судов, команды для работы на ходу и ультразвуковые измерения толщины (UTM) для обслуживания и безопасности судов."
       },
       "tr": {
-         "pageTitle": "Deniz Teknik Hizmetleri",
+         "pageTitle": "Ana Sayfa",
          "description": "Gemi bakımı ve güvenliği için gemi onarımı, seyir ekipleri ve ultrasonik kalınlık ölçümleri (UTM) dahil kapsamlı deniz teknik hizmetleri."
       },
       "ge": {
-         "pageTitle": "მეზღვაური ტექნიკური სერვისები",
+         "pageTitle": "მთავარი",
          "description": "სრული მეზღვაური ტექნიკური სერვისები, მათ შორის გემის შეკეთება, მეზღვაური გუნდები და ულტრაბგერითი სისქის გაზომვები (UTM) გემის მოვლისა და უსაფრთხოებისთვის."
       }
    },

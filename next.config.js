@@ -8,7 +8,7 @@ module.exports = {
       return config
    },
    i18n: {
-      locales: ['en', 'ru', 'tr', 'ge'],
+      locales: ['en', 'ru', 'tr', 'ka'],
       defaultLocale: 'en',
       localeDetection: false
    },

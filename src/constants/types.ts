@@ -6,6 +6,7 @@ export interface PageProps {
       description: string
    }
    content?: MDXRemoteSerializeResult
+   locale?: string
 }
 
 export interface GoodsProps {

@@ -1,3 +1,4 @@
+import CanonicalHref from '@/components/Canonical'
 import { LiveStock } from '@/components/PagesComponents/LIVE_STOCK'
 import Seo from '@/components/seo'
 import { data_collector } from '@/services/data_collector'
@@ -10,6 +11,7 @@ const page_ID = 'LIVE_STOCK'
 const LiveStockPage: NextPage = ({ seo, goods }: any) => {
    return (
       <>
+         <CanonicalHref />
          <Seo {...seo} />
          {/* <LiveStock goods={goods} /> */}
       </>

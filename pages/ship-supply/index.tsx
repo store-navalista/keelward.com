@@ -1,3 +1,4 @@
+import CanonicalHref from '@/components/Canonical'
 import InfoBlock from '@/components/PagesComponents/S_SUPPLY/InfoBlock'
 import MainBlock from '@/components/PagesComponents/S_SUPPLY/MainBlock'
 import NewsBlock from '@/components/PagesComponents/S_SUPPLY/News'
@@ -11,6 +12,7 @@ const page_ID = 'S_SUPPLY'
 const ShipSupply: NextPage = ({ seo, content }: any) => {
    return (
       <>
+         <CanonicalHref />
          <Seo {...seo} />
          <MainBlock />
          <InfoBlock content={content} />

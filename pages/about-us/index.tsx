@@ -8,12 +8,14 @@ import { MDXRemote } from 'next-mdx-remote'
 import css from '/styles/MDX.module.css'
 import { Template } from '@/components/PagesComponents/Template'
 import VideoSlider from '@/components/PagesComponents/ABOUT_US/VideoSlider'
+import CanonicalHref from '@/components/Canonical'
 
 const page_ID = 'ABOUT_US'
 
 const AboutUs: NextPage = ({ seo, content }: PageProps) => {
    return (
       <>
+         <CanonicalHref />
          <Seo {...seo} />
          <Template page_ID={page_ID} />
          <div className={css.mdx}>

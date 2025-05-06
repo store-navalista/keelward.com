@@ -1,3 +1,4 @@
+import CanonicalHref from '@/components/Canonical'
 import Contacts from '@/components/PagesComponents/CONTACTS'
 import { Template } from '@/components/PagesComponents/Template'
 import Seo from '@/components/seo'
@@ -12,6 +13,7 @@ const page_ID = 'CONTACTS'
 const ContactsPage: NextPage = ({ seo }: PageProps) => {
    return (
       <>
+         <CanonicalHref />
          <Seo {...seo} />
          <Template page_ID={page_ID} type='heading' />
          <Contacts />

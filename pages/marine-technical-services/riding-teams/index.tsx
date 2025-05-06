@@ -6,12 +6,14 @@ import { MDXRemote } from 'next-mdx-remote'
 import { serialize } from 'next-mdx-remote/serialize'
 import React from 'react'
 import css from '/styles/MDX.module.css'
+import CanonicalHref from '@/components/Canonical'
 
 const page_ID = 'RIDING_TEAMS'
 
 const RidingTeams: NextPage = ({ seo, content }: any) => {
    return (
       <>
+         <CanonicalHref />
          <Seo {...seo} />
          <Template page_ID={page_ID} />
          <div className={css.mdx}>

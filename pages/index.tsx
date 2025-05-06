@@ -1,3 +1,4 @@
+import CanonicalHref from '@/components/Canonical'
 import CertificatesBlock from '@/components/PagesComponents/HOME/CertificatesBlock'
 import MainSlider from '@/components/PagesComponents/HOME/MainSlider'
 import ServicesBlock from '@/components/PagesComponents/HOME/ServicesBlock'
@@ -14,6 +15,7 @@ import css from './index.module.css'
 const Home: NextPage = ({ seo }: PageProps) => {
    return (
       <>
+         <CanonicalHref />
          <Seo {...seo} />
          <div className={css.wrapper}>
             <section className={css.slider_section}>

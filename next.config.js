@@ -7,19 +7,6 @@ module.exports = {
 
       return config
    },
-   async headers() {
-      return [
-         {
-            source: '/sitemap-:path*',
-            headers: [
-               {
-                  key: 'Content-Type',
-                  value: 'application/xml',
-               },
-            ],
-         },
-      ]
-   },
    i18n: {
       locales: ['en', 'ru', 'tr', 'ka'],
       defaultLocale: 'en',

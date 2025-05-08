@@ -8,26 +8,56 @@ module.exports = {
    generateIndexSitemap: false,
    outDir: './public',
    exclude: ['/privacy-policy', '/404'],
-   alternateRefs: [
+   additionalPaths: async (config) => [
       {
-         href: 'https://keelward.com/',
-         hreflang: 'en',
+         loc: '/', // Главная страница
+         priority: 1.0,
+         changefreq: 'daily',
       },
       {
-         href: 'https://keelward.com/ru/',
-         hreflang: 'ru',
+         loc: '/contacts',
+         priority: 0.9,
+         changefreq: 'weekly',
       },
       {
-         href: 'https://keelward.com/ka/',
-         hreflang: 'ka',
+         loc: '/about-us',
+         priority: 0.9,
+         changefreq: 'weekly',
       },
       {
-         href: 'https://keelward.com/tr/',
-         hreflang: 'tr',
+         loc: '/marine-technical-services',
+         priority: 0.8,
+         changefreq: 'monthly',
+      },
+      {
+         loc: '/ship-supply',
+         priority: 0.8,
+         changefreq: 'monthly',
+      },
+      {
+         loc: '/marine-technical-services/ship-repair',
+         priority: 0.7,
+         changefreq: 'monthly',
+      },
+      {
+         loc: '/marine-technical-services/riding-teams',
+         priority: 0.7,
+         changefreq: 'monthly',
+      },
+      {
+         loc: '/marine-technical-services/utm',
+         priority: 0.7,
+         changefreq: 'monthly',
+      },
+      {
+         loc: '/live-stock',
+         priority: 0.6,
+         changefreq: 'monthly',
+      },
+      {
+         loc: '/news',
+         priority: 0.5,
+         changefreq: 'monthly',
       },
    ],
-   i18n: {
-      defaultLocale: 'en',
-      locales: ['en', 'ru', 'ka', 'tr'],
-   },
 }

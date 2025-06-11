@@ -4,6 +4,7 @@ import Link from 'next/link'
 import React, { FC } from 'react'
 import css from './index.module.css'
 import { SVG } from '@/components/SVG'
+import { SOCIAL } from '@/constants/social'
 
 const BottomBlock: FC = () => {
    return (
@@ -17,7 +18,7 @@ const BottomBlock: FC = () => {
          <a href='mailto:info@g-supply.com'>
             <SVG.AltMail />
          </a>
-         <a href='whatsapp://send?phone=380671234567'>
+         <a href={`whatsapp://send?phone=${SOCIAL.watsapp}`}>
             <SVG.Whatsup />
          </a>
       </motion.div>

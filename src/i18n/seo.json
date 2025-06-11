@@ -37,7 +37,7 @@
    },
    "RIDING_TEAMS": {
       "en": {
-         "pageTitle": "Boat crew services",
+         "pageTitle": "Riding Teams",
          "description": "Skilled boat crew services including maintenance, repair and supply of essential equipment. Ensuring safety and efficiency for your fleet."
       },
       "ru": {
@@ -181,19 +181,19 @@
    },
    "ABOUT_US": {
       "en": {
-         "pageTitle": "Marine Technical Services, UTM Inspections & Ship Supply",
+         "pageTitle": "About Us",
          "description": "Keelward offers expert marine services, including ship repair, riding teams, ultrasonic measurements (UTM), and global ship supply. Ensuring safety, compliance, and efficiency for your fleet."
       },
       "ru": {
-         "pageTitle": "Морские технические услуги, UTM инспекции и снабжение судов",
+         "pageTitle": "О нас",
          "description": "Keelward предлагает экспертные морские услуги, включая ремонт судов, команды для работы на ходу, ультразвуковые измерения (UTM) и глобальное снабжение судов. Обеспечение безопасности, соответствия и эффективности вашего флота."
       },
       "tr": {
-         "pageTitle": "Deniz Teknik Hizmetleri, UTM Denetimleri ve Gemi Tedariki",
+         "pageTitle": "Hakkımızda",
          "description": "Keelward, gemi onarımı, seyir ekipleri, ultrasonik ölçümler (UTM) ve küresel gemi tedariki dahil uzman deniz hizmetleri sunar. Filonuzun güvenliğini, uyumluluğunu ve verimliliğini sağlamak."
       },
       "ge": {
-         "pageTitle": "მეზღვაური ტექნიკური სერვისები, UTM ინსპექციები და გემის მომარაგება",
+         "pageTitle": "ჩვენს შესახებ",
          "description": "Keelward გთავაზობთ ექსპერტულ მეზღვაური სერვისებს, მათ შორის გემის შეკეთებას, მეზღვაური გუნდებს, ულტრაბგერითი გაზომვებს (UTM) და გლობალურ გემის მომარაგებას. თქვენი ფლოტის უსაფრთხოებისა, შესაბამისობისა და ეფექტურობის უზრუნველყოფა."
       }
    }

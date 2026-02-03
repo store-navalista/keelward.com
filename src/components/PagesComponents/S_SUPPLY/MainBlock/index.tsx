@@ -18,7 +18,7 @@ export default function MainBlock() {
          <ServicesProvide />
          <Choose />
          <HowItWorks />
-         <Team />
+         {/* <Team /> */}
          <ContactUs />
       </div>
    )

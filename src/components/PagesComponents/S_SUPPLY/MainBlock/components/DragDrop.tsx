@@ -65,7 +65,7 @@ const DragDrop: FC<{ uploadedFile: File | null; setUploadedFile: (file: File) =>
                </button>
             ) : (
                <div style={{ position: 'relative' }}>
-                  <p className={css.desc}>*This field is required</p>
+                  {/* <p className={css.desc}>*This field is required</p> */}
                   <div className={css.drop_wrapper}>
                      <div className={css.icon}>
                         <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 640'>

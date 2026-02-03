@@ -1,6 +1,7 @@
 .partners {
    position: relative;
    width: 100%;
+   margin-top: 48px;
    .chains {
       position: absolute;
       top: 0;

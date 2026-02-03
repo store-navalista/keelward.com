@@ -6,7 +6,7 @@ import React, { FC, ReactNode, useCallback, useEffect, useState } from 'react'
 import Footer from './Footer/Footer'
 import Header from './Header/Header'
 import css from './Main.layout.module.css'
-import { WhyChooseUs } from './WhyChooseUs/WhyChooseUs'
+// import { WhyChooseUs } from './WhyChooseUs/WhyChooseUs'
 
 const fadeVariants = {
    hidden: { opacity: 0 },
@@ -45,7 +45,7 @@ const MainLayout: FC<{ children: ReactNode }> = ({ children }) => {
                {children}
             </motion.div>
          </AnimatePresence>
-         <WhyChooseUs />
+         {/* <WhyChooseUs /> */}
          <Partners />
          <Map />
          <Footer />

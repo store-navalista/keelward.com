@@ -36,7 +36,7 @@ const MyApp = ({ Component, pageProps }: IAppWrapperProps) => {
          <CookiesProvider>
             <I18nProvider locale={pageProps.locale}>
                <>
-                  <CustomCursor />
+                  {/* <CustomCursor /> */}
                   <MediaInitializer />
                   <AppWrapper Component={Component} pageProps={pageProps} />
                </>

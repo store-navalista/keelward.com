@@ -2,10 +2,10 @@ html {
    --color-blue: #003f4d;
    --color-red: #9e0c0c;
    --color-blue-alt: #36799a;
-   --font-g-light: 'Gantari-light', sans-serif;
-   --font-g-regular: 'Gantari-regular', sans-serif;
-   --font-g-medium: 'Gantari-medium', sans-serif;
-   --font-g-semibold: 'Gantari-semibold', sans-serif;
+   --font-g-light: 'GoogleSans-light', sans-serif;
+   --font-g-regular: 'GoogleSans-regular', sans-serif;
+   --font-g-medium: 'GoogleSans-medium', sans-serif;
+   --font-g-semibold: 'GoogleSans-semibold', sans-serif;
    --logo-height: 80px;
    --header-padding: 16px;
    --header-height: calc(var(--logo-height) + var(--header-padding));

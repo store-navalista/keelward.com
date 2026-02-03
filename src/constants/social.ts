@@ -8,3 +8,13 @@ export const SOCIAL: Record<SocialKeys, string> = {
    instagram: 'https://www.instagram.com/keelward_shiprepair?igsh=eHpnZmRoZTc5aTVm',
    watsapp: '447308271263'
 }
+
+export const SOCIAL_SUPPLY: Record<string, string>[] = [
+   {linkedin: ''},
+   {records: ''},
+   {whatsapp: ''},
+   {wechat: ''},
+   {telegram: ''},
+   {facebook: ''},
+   {instagram: ''}
+]

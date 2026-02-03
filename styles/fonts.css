@@ -1,4 +1,4 @@
-@font-face {
+/* @font-face {
    font-family: 'Gantari-light';
    src: url('fonts/Gantari-Light.woff2') format('woff2'), url('fonts/Gantari-Light.woff') format('woff');
 }
@@ -13,4 +13,28 @@
 @font-face {
    font-family: 'Gantari-semibold';
    src: url('fonts/Gantari-SemiBold.woff2') format('woff2'), url('fonts/Gantari-SemiBold.woff') format('woff');
+} */
+@font-face {
+   font-family: 'GoogleSans-light';
+   src:
+      url('fonts/GoogleSans-Regular.woff2') format('woff2'),
+      url('fonts/GoogleSans-Regular.woff') format('woff');
+}
+@font-face {
+   font-family: 'GoogleSans-regular';
+   src:
+      url('fonts/GoogleSans-Regular.woff2') format('woff2'),
+      url('fonts/GoogleSans-Regular.woff') format('woff');
+}
+@font-face {
+   font-family: 'GoogleSans-medium';
+   src:
+      url('fonts/GoogleSans-Medium.woff2') format('woff2'),
+      url('fonts/GoogleSans-Medium.woff') format('woff');
+}
+@font-face {
+   font-family: 'GoogleSans-semibold';
+   src:
+      url('fonts/GoogleSans-SemiBold.woff2') format('woff2'),
+      url('fonts/GoogleSans-SemiBold.woff') format('woff');
 }
